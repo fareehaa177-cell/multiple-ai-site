@@ -1,9 +1,19 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
+import {
+  Accordion,
+  Badge,
+  Button,
+  Card,
+  Col,
+  Container,
+  Form,
+  Row,
+} from 'react-bootstrap';
+import { FaSearch } from 'react-icons/fa';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { FaChevronDown, FaChevronUp, FaSearch } from 'react-icons/fa';
 
 type FAQItem = {
   question: string;
@@ -11,7 +21,7 @@ type FAQItem = {
   category: string;
 };
 
-const faqs: FAQItem[] = [
+const FAQ_CONTENT: FAQItem[] = [
   {
     question: 'Who is Multiple AI Solutions for?',
     answer:
@@ -62,24 +72,31 @@ const faqs: FAQItem[] = [
   },
 ];
 
-const categories = ['All', ...Array.from(new Set(faqs.map((faq) => faq.category)))];
-
 export default function FAQ() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
-  const [openQuestion, setOpenQuestion] = useState<string | null>(null);
+  const [openItem, setOpenItem] = useState<string | null>(null);
 
-  useEffect(() => {
-    setOpenQuestion(null);
+  const categories = useMemo(
+    () => ['All', ...Array.from(new Set(FAQ_CONTENT.map((item) => item.category)))],
+    []
+  );
+
+  const filteredFaqs = useMemo(() => {
+    return FAQ_CONTENT.filter((faq) => {
+      const matchesCategory = activeCategory === 'All' || faq.category === activeCategory;
+      const term = searchTerm.trim().toLowerCase();
+      const matchesSearch =
+        term.length === 0 ||
+        faq.question.toLowerCase().includes(term) ||
+        faq.answer.toLowerCase().includes(term);
+      return matchesCategory && matchesSearch;
+    });
   }, [activeCategory, searchTerm]);
 
-  const filteredFaqs = faqs.filter((faq) => {
-    const matchesCategory = activeCategory === 'All' || faq.category === activeCategory;
-    const matchesSearch =
-      faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  useEffect(() => {
+    setOpenItem(null);
+  }, [activeCategory, searchTerm]);
 
   return (
     <>
@@ -87,233 +104,227 @@ export default function FAQ() {
 
       <section
         style={{
-          background: 'var(--gradient-primary)',
+          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
           color: 'white',
-          padding: '90px 0',
+          padding: '120px 0 100px',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        <div className="container text-center">
-          <span
+        <div
+          style={{
+            position: 'absolute',
+            top: '-140px',
+            left: '-140px',
+            width: '360px',
+            height: '360px',
+            background: 'rgba(255, 224, 102, 0.32)',
+            filter: 'blur(120px)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '-160px',
+            right: '-140px',
+            width: '420px',
+            height: '420px',
+            background: 'rgba(0, 188, 212, 0.3)',
+            filter: 'blur(140px)',
+          }}
+        />
+        <Container className="text-center">
+          <Badge
+            bg="light"
+            text="dark"
             style={{
-              display: 'inline-block',
-              background: 'rgba(255,255,255,0.2)',
-              padding: '6px 16px',
+              background: 'rgba(255,255,255,0.16)',
+              color: 'white',
               borderRadius: '999px',
-              fontSize: '0.85rem',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
+              padding: '6px 16px',
+              letterSpacing: '0.12em',
             }}
           >
             Help Centre
-          </span>
-          <h1 style={{ color: 'white', fontSize: '3rem', fontWeight: 'bold', marginTop: '18px' }}>
+          </Badge>
+          <h1 className="display-5 fw-bold mt-3 text-white" style={{ letterSpacing: '-0.02em' }}>
             Frequently Asked Questions
           </h1>
           <p
-            style={{
-              fontSize: '1.15rem',
-              color: 'rgba(255,255,255,0.85)',
-              maxWidth: '720px',
-              margin: '18px auto 0',
-            }}
+            className="fs-5 mt-3"
+            style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 720, margin: '0 auto' }}
           >
             Explore guidance on partnering with Multiple AI, launching automations, and keeping your
             clients ahead of the curve.
           </p>
-        </div>
+        </Container>
       </section>
 
-      <section className="section" style={{ background: '#f5f7fb' }}>
-        <div className="container">
-          <div className="row justify-content-center mb-5">
-            <div className="col-lg-10">
-              <div
-                className="card border-0 shadow-sm"
-                style={{ borderRadius: '18px', overflow: 'hidden', background: 'white' }}
+      <section
+        className="section"
+        style={{ background: 'linear-gradient(135deg, #f8fbff 0%, #eef4ff 45%, #ffffff 100%)' }}
+      >
+        <Container>
+          <Row className="justify-content-center mb-5">
+            <Col lg={10}>
+              <Card
+                className="border-0 shadow-sm"
+                style={{
+                  borderRadius: 24,
+                  overflow: 'hidden',
+                  background: '#ffffff',
+                  border: '1px solid rgba(16, 42, 67, 0.08)',
+                  boxShadow: '0 28px 48px rgba(0, 26, 60, 0.08)',
+                }}
               >
-                <div className="card-body p-4 p-lg-5">
-                  <div className="row g-4 align-items-center">
-                    <div className="col-lg-7">
-                      <label
+                <Card.Body className="p-4 p-lg-5">
+                  <Row className="gy-4 align-items-center">
+                    <Col lg={7}>
+                      <Form.Label
                         htmlFor="faq-search"
-                        style={{
-                          fontSize: '0.9rem',
-                          fontWeight: 600,
-                          letterSpacing: '0.08em',
-                          textTransform: 'uppercase',
-                          color: 'var(--primary-color)',
-                        }}
+                        className="text-uppercase fw-semibold"
+                        style={{ letterSpacing: '0.08em', color: 'var(--primary-color)' }}
                       >
                         Search the knowledge base
-                      </label>
+                      </Form.Label>
                       <div
                         className="d-flex align-items-center mt-2"
                         style={{
-                          border: '1px solid rgba(31, 41, 55, 0.1)',
-                          borderRadius: '12px',
-                          padding: '10px 14px',
+                          border: '1px solid rgba(16, 42, 67, 0.12)',
+                          borderRadius: '18px',
+                          padding: '12px 18px',
                           gap: '12px',
+                          background: '#f9fbff',
                         }}
                       >
                         <FaSearch style={{ color: 'rgba(31, 41, 55, 0.45)' }} />
-                        <input
+                        <Form.Control
                           id="faq-search"
                           type="search"
                           value={searchTerm}
                           onChange={(event) => setSearchTerm(event.target.value)}
                           placeholder="Search by keyword or topic"
-                          style={{
-                            border: 'none',
-                            outline: 'none',
-                            width: '100%',
-                            fontSize: '1rem',
-                          }}
+                          className="border-0 shadow-none"
+                          style={{ fontSize: '1rem' }}
                         />
                       </div>
-                    </div>
-                    <div className="col-lg-5">
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexWrap: 'wrap',
-                          gap: '10px',
-                          justifyContent: 'flex-start',
-                        }}
-                      >
+                    </Col>
+                    <Col lg={5}>
+                      <div className="d-flex flex-wrap gap-2">
                         {categories.map((category) => {
                           const isActive = category === activeCategory;
                           return (
-                            <button
-                              type="button"
+                            <Button
                               key={category}
+                              variant={isActive ? 'primary' : 'outline-primary'}
                               onClick={() => setActiveCategory(category)}
+                              className="px-3 py-2"
                               style={{
                                 borderRadius: '999px',
-                                padding: '8px 18px',
-                                border: 'none',
-                                background: isActive ? 'var(--primary-color)' : '#eef2ff',
-                                color: isActive ? 'white' : 'var(--primary-color)',
-                                fontWeight: 600,
-                                letterSpacing: '0.02em',
-                                boxShadow: isActive ? '0 10px 20px rgba(62,125,255,0.25)' : 'none',
-                                transition: 'all 0.2s ease',
-                                cursor: 'pointer',
+                                boxShadow: isActive ? '0 10px 25px rgba(62,125,255,0.25)' : 'none',
                               }}
                             >
                               {category}
-                            </button>
+                            </Button>
                           );
                         })}
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                    </Col>
+                  </Row>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
 
-          <div className="row justify-content-center">
-            <div className="col-lg-10">
-              {filteredFaqs.length === 0 && (
-                <div className="card border-0 shadow-sm text-center p-5" style={{ borderRadius: '18px' }}>
-                  <h4 style={{ color: 'var(--primary-color)' }}>No results</h4>
-                  <p className="mb-0">Try adjusting your search terms or explore another topic.</p>
-                </div>
-              )}
-
-              <div className="accordion" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {filteredFaqs.map((faq) => {
-                  const isOpen = openQuestion === faq.question;
-                  return (
-                    <div
+          <Row className="justify-content-center">
+            <Col lg={10}>
+              {filteredFaqs.length === 0 ? (
+                <Card className="border-0 shadow-sm text-center py-5" style={{ borderRadius: 22 }}>
+                  <Card.Body>
+                    <h4 style={{ color: 'var(--primary-color)' }}>No results found</h4>
+                    <p className="text-muted mb-0">
+                      Try adjusting your search terms or explore a different topic.
+                    </p>
+                  </Card.Body>
+                </Card>
+              ) : (
+                <Accordion
+                  activeKey={openItem ?? undefined}
+                  onSelect={(eventKey) => {
+                    const key = typeof eventKey === 'string' ? eventKey : null;
+                    setOpenItem((prev) => (prev === key ? null : key));
+                  }}
+                  className="d-grid gap-3"
+                >
+                  {filteredFaqs.map((faq) => (
+                    <Accordion.Item
+                      eventKey={faq.question}
                       key={faq.question}
-                      className="card border-0 shadow-sm"
+                      className="border-0 shadow-sm"
                       style={{
-                        borderRadius: '18px',
+                        borderRadius: 24,
                         overflow: 'hidden',
-                        background: 'white',
-                        transition: 'transform 0.2s ease',
+                        border: '1px solid rgba(16, 42, 67, 0.08)',
+                        boxShadow: '0 24px 44px rgba(15, 31, 56, 0.08)',
                       }}
                     >
-                      <button
-                        type="button"
-                        onClick={() => setOpenQuestion(isOpen ? null : faq.question)}
-                        className="card-body"
-                        style={{
-                          width: '100%',
-                          textAlign: 'left',
-                          border: 'none',
-                          background: 'transparent',
-                          padding: '24px 28px',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '12px',
-                        }}
-                      >
-                        <div className="d-flex justify-content-between align-items-start gap-3">
-                          <div>
-                            <span
-                              style={{
-                                display: 'inline-block',
-                                padding: '4px 12px',
-                                borderRadius: '999px',
-                                background: '#eef2ff',
-                                color: 'var(--primary-color)',
-                                fontSize: '0.8rem',
-                                fontWeight: 600,
-                                textTransform: 'uppercase',
-                              }}
-                            >
-                              {faq.category}
-                            </span>
-                            <h4 style={{ marginBottom: 0, marginTop: '12px', color: 'var(--primary-color)' }}>
-                              {faq.question}
-                            </h4>
-                          </div>
-                          <span
+                      <Accordion.Header>
+                        <div className="d-flex flex-column gap-2">
+                          <Badge
+                            bg="light"
+                            text="dark"
                             style={{
-                              fontSize: '1.1rem',
+                              background: '#eef2ff',
                               color: 'var(--primary-color)',
-                              flexShrink: 0,
+                              alignSelf: 'flex-start',
+                              borderRadius: '999px',
+                              padding: '4px 10px',
                             }}
                           >
-                            {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+                            {faq.category}
+                          </Badge>
+                          <span className="fw-semibold" style={{ color: 'var(--primary-color)' }}>
+                            {faq.question}
                           </span>
                         </div>
-                        {isOpen && (
-                          <p style={{ marginBottom: 0, color: 'var(--text-dark)' }}>{faq.answer}</p>
-                        )}
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+                      </Accordion.Header>
+                      <Accordion.Body className="fs-6 text-muted">
+                        {faq.answer}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  ))}
+                </Accordion>
+              )}
+            </Col>
+          </Row>
 
-          <div className="row justify-content-center mt-5">
-            <div className="col-lg-8">
-              <div
-                className="card border-0 shadow-lg text-center"
+          <Row className="justify-content-center mt-5">
+            <Col lg={8}>
+              <Card
+                className="border-0 shadow-lg text-center"
                 style={{
-                  borderRadius: '18px',
-                  background: 'var(--gradient-primary)',
+                  borderRadius: 28,
+                  background: 'linear-gradient(135deg, #003f7d 0%, #00bcd4 80%)',
                   color: 'white',
-                  padding: '40px 30px',
+                  padding: '48px 36px',
+                  border: '1px solid rgba(255,255,255,0.18)',
                 }}
               >
-                <h3 style={{ color: 'white' }}>Need a tailored walkthrough?</h3>
-                <p style={{ color: 'rgba(255,255,255,0.85)', marginBottom: '24px' }}>
-                  Book a session with our partner specialists for solution demos, pricing models, or integration
-                  questions.
+                <h3 className="text-white">Need a tailored walkthrough?</h3>
+                <p
+                  className="mt-3"
+                  style={{ color: 'rgba(255,255,255,0.85)', marginBottom: '24px' }}
+                >
+                  Book a session with our partner specialists for solution demos, pricing models, or
+                  integration guidance.
                 </p>
-                <Link href="/contact" className="btn-primary btn-lg">
+                <Link href="/contact" className="btn btn-primary btn-lg px-4" style={{ textDecoration: 'none', display: 'inline-block' }}>
                   Talk to the Team
                 </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </section>
 
       <Footer />

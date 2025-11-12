@@ -9,27 +9,63 @@ export default function PrivacyPolicy() {
 
       <section
         style={{
-          background: 'var(--gradient-primary)',
+          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
           color: 'white',
-          padding: '80px 0',
+          padding: '110px 0 90px',
           textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        <div className="container">
-          <h1 style={{ color: 'white', fontSize: '3rem', fontWeight: 'bold' }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: '-140px',
+            left: '-140px',
+            width: '360px',
+            height: '360px',
+            background: 'rgba(255, 224, 102, 0.3)',
+            filter: 'blur(120px)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '-160px',
+            right: '-140px',
+            width: '420px',
+            height: '420px',
+            background: 'rgba(0, 188, 212, 0.3)',
+            filter: 'blur(140px)',
+          }}
+        />
+        <div className="container position-relative">
+          <h1 style={{ color: 'white', fontSize: '3rem', fontWeight: 'bold', letterSpacing: '-0.02em' }}>
             Privacy Policy
           </h1>
-          <p style={{ fontSize: '1.25rem', color: 'rgba(255,255,255,0.9)' }}>
+          <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.85)' }}>
             Effective Date: September 2025
           </p>
         </div>
       </section>
 
-      <section className="section">
+      <section
+        className="section"
+        style={{ background: 'linear-gradient(135deg, #f8fbff 0%, #eef4ff 45%, #ffffff 100%)' }}
+      >
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-10">
-              <div className="mb-5">
+              <div
+                style={{
+                  borderRadius: '28px',
+                  background: '#ffffff',
+                  border: '1px solid rgba(16, 42, 67, 0.08)',
+                  boxShadow: '0 28px 48px rgba(0, 26, 60, 0.08)',
+                  padding: '48px',
+                }}
+              >
+                <div className="mb-5">
                 <h2>1. Introduction</h2>
                 <p>
                   Multiple AI (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;)
@@ -43,7 +79,7 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>2. Information We Collect</h2>
                 <p>We may collect the following types of information:</p>
                 <ul>
@@ -58,7 +94,7 @@ export default function PrivacyPolicy() {
                 </ul>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>3. How We Collect Information</h2>
                 <ul>
                   <li>Directly from you via forms, sign-ups, or communication</li>
@@ -67,7 +103,7 @@ export default function PrivacyPolicy() {
                 </ul>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>4. Use of Information</h2>
                 <p>We use the information we collect to:</p>
                 <ul>
@@ -80,7 +116,7 @@ export default function PrivacyPolicy() {
                 </ul>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>5. Sharing of Information</h2>
                 <p>We may share information with:</p>
                 <ul>
@@ -91,7 +127,7 @@ export default function PrivacyPolicy() {
                 </ul>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>6. Cookies &amp; Tracking</h2>
                 <p>
                   We use cookies and similar technologies for functionality, analytics, and marketing.
@@ -100,7 +136,7 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>7. Data Security</h2>
                 <p>
                   We apply reasonable technical and organisational measures&mdash;including encryption,
@@ -109,7 +145,7 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>8. Data Retention</h2>
                 <p>
                   We retain personal data only as long as necessary to fulfil the purposes outlined in
@@ -117,7 +153,7 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>9. Your Rights</h2>
                 <p>
                   Depending on your location, you may have rights to access, correct, delete, or restrict
@@ -126,7 +162,7 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>10. International Users</h2>
                 <p>
                   If you access our website from outside Australia, you acknowledge and agree to the transfer
@@ -134,7 +170,7 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>11. Updates to This Privacy Policy</h2>
                 <p>
                   We may update this Privacy Policy from time to time. When we do, we will post the revised
@@ -143,13 +179,14 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>12. Contact Us</h2>
                 <p>
                   If you have questions or concerns about this Privacy Policy, please contact us at:
                 </p>
                 <p>Email: <a href="mailto:contact@multipleai.com.au">contact@multipleai.com.au</a></p>
                 <p>Address: Perth, WA</p>
+              </div>
               </div>
             </div>
           </div>

@@ -3,42 +3,75 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
+  { href: '/services', label: 'Services' },
+  { href: '/ai-agents', label: 'AI Agents' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/faq', label: 'FAQ' },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav style={{
-      background: 'white',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-      position: 'sticky',
-      top: 0,
-      zIndex: 1000,
-      padding: '15px 0'
-    }}>
+    <nav
+      style={{
+        backdropFilter: 'blur(16px)',
+        background: 'rgba(255,255,255,0.86)',
+        boxShadow: '0 12px 40px rgba(15, 31, 56, 0.08)',
+        borderBottom: '1px solid rgba(16, 42, 67, 0.06)',
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000,
+        padding: '16px 0',
+      }}
+    >
       <div className="container">
         <div className="d-flex justify-content-between align-items-center">
-          <Link href="/" style={{ 
-            fontSize: '1.75rem', 
-            fontWeight: 'bold', 
-            color: 'var(--primary-color)',
-            textDecoration: 'none'
-          }}>
-            MultipleAI Solutions
+          <Link
+            href="/"
+            style={{
+              fontSize: '1.55rem',
+              fontWeight: 700,
+              color: 'var(--primary-color)',
+              textDecoration: 'none',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            MultipleAI
           </Link>
           
           {/* Desktop Menu */}
-          <div className="d-none d-lg-flex align-items-center gap-4">
-            <Link href="/" style={{ textDecoration: 'none', color: 'var(--text-dark)', fontWeight: 500 }}>Home</Link>
-            <Link href="/about" style={{ textDecoration: 'none', color: 'var(--text-dark)', fontWeight: 500 }}>About Us</Link>
-            <Link href="/services" style={{ textDecoration: 'none', color: 'var(--text-dark)', fontWeight: 500 }}>Services</Link>
-            <Link href="/ai-agents" style={{ textDecoration: 'none', color: 'var(--text-dark)', fontWeight: 500 }}>AI Agents</Link>
-            <Link href="/projects" style={{ textDecoration: 'none', color: 'var(--text-dark)', fontWeight: 500 }}>Projects</Link>
-            <Link href="/resources" style={{ textDecoration: 'none', color: 'var(--text-dark)', fontWeight: 500 }}>Resources</Link>
-            <Link href="/faq" style={{ textDecoration: 'none', color: 'var(--text-dark)', fontWeight: 500 }}>FAQ</Link>
-            <Link href="/contact" className="btn-primary" style={{ 
-              padding: '10px 25px',
-              fontSize: '0.95rem'
-            }}>
+          <div className="d-none d-lg-flex align-items-center" style={{ gap: '28px' }}>
+            {links.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                style={{
+                  textDecoration: 'none',
+                  color: 'var(--text-muted)',
+                  fontWeight: 500,
+                  letterSpacing: '0.02em',
+                }}
+              >
+                {label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              className="btn btn-light rounded-pill fw-semibold"
+              style={{
+                background: 'var(--gradient-primary)',
+                border: 'none',
+                color: 'white',
+                padding: '12px 28px',
+                letterSpacing: '0.05em',
+                boxShadow: '0 18px 32px rgba(0, 63, 125, 0.25)',
+              }}
+            >
               Contact
             </Link>
           </div>
@@ -55,20 +88,43 @@ export default function Navbar() {
         
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="d-lg-none mt-3" style={{
-            background: 'white',
-            borderRadius: '10px',
-            padding: '20px',
-            boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
-          }}>
-            <Link href="/" className="d-block py-2" style={{ textDecoration: 'none', color: 'var(--text-dark)' }}>Home</Link>
-            <Link href="/about" className="d-block py-2" style={{ textDecoration: 'none', color: 'var(--text-dark)' }}>About Us</Link>
-            <Link href="/services" className="d-block py-2" style={{ textDecoration: 'none', color: 'var(--text-dark)' }}>Services</Link>
-            <Link href="/ai-agents" className="d-block py-2" style={{ textDecoration: 'none', color: 'var(--text-dark)' }}>AI Agents</Link>
-            <Link href="/projects" className="d-block py-2" style={{ textDecoration: 'none', color: 'var(--text-dark)' }}>Projects</Link>
-            <Link href="/resources" className="d-block py-2" style={{ textDecoration: 'none', color: 'var(--text-dark)' }}>Resources</Link>
-            <Link href="/faq" className="d-block py-2" style={{ textDecoration: 'none', color: 'var(--text-dark)' }}>FAQ</Link>
-            <Link href="/contact" className="btn-primary d-block text-center mt-3">Contact</Link>
+          <div
+            className="d-lg-none mt-3"
+            style={{
+              background: 'rgba(255,255,255,0.94)',
+              borderRadius: '16px',
+              padding: '22px',
+              boxShadow: '0 20px 40px rgba(15, 31, 56, 0.12)',
+              border: '1px solid rgba(16, 42, 67, 0.08)',
+            }}
+          >
+            {links.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="d-block py-2"
+                style={{
+                  textDecoration: 'none',
+                  color: 'var(--text-muted)',
+                  fontWeight: 500,
+                }}
+              >
+                {label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              className="btn btn-light d-block text-center mt-3 fw-semibold"
+              style={{
+                background: 'var(--gradient-primary)',
+                border: 'none',
+                color: 'white',
+                borderRadius: '999px',
+                padding: '12px 0',
+              }}
+            >
+              Contact
+            </Link>
           </div>
         )}
       </div>

@@ -4,95 +4,200 @@ import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
-export default function AIAgents() {
-  const agents = [
-    {
-      category: 'Voice & Reception',
-      icon: <FaPhone />,
-      examples: 'Reception Agent, Call Routing Agent',
-      description: 'Answers and routes client calls, captures leads, and notifies teams.',
-      gradient: 'linear-gradient(135deg, #003366 0%, #005599 100%)'
-    },
-    {
-      category: 'Administration & Workflow',
-      icon: <FaCog />,
-      examples: 'Admin Agent, Scheduler Agent',
-      description: 'Manages documents, contracts, invoices, and task automation.',
-      gradient: 'linear-gradient(135deg, #00bcd4 0%, #26c6da 100%)'
-    },
-    {
-      category: 'Accounts & Finance',
-      icon: <FaCalculator />,
-      examples: 'Accounts Agent, Cashflow Agent',
-      description: 'Tracks payments, sends reminders, and generates financial reports.',
-      gradient: 'linear-gradient(135deg, #FFCC00 0%, #FFD700 100%)'
-    },
-    {
-      category: 'Creative & Content',
-      icon: <FaPen />,
-      examples: 'Writer Agent, Video Agent, Voice Agent',
-      description: 'Produces articles, proposals, and multimedia content.',
-      gradient: 'linear-gradient(135deg, #673ab7 0%, #8e24aa 100%)'
-    },
-    {
-      category: 'Data & Analytics',
-      icon: <FaDatabase />,
-      examples: 'Insights Agent, Predictive Agent',
-      description: 'Turns data into actionable dashboards and forecasts.',
-      gradient: 'linear-gradient(135deg, #e91e63 0%, #ec407a 100%)'
-    },
-    {
-      category: 'Cyber & Compliance',
-      icon: <FaLock />,
-      examples: 'Security Agent',
-      description: 'Monitors data integrity and regulatory compliance.',
-      gradient: 'linear-gradient(135deg, #f44336 0%, #e57373 100%)'
-    },
-    {
-      category: 'Consulting & Advisory',
-      icon: <FaLightbulb />,
-      examples: 'AI Strategy Agent',
-      description: 'Provides AI readiness assessments and integration planning.',
-      gradient: 'linear-gradient(135deg, #ff9800 0%, #ffb74d 100%)'
-    }
-  ];
+const agents = [
+  {
+    category: 'Voice & Reception',
+    icon: FaPhone,
+    examples: 'Reception Agent, Call Routing Agent',
+    description: 'Answers and routes client calls, captures leads, and notifies teams in real-time.',
+    accent: 'linear-gradient(135deg, rgba(0,63,125,0.2), rgba(0,188,212,0.3))',
+  },
+  {
+    category: 'Administration & Workflow',
+    icon: FaCog,
+    examples: 'Admin Agent, Scheduler Agent',
+    description: 'Manages documents, contracts, invoices, and task automation across internal systems.',
+    accent: 'linear-gradient(135deg, rgba(0,188,212,0.24), rgba(102,126,234,0.32))',
+  },
+  {
+    category: 'Accounts & Finance',
+    icon: FaCalculator,
+    examples: 'Accounts Agent, Cashflow Agent',
+    description: 'Tracks payments, sends reminders, manages reconciliations, and generates financial reports.',
+    accent: 'linear-gradient(135deg, rgba(255,204,0,0.26), rgba(255,152,0,0.3))',
+  },
+  {
+    category: 'Creative & Content',
+    icon: FaPen,
+    examples: 'Writer Agent, Video Agent, Voice Agent',
+    description: 'Produces white papers, proposals, and multimedia content tailored to each client brand.',
+    accent: 'linear-gradient(135deg, rgba(0,63,125,0.22), rgba(0,188,212,0.32))',
+  },
+  {
+    category: 'Data & Analytics',
+    icon: FaDatabase,
+    examples: 'Insights Agent, Predictive Agent',
+    description: 'Transforms raw data into dashboards, anomaly alerts, and predictive insights.',
+    accent: 'linear-gradient(135deg, rgba(0,188,212,0.28), rgba(0,63,125,0.24))',
+  },
+  {
+    category: 'Cyber & Compliance',
+    icon: FaLock,
+    examples: 'Security Agent',
+    description: 'Monitors data integrity, supports incident response, and enforces governance policies.',
+    accent: 'linear-gradient(135deg, rgba(0,63,125,0.26), rgba(102,126,234,0.34))',
+  },
+  {
+    category: 'Consulting & Advisory',
+    icon: FaLightbulb,
+    examples: 'AI Strategy Agent',
+    description: 'Delivers AI readiness assessments, ROI modelling, and integration playbooks.',
+    accent: 'linear-gradient(135deg, rgba(255,152,0,0.28), rgba(0,188,212,0.24))',
+  },
+];
 
+export default function AIAgents() {
   return (
     <>
       <Navbar />
       
-      <section style={{ background: 'var(--gradient-primary)', color: 'white', padding: '80px 0', textAlign: 'center' }}>
-        <div className="container">
-          <h1 style={{ color: 'white' }}>Intelligent Agents for Real-World Businesses</h1>
-          <p style={{ fontSize: '1.25rem' }}>
-            Every business task can be automated or enhanced by the right AI Agent. 
-            Below is our suite of pre-configured agents — all customisable and deployable under your brand.
+      <section
+        style={{
+          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
+          color: 'white',
+          padding: '110px 0 90px',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: '-140px',
+            left: '-120px',
+            width: '320px',
+            height: '320px',
+            background: 'rgba(255, 224, 102, 0.3)',
+            filter: 'blur(120px)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '-160px',
+            right: '-120px',
+            width: '420px',
+            height: '420px',
+            background: 'rgba(0, 188, 212, 0.3)',
+            filter: 'blur(140px)',
+          }}
+        />
+        <div className="container position-relative text-center">
+          <span
+            style={{
+              display: 'inline-block',
+              padding: '8px 18px',
+              borderRadius: '999px',
+              background: 'rgba(255,255,255,0.12)',
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              fontSize: '0.78rem',
+              color: 'rgba(255,255,255,0.86)',
+              marginBottom: '22px',
+            }}
+          >
+            AI Agents
+          </span>
+          <h1 style={{ color: 'white', fontSize: '3.1rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+            Intelligent Agents for Real-World Businesses
+          </h1>
+          <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.8)', maxWidth: '720px', margin: '18px auto 0' }}>
+            Every business task can be automated or enhanced by the right AI agent. Explore our suite of pre-configured agents — each
+            customisable and deployable under your brand.
           </p>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
+      <section
+        className="section"
+        style={{
+          background: 'linear-gradient(135deg, #f8fbff 0%, #eef4ff 45%, #ffffff 100%)',
+          position: 'relative',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: '-120px',
+            right: '-120px',
+            width: '320px',
+            height: '320px',
+            background: 'rgba(0, 63, 125, 0.12)',
+            filter: 'blur(120px)',
+          }}
+        />
+        <div className="container position-relative">
           <div className="row g-4">
-            {agents.map((agent, idx) => (
-              <div key={idx} className="col-lg-6">
-                <div className="card h-100">
-                  <div className="card-icon" style={{ background: agent.gradient }}>
-                    {agent.icon}
+            {agents.map(({ category, icon: Icon, examples, description, accent }) => (
+              <div key={category} className="col-xl-4 col-lg-6">
+                <div
+                  className="glass-card"
+                  style={{
+                    padding: '30px',
+                    height: '100%',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '-120px',
+                      right: '-120px',
+                      width: '260px',
+                      height: '260px',
+                      background: accent,
+                      filter: 'blur(90px)',
+                    }}
+                  />
+                  <div
+                    className="glow-icon"
+                    style={{
+                      width: '64px',
+                      height: '64px',
+                      borderRadius: '20px',
+                      background: accent,
+                      color: '#0f1f38',
+                      marginBottom: '20px',
+                      backgroundSize: '200% 200%',
+                      position: 'relative',
+                    }}
+                  >
+                    <Icon size={24} />
                   </div>
-                  <h3 className="card-title">{agent.category}</h3>
-                  <p style={{ fontWeight: '600', color: 'var(--secondary-color)' }}>
-                    {agent.examples}
-                  </p>
-                  <p className="card-text">{agent.description}</p>
+                  <h3 style={{ fontSize: '1.45rem', color: 'var(--text-dark)', marginBottom: '8px', position: 'relative' }}>{category}</h3>
+                  <p style={{ fontWeight: 600, color: '#0b7285', marginBottom: '12px', position: 'relative' }}>{examples}</p>
+                  <p style={{ color: 'var(--text-muted)', position: 'relative', marginBottom: 0 }}>{description}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-5">
-            <Link href="/contact" className="btn-primary btn-lg me-3">Request the Full Agent Catalogue</Link>
-            <Link href="/contact" className="btn-secondary btn-lg">Book a Consultation</Link>
+          <div className="text-center mt-5 d-flex flex-wrap gap-3 justify-content-center">
+            <Link
+              href="/contact"
+              className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
+              style={{ background: '#003f7d', color: '#fff', border: 'none' }}
+            >
+              Request the Full Agent Catalogue
+            </Link>
+            <Link
+              href="/contact"
+              className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fw-semibold"
+              style={{ borderColor: 'rgba(16, 42, 67, 0.2)', color: '#003f7d' }}
+            >
+              Book a Consultation
+            </Link>
           </div>
         </div>
       </section>

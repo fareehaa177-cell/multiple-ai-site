@@ -1,113 +1,144 @@
 import Link from 'next/link';
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
+const companyLinks = [
+  { href: '/about', label: 'About Us' },
+  { href: '/services', label: 'Services' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const solutionLinks = [
+  { href: '/ai-agents', label: 'AI Agents' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/faq', label: 'FAQ' },
+];
+
+const legalLinks = [
+  { href: '/terms', label: 'Terms & Conditions' },
+  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/partner-portal', label: 'Partner Portal Login' },
+  { href: '/careers', label: 'Careers' },
+];
+
+const socialLinks = [
+  { href: 'https://www.facebook.com/profile.php?id=61573805013855', icon: <FaFacebook /> },
+  { href: '#', icon: <FaTwitter /> },
+  { href: 'https://www.linkedin.com/company/multiple-ai-solutions/', icon: <FaLinkedin /> },
+  { href: '#', icon: <FaInstagram /> },
+];
+
 export default function Footer() {
   return (
-    <footer style={{ 
-      background: '#1a1a1a', 
-      color: 'white',
-      padding: '60px 0 20px'
-    }}>
-      <div className="container">
-        <div className="row g-4 mb-5">
+    <footer
+      style={{
+        background: 'linear-gradient(135deg, #001326 0%, #002c57 55%, #004f94 100%)',
+        color: 'white',
+        padding: '80px 0 30px',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          top: '-120px',
+          right: '-120px',
+          width: '320px',
+          height: '320px',
+          background: 'rgba(0, 188, 212, 0.28)',
+          filter: 'blur(140px)',
+        }}
+      />
+      <div className="container position-relative">
+        <div className="row g-5 mb-5 align-items-start">
           <div className="col-lg-4 col-md-6">
-            <h3 style={{ color: 'var(--secondary-color)', marginBottom: '20px' }}>
-              MultipleAI Solutions
-            </h3>
-            <p style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Empowering businesses through AI. We deliver intelligent automation, 
-              analytics, and creative AI services under your own brand.
+            <h3 style={{ color: '#ffe066', marginBottom: '18px', fontWeight: 700 }}>MultipleAI</h3>
+            <p style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.8 }}>
+              Empowering professional service firms with white-label AI solutions. We build the automation, analytics, and creative
+              services — you keep the client relationship.
             </p>
-            <div className="d-flex gap-3 mt-3">
-              <a href="#" style={{ color: 'white', fontSize: '1.5rem' }}><FaFacebook /></a>
-              <a href="#" style={{ color: 'white', fontSize: '1.5rem' }}><FaTwitter /></a>
-              <a href="#" style={{ color: 'white', fontSize: '1.5rem' }}><FaLinkedin /></a>
-              <a href="#" style={{ color: 'white', fontSize: '1.5rem' }}><FaInstagram /></a>
+            <div className="d-flex gap-3 mt-4">
+              {socialLinks.map(({ href, icon }) => (
+                <a
+                  key={href}
+                  href={href}
+                  style={{
+                    color: 'white',
+                    fontSize: '1.35rem',
+                    opacity: 0.85,
+                    transition: 'opacity 0.2s ease',
+                  }}
+                >
+                  {icon}
+                </a>
+              ))}
             </div>
           </div>
-          
+
           <div className="col-lg-2 col-md-6">
-            <h5 style={{ marginBottom: '20px' }}>Company</h5>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/about" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  About Us
-                </Link>
-              </li>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/services" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  Services
-                </Link>
-              </li>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/projects" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  Projects
-                </Link>
-              </li>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/contact" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  Contact
-                </Link>
-              </li>
+            <h6 style={{ marginBottom: '18px', letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)' }}>
+              Company
+            </h6>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {companyLinks.map(({ href, label }) => (
+                <li key={href} style={{ marginBottom: '12px' }}>
+                  <Link href={href} style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none', fontSize: '0.98rem' }}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          
+
           <div className="col-lg-3 col-md-6">
-            <h5 style={{ marginBottom: '20px' }}>Solutions</h5>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/ai-agents" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  AI Agents
-                </Link>
-              </li>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/resources" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  Resources
-                </Link>
-              </li>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/faq" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  FAQ
-                </Link>
-              </li>
+            <h6 style={{ marginBottom: '18px', letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)' }}>
+              Solutions
+            </h6>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {solutionLinks.map(({ href, label }) => (
+                <li key={href} style={{ marginBottom: '12px' }}>
+                  <Link href={href} style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none', fontSize: '0.98rem' }}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          
+
           <div className="col-lg-3 col-md-6">
-            <h5 style={{ marginBottom: '20px' }}>Legal</h5>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/terms" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  Terms & Conditions
-                </Link>
-              </li>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/privacy-policy" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  Privacy Policy
-                </Link>
-              </li>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/partner-portal" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  Partner Portal Login
-                </Link>
-              </li>
-              <li style={{ marginBottom: '10px' }}>
-                <Link href="/careers" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
-                  Careers
-                </Link>
-              </li>
+            <h6 style={{ marginBottom: '18px', letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)' }}>
+              Legal
+            </h6>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {legalLinks.map(({ href, label }) => (
+                <li key={href} style={{ marginBottom: '12px' }}>
+                  <Link href={href} style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none', fontSize: '0.98rem' }}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-        
-        <div style={{ 
-          borderTop: '1px solid rgba(255,255,255,0.1)', 
-          paddingTop: '20px',
-          textAlign: 'center'
-        }}>
-          <p style={{ color: 'rgba(255,255,255,0.5)', margin: 0 }}>
-            &copy; {new Date().getFullYear()} MultipleAI Solutions. All rights reserved. | Powered by MultipleAI
+
+        <div
+          style={{
+            borderTop: '1px solid rgba(255,255,255,0.12)',
+            paddingTop: '22px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '12px',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            color: 'rgba(255,255,255,0.65)',
+            fontSize: '0.9rem',
+          }}
+        >
+          <p style={{ margin: 0 }}>
+            &copy; {new Date().getFullYear()} MultipleAI Solutions. All rights reserved.
           </p>
+          <p style={{ margin: 0 }}>Powered by MultipleAI</p>
         </div>
       </div>
     </footer>

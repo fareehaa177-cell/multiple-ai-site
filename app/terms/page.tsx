@@ -9,27 +9,60 @@ export default function Terms() {
 
       <section
         style={{
-          background: 'var(--gradient-primary)',
+          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
           color: 'white',
-          padding: '80px 0',
+          padding: '110px 0 90px',
           textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        <div className="container">
-          <h1 style={{ color: 'white', fontSize: '3rem', fontWeight: 'bold' }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: '-140px',
+            left: '-140px',
+            width: '360px',
+            height: '360px',
+            background: 'rgba(255, 224, 102, 0.3)',
+            filter: 'blur(120px)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '-160px',
+            right: '-140px',
+            width: '420px',
+            height: '420px',
+            background: 'rgba(0, 188, 212, 0.3)',
+            filter: 'blur(140px)',
+          }}
+        />
+        <div className="container position-relative">
+          <h1 style={{ color: 'white', fontSize: '3rem', fontWeight: 'bold', letterSpacing: '-0.02em' }}>
             Terms &amp; Conditions
           </h1>
-          <p style={{ fontSize: '1.25rem', color: 'rgba(255,255,255,0.9)' }}>
+          <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.85)' }}>
             Effective Date: September 2025
           </p>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ background: 'linear-gradient(135deg, #f8fbff 0%, #eef4ff 45%, #ffffff 100%)' }}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-10">
-              <div className="mb-5">
+              <div
+                style={{
+                  borderRadius: '28px',
+                  background: '#ffffff',
+                  border: '1px solid rgba(16, 42, 67, 0.08)',
+                  boxShadow: '0 28px 48px rgba(0, 26, 60, 0.08)',
+                  padding: '48px',
+                }}
+              >
+                <div className="mb-5">
                 <h2>1. Agreement</h2>
                 <p>
                   By using{' '}
@@ -42,7 +75,7 @@ export default function Terms() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>2. Services</h2>
                 <p>
                   Multiple AI provides AI-driven automation, data solutions, and related services.
@@ -51,7 +84,7 @@ export default function Terms() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>3. Use of Website</h2>
                 <ul>
                   <li>You must use the Website lawfully and must not disrupt or harm others.</li>
@@ -66,7 +99,7 @@ export default function Terms() {
                 </ul>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>4. User Accounts</h2>
                 <ul>
                   <li>If you create an account, you are responsible for safeguarding your login details.</li>
@@ -75,7 +108,7 @@ export default function Terms() {
                 </ul>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>5. Payments</h2>
                 <ul>
                   <li>Prices are displayed in Australian dollars unless otherwise stated.</li>
@@ -86,7 +119,7 @@ export default function Terms() {
                 </ul>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>6. Intellectual Property</h2>
                 <p>
                   All Website content, including text, graphics, software, and branding, is owned by Multiple
@@ -95,7 +128,7 @@ export default function Terms() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>7. Limitation of Liability</h2>
                 <ul>
                   <li>We provide the Website and our services on an &ldquo;as is&rdquo; basis.</li>
@@ -110,7 +143,7 @@ export default function Terms() {
                 </ul>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>8. Third-Party Links</h2>
                 <p>
                   The Website may contain links to third-party sites. We are not responsible for the content,
@@ -118,7 +151,7 @@ export default function Terms() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>9. Termination</h2>
                 <p>
                   We may suspend or terminate your access to the Website or our services if you breach these
@@ -126,7 +159,7 @@ export default function Terms() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>10. Governing Law</h2>
                 <p>
                   These Terms are governed by the laws of Western Australia, Australia. You agree to submit to
@@ -135,7 +168,7 @@ export default function Terms() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>11. Updates to These Terms</h2>
                 <p>
                   We may update these Terms from time to time. When we do, we will post the revised Terms on this
@@ -144,11 +177,12 @@ export default function Terms() {
                 </p>
               </div>
 
-              <div className="mb-5">
+                <div className="mb-5">
                 <h2>12. Contact Us</h2>
                 <p>For questions about these Terms, contact us at:</p>
                 <p>Email: <a href="mailto:contact@multipleai.com.au">contact@multipleai.com.au</a></p>
                 <p>Address: Perth, WA</p>
+              </div>
               </div>
             </div>
           </div>

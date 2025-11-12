@@ -1,4 +1,12 @@
 'use client';
+import {
+  Badge,
+  Button,
+  Card,
+  Col,
+  Container,
+  Row,
+} from 'react-bootstrap';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
@@ -26,6 +34,25 @@ const roles = [
   },
 ];
 
+const cultureHighlights = [
+  {
+    title: 'Build Fast, Build Right',
+    copy: 'Ship production-ready features quickly while keeping compliance and observability at the core.',
+  },
+  {
+    title: 'Always Learning',
+    copy: 'Bi-weekly labs, internal demos, and a learning stipend keep everyone exploring the frontier.',
+  },
+  {
+    title: 'Inclusive by Design',
+    copy: 'We hire for values and curiosity, blending diverse expertise to unlock ethical AI outcomes.',
+  },
+  {
+    title: 'Human Impact',
+    copy: 'Automate the busy work so professionals can focus on strategic advisory and creativity.',
+  },
+];
+
 export default function Careers() {
   return (
     <>
@@ -33,204 +60,308 @@ export default function Careers() {
 
       <section
         style={{
-          background: 'var(--gradient-primary)',
+          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
           color: 'white',
-          padding: '90px 0',
+          padding: '120px 0 100px',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        <div className="container">
-          <div className="row align-items-center g-4">
-            <div className="col-lg-7">
-              <span
+        <div
+          style={{
+            position: 'absolute',
+            top: '-140px',
+            left: '-140px',
+            width: '360px',
+            height: '360px',
+            background: 'rgba(255, 224, 102, 0.3)',
+            filter: 'blur(120px)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '-160px',
+            right: '-140px',
+            width: '420px',
+            height: '420px',
+            background: 'rgba(0, 188, 212, 0.3)',
+            filter: 'blur(140px)',
+          }}
+        />
+        <Container>
+          <Row className="align-items-center gy-5">
+            <Col lg={7}>
+              <Badge
+                bg="light"
+                text="dark"
                 style={{
-                  display: 'inline-block',
-                  background: 'rgba(255,255,255,0.2)',
-                  padding: '8px 16px',
+                  background: 'rgba(255,255,255,0.16)',
+                  color: 'white',
                   borderRadius: '999px',
-                  letterSpacing: '0.08em',
-                  fontSize: '0.85rem',
-                  textTransform: 'uppercase',
+                  padding: '8px 18px',
+                  letterSpacing: '0.12em',
                 }}
               >
                 Careers at Multiple AI
-              </span>
-              <h1 style={{ fontSize: '3rem', fontWeight: 700, marginTop: '20px' }}>
+              </Badge>
+              <h1 className="display-5 fw-bold mt-3" style={{ letterSpacing: '-0.02em' }}>
                 Build the AI Backbone for the Professional Economy
               </h1>
-              <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.85)', maxWidth: '600px' }}>
-                We blend product thinkers, engineers, designers, and partner specialists to deliver
-                white-label AI experiences that scale. Join a team shaping ethical, practical AI for
-                business ecosystems across Australia and beyond.
+              <p className="fs-5 mt-3" style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 640 }}>
+                Join product thinkers, engineers, designers, and partner specialists delivering white-label AI
+                experiences that scale. We enable practical, ethical AI for business ecosystems across Australia
+                and beyond.
               </p>
-            </div>
-            <div className="col-lg-5">
-              <div
-                className="card border-0 shadow-lg"
+              <div className="d-flex flex-wrap gap-3 mt-4">
+                <Button
+                  variant="light"
+                  size="lg"
+                  href="mailto:contact@multipleai.com.au?subject=Careers%20Enquiry"
+                  style={{
+                    background: '#ffe066',
+                    color: '#001326',
+                    border: 'none',
+                    borderRadius: '999px',
+                    padding: '12px 28px',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  Talk to Talent Team
+                </Button>
+                <Button
+                  variant="outline-light"
+                  size="lg"
+                  href="#open-roles"
+                  style={{
+                    borderRadius: '999px',
+                    padding: '12px 28px',
+                    letterSpacing: '0.05em',
+                    borderWidth: 2,
+                  }}
+                >
+                  Explore Roles
+                </Button>
+              </div>
+            </Col>
+            <Col lg={5}>
+              <Card
+                className="border-0 shadow-lg text-white"
                 style={{
-                  borderRadius: '18px',
-                  background: 'rgba(255,255,255,0.08)',
-                  color: 'white',
+                  borderRadius: 28,
+                  background: 'rgba(255,255,255,0.16)',
+                  border: '1px solid rgba(255,255,255,0.16)',
+                  backdropFilter: 'blur(12px)',
                 }}
               >
-                <div className="card-body p-4 p-lg-5">
-                  <h3 style={{ marginBottom: '15px' }}>Work With Purpose</h3>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <Card.Body className="p-4 p-lg-5">
+                  <h3 className="mb-4" style={{ letterSpacing: '0.02em' }}>
+                    Work With Purpose
+                  </h3>
+                  <ul className="list-unstyled mb-0 d-grid gap-3">
                     {[
-                      'Remote-friendly teams with Perth innovation hub',
+                      'Remote-first teams with a Perth innovation hub',
                       'Learning budget and fortnightly AI research sprints',
-                      'Equity pool for key contributors',
-                      'Inclusive culture grounded in transparency and curiosity',
+                      'Equity pool for key contributors aligned to impact',
+                      'Transparent culture grounded in curiosity and ownership',
                     ].map((perk) => (
-                      <li key={perk} style={{ marginBottom: '12px', display: 'flex', gap: '12px' }}>
-                        <span style={{ fontWeight: 'bold', color: 'var(--secondary-color)' }}>•</span>
+                      <li key={perk} className="d-flex gap-3">
+                        <span
+                          style={{
+                            width: 20,
+                            height: 20,
+                            borderRadius: '50%',
+                          background: '#ffe066',
+                            display: 'inline-block',
+                            marginTop: 4,
+                          }}
+                        />
                         <span>{perk}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </section>
 
-      <section className="section" style={{ background: '#f5f7fb' }}>
-        <div className="container">
-          <div className="row align-items-center mb-5">
-            <div className="col-lg-7">
-              <h2>Open Roles</h2>
-              <p className="lead">High-impact opportunities for builders and partner-first leaders.</p>
-            </div>
-            <div className="col-lg-5 text-lg-end">
-              <a href="mailto:contact@multipleai.com.au" className="btn-primary">
+      <section
+        id="open-roles"
+        className="section"
+        style={{ background: 'linear-gradient(135deg, #f8fbff 0%, #eef4ff 45%, #ffffff 100%)' }}
+      >
+        <Container>
+          <Row className="align-items-center mb-4">
+            <Col lg={7}>
+              <h2 className="fw-bold" style={{ color: 'var(--text-dark)' }}>
+                Open Roles
+              </h2>
+              <p className="lead" style={{ color: 'var(--text-muted)' }}>
+                High-impact opportunities for builders, storytellers, and partner-first leaders.
+              </p>
+            </Col>
+            <Col lg={5} className="text-lg-end">
+              <Button
+                size="lg"
+                className="btn-primary px-4"
+                href="mailto:contact@multipleai.com.au?subject=Speculative%20Application"
+              >
                 Share Your Profile
-              </a>
-            </div>
-          </div>
+              </Button>
+            </Col>
+          </Row>
 
-          <div className="row g-4">
+          <Row className="g-4">
             {roles.map((role) => (
-              <div key={role.title} className="col-lg-4">
-                <div
-                  className="card h-100 border-0 shadow-sm"
-                  style={{ borderRadius: '16px', background: 'white' }}
+              <Col lg={4} key={role.title}>
+                <Card
+                  className="h-100 border-0 shadow-sm"
+                  style={{
+                    borderRadius: 24,
+                    border: '1px solid rgba(16, 42, 67, 0.08)',
+                    boxShadow: '0 24px 48px rgba(0, 26, 60, 0.08)',
+                  }}
                 >
-                  <div className="card-body d-flex flex-column">
-                    <div>
-                      <span
-                        style={{
-                          display: 'inline-block',
-                          padding: '6px 14px',
-                          borderRadius: '999px',
-                          background: 'rgba(62, 125, 255, 0.1)',
-                          color: 'var(--primary-color)',
-                          fontSize: '0.85rem',
-                          marginBottom: '12px',
-                        }}
-                      >
-                        {role.type}
-                      </span>
-                      <h4 style={{ color: 'var(--primary-color)' }}>{role.title}</h4>
-                      <p style={{ color: 'var(--text-muted)' }}>{role.description}</p>
-                    </div>
+                  <Card.Body className="d-flex flex-column p-4">
+                    <Badge
+                      pill
+                      style={{
+                        background: 'rgba(0,63,125,0.12)',
+                        color: '#003f7d',
+                        padding: '6px 14px',
+                      }}
+                      className="mb-3"
+                    >
+                      {role.type}
+                    </Badge>
+                    <Card.Title style={{ color: 'var(--text-dark)' }}>{role.title}</Card.Title>
+                    <Card.Text style={{ color: 'var(--text-muted)' }}>{role.description}</Card.Text>
                     <div className="mt-auto">
                       <div className="d-flex flex-wrap gap-2 mb-3">
                         {role.tags.map((tag) => (
-                          <span
+                          <Badge
                             key={tag}
+                            bg="light"
+                            text="dark"
                             style={{
-                              padding: '6px 12px',
-                              background: '#eef2ff',
                               borderRadius: '999px',
-                              fontSize: '0.8rem',
+                              padding: '6px 12px',
                               color: 'var(--primary-color)',
+                              background: '#eef2ff',
                             }}
                           >
                             {tag}
-                          </span>
+                          </Badge>
                         ))}
                       </div>
-                      <a
+                      <Button
                         href="mailto:contact@multipleai.com.au?subject=Career%20Application"
-                        className="btn-primary"
+                        className="btn-primary w-100 py-2"
+                        style={{ borderRadius: '999px', letterSpacing: '0.04em' }}
                       >
                         Apply Now
-                      </a>
+                      </Button>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </Card.Body>
+                </Card>
+              </Col>
             ))}
-          </div>
-        </div>
+          </Row>
+        </Container>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="row g-4 align-items-center">
-            <div className="col-lg-6">
-              <h2>Life at Multiple AI</h2>
-              <p className="lead">
-                We work in cross-functional squads blending product, engineering, and partner success. Every
-                release must be deployable, valuable, and responsible.
+      <section
+        className="section"
+        style={{
+          background: 'radial-gradient(circle at top left, rgba(0, 63, 125, 0.1), transparent 55%)',
+        }}
+      >
+        <Container>
+          <Row className="g-4 align-items-center">
+            <Col lg={6}>
+              <h2 className="fw-bold" style={{ color: 'var(--text-dark)' }}>
+                Life at Multiple AI
+              </h2>
+              <p className="lead" style={{ color: 'var(--text-muted)' }}>
+                Work in cross-functional squads blending product, engineering, and partner success. Every release
+                must be deployable, measurable, and responsible.
               </p>
-            </div>
-            <div className="col-lg-6">
-              <div className="row g-3">
-                {[
-                  {
-                    title: 'Build Fast, Build Right',
-                    copy: 'Ship real features in client production environments while keeping security and compliance at the core.',
-                  },
-                  {
-                    title: 'Always Learning',
-                    copy: 'Bi-weekly labs, guest lecturers, and internal demos keep us ahead of the curve.',
-                  },
-                  {
-                    title: 'Inclusive by Design',
-                    copy: 'We embrace diversity in backgrounds, disciplines, and lived experiences to build better AI products.',
-                  },
-                  {
-                    title: 'Human Impact',
-                    copy: 'We automate the busy work so professionals can focus on meaningful advisory roles.',
-                  },
-                ].map((value) => (
-                  <div key={value.title} className="col-sm-6">
-                    <div
-                      className="card h-100 shadow-sm border-0"
-                      style={{ borderRadius: '16px' }}
+            </Col>
+            <Col lg={6}>
+              <Row className="g-3">
+                {cultureHighlights.map((value) => (
+                  <Col sm={6} key={value.title}>
+                    <Card
+                      className="h-100 shadow-sm border-0"
+                      style={{
+                        borderRadius: 20,
+                        border: '1px solid rgba(16, 42, 67, 0.08)',
+                        boxShadow: '0 18px 36px rgba(15, 31, 56, 0.08)',
+                      }}
                     >
-                      <div className="card-body">
-                        <h5 style={{ color: 'var(--primary-color)' }}>{value.title}</h5>
-                        <p style={{ marginBottom: 0 }}>{value.copy}</p>
-                      </div>
-                    </div>
-                  </div>
+                      <Card.Body className="p-4">
+                        <Badge
+                          bg="light"
+                          text="dark"
+                          className="mb-3"
+                          style={{ color: '#003f7d' }}
+                        >
+                          Culture
+                        </Badge>
+                        <h5 style={{ color: 'var(--text-dark)' }}>{value.title}</h5>
+                        <p className="mb-0" style={{ color: 'var(--text-muted)' }}>
+                          {value.copy}
+                        </p>
+                      </Card.Body>
+                    </Card>
+                  </Col>
                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
       </section>
 
-      <section className="section" style={{ background: 'var(--gradient-primary)', color: 'white' }}>
-        <div className="container text-center">
-          <h2 style={{ color: 'white' }}>Ready to co-build the future of AI services?</h2>
+      <section
+        className="section text-center"
+        style={{
+          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
+          color: 'white',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: '-140px',
+            right: '-140px',
+            width: '360px',
+            height: '360px',
+            background: 'rgba(255, 224, 102, 0.32)',
+            filter: 'blur(120px)',
+          }}
+        />
+        <Container>
+          <h2 className="text-white fw-bold">Ready to co-build the future of AI services?</h2>
           <p
-            style={{
-              fontSize: '1.1rem',
-              color: 'rgba(255,255,255,0.85)',
-              maxWidth: '600px',
-              margin: '0 auto 30px',
-            }}
+            className="fs-5 mt-3"
+            style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 640, margin: '0 auto 28px' }}
           >
-            If you don&rsquo;t see the role you&rsquo;re looking for, we still want to hear from you.
-            We&rsquo;re growing fast and welcome open applications.
+            Don&rsquo;t see the role you&rsquo;re after? We&rsquo;re scaling fast and welcome open applications
+            from humans who love solving complex problems with AI.
           </p>
-          <a href="mailto:contact@multipleai.com.au" className="btn-primary btn-lg">
+          <Button
+            size="lg"
+            className="btn-primary px-5"
+            href="mailto:contact@multipleai.com.au?subject=General%20Careers%20Enquiry"
+            style={{ borderRadius: '999px', letterSpacing: '0.05em' }}
+          >
             Introduce Yourself
-          </a>
-        </div>
+          </Button>
+        </Container>
       </section>
 
       <Footer />
