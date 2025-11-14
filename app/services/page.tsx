@@ -1,5 +1,5 @@
 'use client';
-import { FaBrain, FaRobot, FaChartLine, FaFileAlt, FaLock } from 'react-icons/fa';
+import { FaBrain, FaCogs, FaCode, FaChartLine, FaGlobe, FaDatabase } from 'react-icons/fa';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -7,70 +7,78 @@ import Footer from '../../components/Footer';
 const serviceItems = [
   {
     id: '01',
-    title: 'AI Consulting & Strategy',
-    copy: 'Guiding leadership teams from AI discovery to deployment with structured blueprints and governance.',
-    highlights: [
-      'AI readiness assessments and ROI models',
-      'Process mapping and opportunity analysis',
-      'Integration roadmaps and governance frameworks',
+    title: 'AI Consulting',
+    copy: 'We help identify the best AI opportunities for your business and build strategies that align with your goals so every investment delivers measurable outcomes.',
+    features: [
+      'Opportunity discovery workshops',
+      'Goal-aligned AI roadmaps and governance',
+      'ROI modeling and executive enablement',
     ],
-    outcome: 'A clear, low-risk path to adopt AI profitably.',
     icon: FaBrain,
-    accent: 'linear-gradient(135deg, rgba(0,63,125,0.18), rgba(0,188,212,0.32))',
+    accent: 'linear-gradient(135deg, rgba(0,63,125,0.15), rgba(0,188,212,0.25))',
   },
   {
     id: '02',
-    title: 'Bespoke AI Agents & Automation',
-    copy: 'Tailor-made voice and text agents built around regulated workflows and client needs.',
-    highlights: [
-      'Reception, admin, sales, and analytics agents',
-      'Process and document automation',
-      'CRM and practice management integration',
+    title: 'Automation Solutions',
+    copy: 'Streamline repetitive tasks and enhance efficiency with intelligent automation tailored to your operations, freeing teams to focus on high-value work.',
+    features: [
+      'Process mapping & automation design',
+      'AI-powered digital workers & RPA hand-offs',
+      'Performance dashboards and tuning',
     ],
-    outcome: 'Faster operations, lower overhead, happier clients.',
-    icon: FaRobot,
-    accent: 'linear-gradient(135deg, rgba(0,188,212,0.2), rgba(102,126,234,0.32))',
+    icon: FaCogs,
+    accent: 'linear-gradient(135deg, rgba(0,63,125,0.15), rgba(0,188,212,0.25))',
   },
   {
     id: '03',
-    title: 'Data Analytics & Predictive Intelligence',
-    copy: 'Transforming data pipelines into foresight with secure dashboards and models.',
-    highlights: [
-      'Custom dashboards and performance tracking',
-      'Predictive trend and cash-flow modelling',
-      'Real-time KPI reporting for decision support',
+    title: 'Custom AI Software Development',
+    copy: 'From concept to deployment, we build AI-powered software that integrates seamlessly with your existing systems and scales with your business.',
+    features: [
+      'Product discovery & technical architecture',
+      'API, data, and legacy platform integration',
+      'MLOps, QA, and release management',
     ],
-    outcome: 'Evidence-based strategy that clients can act on.',
-    icon: FaChartLine,
-    accent: 'linear-gradient(135deg, rgba(255,204,0,0.26), rgba(255,152,0,0.3))',
+    icon: FaCode,
+    accent: 'linear-gradient(135deg, rgba(0,63,125,0.15), rgba(0,188,212,0.25))',
   },
   {
     id: '04',
-    title: 'Creative AI & Communications',
-    copy: 'AI-enhanced marketing and documentation produced with enterprise quality controls.',
-    highlights: [
-      'AI-generated white papers, research reports, and grant applications',
-      'Voice, video, and presentation assets aligned to brand',
-      'Automated content workflows with human QA steps',
+    title: 'Machine Learning Models',
+    copy: 'Utilise data-driven insights with models that predict trends, optimise processes, and support smarter decision-making.',
+    features: [
+      'Predictive analytics & forecasting',
+      'Optimization and recommendation engines',
+      'Model monitoring, tuning, and validation',
     ],
-    outcome: 'Professional communication delivered in a fraction of the time.',
-    icon: FaFileAlt,
-    accent: 'linear-gradient(135deg, rgba(0,63,125,0.24), rgba(0,188,212,0.3))',
+    icon: FaChartLine,
+    accent: 'linear-gradient(135deg, rgba(0,63,125,0.15), rgba(0,188,212,0.25))',
   },
   {
     id: '05',
-    title: 'AI Cybersecurity & Compliance',
-    copy: 'Security and governance embedded into every deployment from day one.',
-    highlights: [
-      'PolyVault encrypted data residency',
-      'Continuous monitoring and threat detection',
-      'Alignment with Australian Privacy Principles & ISO 27001',
+    title: 'Web App Development',
+    copy: 'We build custom web apps that simplify workflows, boost speed, and elevate customer experiences—ready to scale with your operations.',
+    features: [
+      'UX research & design system implementation',
+      'Secure, high-performance engineering',
+      'DevOps, monitoring, and optimisation',
     ],
-    outcome: 'Trustworthy AI foundations for regulated industries.',
-    icon: FaLock,
-    accent: 'linear-gradient(135deg, rgba(0,188,212,0.28), rgba(0,63,125,0.32))',
+    icon: FaGlobe,
+    accent: 'linear-gradient(135deg, rgba(0,63,125,0.15), rgba(0,188,212,0.25))',
+  },
+  {
+    id: '06',
+    title: 'Data Mining',
+    copy: 'Extract gold from messy databases and forgotten files. We uncover profitable patterns and hidden revenue streams from data you already own.',
+    features: [
+      'Data audits & enrichment strategies',
+      'Unstructured data processing & tagging',
+      'Opportunity scoring and insight packs',
+    ],
+    icon: FaDatabase,
+    accent: 'linear-gradient(135deg, rgba(0,63,125,0.15), rgba(0,188,212,0.25))',
   },
 ];
+
 
 export default function Services() {
   return (
@@ -94,7 +102,7 @@ export default function Services() {
             left: '-120px',
             width: '320px',
             height: '320px',
-            background: 'rgba(255, 224, 102, 0.3)',
+            background: 'rgba(102, 126, 234, 0.3)',
             filter: 'blur(120px)',
             transform: 'rotate(12deg)',
           }}
@@ -155,93 +163,99 @@ export default function Services() {
           }}
         />
         <div className="container position-relative">
-            <div className="row g-4">
-            {serviceItems.map(({ id, title, copy, highlights, outcome, icon: Icon, accent }) => (
-              <div key={id} className="col-lg-12">
+          <div className="text-center mb-5">
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                borderRadius: '999px',
+                background: 'rgba(0, 63, 125, 0.08)',
+                color: '#003f7d',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                fontSize: '0.75rem',
+              }}
+            >
+              AI Service Lines
+            </span>
+            <h2 style={{ fontSize: '2.3rem', color: 'var(--text-dark)', marginTop: '16px' }}>Specialised Services for Every Stage</h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '720px', margin: '12px auto 0' }}>
+              Six focused offerings that mirror the typography, spacing, and polish used throughout the site.
+            </p>
+          </div>
+
+          <div className="row g-4">
+            {serviceItems.map(({ id, title, copy, features, icon: Icon, accent }) => (
+              <div key={id} className="col-lg-6">
                 <div
-                  className="glass-card"
                   style={{
+                    borderRadius: '26px',
+                    background: '#ffffff',
+                    border: '1px solid rgba(16, 42, 67, 0.08)',
+                    boxShadow: '0 25px 45px rgba(15, 31, 56, 0.08)',
+                    padding: '32px',
+                    height: '100%',
                     position: 'relative',
-                    padding: '36px',
                     overflow: 'hidden',
                   }}
                 >
                   <div
                     style={{
                       position: 'absolute',
-                      top: '-100px',
-                      right: '-80px',
-                      width: '260px',
-                      height: '260px',
+                      top: '-90px',
+                      right: '-70px',
+                      width: '220px',
+                      height: '220px',
                       background: accent,
                       filter: 'blur(90px)',
+                      opacity: 0.7,
                     }}
                   />
-                  <div className="row g-4 align-items-center">
-                    <div className="col-md-2">
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          gap: '16px',
-                        }}
-                      >
+                  <div style={{ position: 'relative' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                         <div
-                          className="glow-icon"
                           style={{
-                            width: '72px',
-                            height: '72px',
-                            borderRadius: '22px',
+                            width: '64px',
+                            height: '64px',
+                            borderRadius: '20px',
                             background: accent,
-                            color: 'var(--text-dark)',
-                            backgroundSize: '200% 200%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#0f1f38',
+                            boxShadow: '0 18px 32px rgba(15, 31, 56, 0.12)',
                           }}
                         >
-                          <Icon size={28} />
+                          <Icon size={26} />
                         </div>
-                        <span
-                          style={{
-                            fontWeight: 700,
-                            letterSpacing: '0.1em',
-                            color: 'var(--text-dark)',
-                          }}
-                        >
-                          {id}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="col-md-10">
-                      <h3 style={{ fontSize: '1.9rem', color: 'var(--text-dark)', marginBottom: '12px' }}>{title}</h3>
-                      <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginBottom: '18px' }}>{copy}</p>
-                      <div className="row g-3">
-                        <div className="col-lg-8">
-                          <ul style={{ color: 'var(--text-muted)', marginBottom: '18px' }}>
-                            {highlights.map((item) => (
-                              <li key={item} style={{ marginBottom: '6px' }}>
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="col-lg-4">
-                          <div
+                        <div>
+                          <span
                             style={{
-                              borderRadius: '18px',
-                              background: 'rgba(0, 63, 125, 0.06)',
-                              padding: '16px',
-                              color: 'var(--text-dark)',
-                              fontWeight: 600,
+                              display: 'inline-block',
+                              padding: '4px 12px',
+                              borderRadius: '999px',
+                              background: 'rgba(0, 63, 125, 0.08)',
+                              color: '#003f7d',
+                              fontSize: '0.75rem',
+                              letterSpacing: '0.08em',
+                              textTransform: 'uppercase',
                             }}
                           >
-                            <span style={{ display: 'block', fontSize: '0.82rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#486581', marginBottom: '6px' }}>
-                              Outcome
-                            </span>
-                            {outcome}
-                          </div>
+                            {id}
+                          </span>
+                          <h3 style={{ fontSize: '1.6rem', color: 'var(--text-dark)', marginTop: '8px', marginBottom: 0 }}>{title}</h3>
                         </div>
                       </div>
                     </div>
+                    <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '18px' }}>{copy}</p>
+                    <ul style={{ paddingLeft: '20px', color: 'var(--text-dark)', marginBottom: 0 }}>
+                      {features.map((feature) => (
+                        <li key={feature} style={{ marginBottom: '8px' }}>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>

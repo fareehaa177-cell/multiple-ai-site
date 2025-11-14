@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
             left: '-140px',
             width: '360px',
             height: '360px',
-            background: 'rgba(255, 224, 102, 0.3)',
+            background: 'rgba(102, 126, 234, 0.3)',
             filter: 'blur(120px)',
           }}
         />

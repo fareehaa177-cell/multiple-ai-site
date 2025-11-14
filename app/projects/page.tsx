@@ -17,12 +17,12 @@ export default function Projects() {
 
   const testimonials = [
     {
-      quote: "MultipleAI's team helped us launch an AI service line in under a month — seamlessly under our own brand.",
+      quote: "MultipleAI's team helped us launch an AI service line in under a month, seamlessly under our own brand.",
       author: 'Daniel K.',
       position: 'Director, Marketing Agency Perth'
     },
     {
-      quote: "Their automation agents transformed how our accounting team works — consistent, compliant, and fast.",
+      quote: "Their automation agents transformed how our accounting team works, consistent, compliant, and fast.",
       author: 'Sarah L.',
       position: 'Principal CPA Firm Sydney'
     },
@@ -53,7 +53,7 @@ export default function Projects() {
             left: '-120px',
             width: '320px',
             height: '320px',
-            background: 'rgba(255, 224, 102, 0.3)',
+            background: 'rgba(102, 126, 234, 0.3)',
             filter: 'blur(120px)',
           }}
         />
@@ -191,7 +191,7 @@ export default function Projects() {
             left: '-100px',
             width: '320px',
             height: '320px',
-            background: 'rgba(255, 224, 102, 0.28)',
+            background: 'rgba(102, 126, 234, 0.28)',
             filter: 'blur(120px)',
           }}
         />

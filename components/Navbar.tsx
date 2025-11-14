@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaBars, FaTimes, FaBrain } from 'react-icons/fa';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -34,14 +35,40 @@ export default function Navbar() {
           <Link
             href="/"
             style={{
-              fontSize: '1.55rem',
-              fontWeight: 700,
-              color: 'var(--primary-color)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
               textDecoration: 'none',
-              letterSpacing: '-0.01em',
             }}
           >
-            MultipleAI
+            <div
+              style={{
+                width: '65px',
+                height: '65px',
+                position: 'relative',
+                flexShrink: 0,
+              }}
+              className="navbar-logo"
+            >
+              <Image
+                src="/images/image.png"
+                alt="MultipleAI Logo"
+                fill
+                style={{ objectFit: 'contain' }}
+                priority
+              />
+            </div>
+            <span
+              style={{
+                fontSize: '1.65rem',
+                fontWeight: 700,
+                color: 'var(--primary-color)',
+                letterSpacing: '-0.01em',
+              }}
+              className="navbar-brand-text"
+            >
+              MultipleAI
+            </span>
           </Link>
           
           {/* Desktop Menu */}

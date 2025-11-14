@@ -26,6 +26,12 @@ const teamMembers = [
   },
 ];
 
+const leadershipTeam = [
+  { name: 'Ali Shahroz', role: 'Founder / CEO' },
+  { name: 'Jarrod Freer', role: 'Co-Founder' },
+  { name: 'Ron Forlee', role: 'Chairman' },
+];
+
 export default function About() {
   return (
     <>
@@ -48,7 +54,7 @@ export default function About() {
             left: '-140px',
             width: '320px',
             height: '320px',
-            background: 'rgba(255, 224, 102, 0.28)',
+            background: 'rgba(102, 126, 234, 0.28)',
             filter: 'blur(120px)',
             transform: 'rotate(18deg)',
           }}
@@ -90,7 +96,7 @@ export default function About() {
               </h1>
               <p style={{ color: 'rgba(255,255,255,0.82)', maxWidth: '640px', margin: '18px auto 0', fontSize: '1.15rem' }}>
                 We empower trusted firms across accounting, marketing, and consulting to launch AI services with pace,
-                confidence, and control — all while keeping their brands in front.
+                confidence, and control, all while keeping their brands in front.
               </p>
             </div>
           </div>
@@ -139,7 +145,7 @@ export default function About() {
                 </span>
                 <h2 style={{ fontSize: '2.4rem', color: 'var(--text-dark)', marginBottom: '16px' }}>Our Mission</h2>
                 <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '18px' }}>
-                  MultipleAI was founded to make applied AI accessible to every business leader — not just the tech giants.
+                  MultipleAI was founded to make applied AI accessible to every business leader, not just the tech giants.
                 </p>
                   <p style={{ color: 'var(--text-muted)', marginBottom: '18px' }}>
                   We empower accountants, marketers, consultants, and integrators with ready-to-deploy AI tools they can deliver under
@@ -154,7 +160,7 @@ export default function About() {
                     marginTop: '20px',
                   }}
                 >
-                  {['White-label Architecture', 'Partner-First Delivery', 'Local Compliance'].map((pill) => (
+                  {['White Label Architecture', 'Partner First Delivery', 'Local Compliance'].map((pill) => (
                     <span
                       key={pill}
                       style={{
@@ -209,7 +215,7 @@ export default function About() {
                   display: 'inline-block',
                   padding: '6px 14px',
                   borderRadius: '999px',
-                  background: 'rgba(255, 224, 102, 0.35)',
+                  background: 'rgba(102, 126, 234, 0.35)',
                   color: '#a26d00',
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
@@ -221,7 +227,7 @@ export default function About() {
               </span>
               <h2 style={{ fontSize: '2.4rem', color: '#0f1f38' }}>Our Vision</h2>
               <p style={{ fontSize: '1.08rem', color: '#364152', marginBottom: '18px' }}>
-                We believe every professional services firm deserves enterprise-grade automation, insight, and creativity — without sacrificing
+                We believe every professional services firm deserves enterprise-grade automation, insight, and creativity, without sacrificing
                 human trust.
               </p>
               <p style={{ color: 'var(--text-muted)', marginBottom: '16px' }}>
@@ -337,7 +343,7 @@ export default function About() {
                 Secure, modular, and ethical by design. Every deployment follows a structured blueprint balancing compliance, scalability, and speed.
               </p>
               <p style={{ color: 'var(--text-muted)', marginBottom: '24px' }}>
-                We combine battle-tested AI frameworks with custom integrations so partners can launch quickly — then evolve confidently as their service lines grow.
+                We combine battle-tested AI frameworks with custom integrations so partners can launch quickly, then evolve confidently as their service lines grow.
               </p>
               <div className="row g-3">
                 {[
@@ -380,6 +386,78 @@ export default function About() {
         </div>
       </section>
 
+      {/* Leadership */}
+      <section
+        className="section"
+        style={{
+          background: 'linear-gradient(135deg, #f8fbff 0%, #eef4ff 45%, #ffffff 100%)',
+          position: 'relative',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: '-120px',
+            left: '-100px',
+            width: '300px',
+            height: '300px',
+            background: 'rgba(0, 63, 125, 0.08)',
+            filter: 'blur(110px)',
+          }}
+        />
+        <div className="container position-relative">
+          <div className="text-center mb-5">
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                borderRadius: '999px',
+                background: 'rgba(0, 63, 125, 0.1)',
+                color: '#003f7d',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                fontSize: '0.75rem',
+              }}
+            >
+              Leadership
+            </span>
+            <h2 style={{ fontSize: '2.35rem', color: 'var(--text-dark)', marginTop: '16px' }}>Founders & Board</h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '720px', margin: '12px auto 0' }}>
+              Experienced operators guiding MultipleAI’s vision, delivery quality, and partner-first culture.
+            </p>
+          </div>
+          <div className="row g-4 justify-content-center">
+            {leadershipTeam.map(({ name, role }) => (
+              <div key={name} className="col-md-4">
+                <div
+                  style={{
+                    borderRadius: '24px',
+                    background: '#ffffff',
+                    border: '1px solid rgba(16, 42, 67, 0.08)',
+                    boxShadow: '0 24px 48px rgba(15, 31, 56, 0.08)',
+                    padding: '32px',
+                    textAlign: 'center',
+                    height: '100%',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '64px',
+                      height: '64px',
+                      borderRadius: '16px',
+                      margin: '0 auto 16px',
+                      background: 'linear-gradient(135deg, rgba(0,63,125,0.15), rgba(0,188,212,0.25))',
+                    }}
+                  />
+                  <h3 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '8px' }}>{name}</h3>
+                  <p style={{ color: 'var(--text-muted)', marginBottom: 0 }}>{role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Team */}
       <section
         className="section"
@@ -397,7 +475,7 @@ export default function About() {
             right: '-100px',
             width: '320px',
             height: '320px',
-            background: 'rgba(255, 224, 102, 0.28)',
+            background: 'rgba(102, 126, 234, 0.28)',
             filter: 'blur(120px)',
           }}
         />

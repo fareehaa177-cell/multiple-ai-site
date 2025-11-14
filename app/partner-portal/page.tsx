@@ -59,7 +59,7 @@ export default function PartnerPortal() {
             left: '-140px',
             width: '360px',
             height: '360px',
-            background: 'rgba(255, 224, 102, 0.3)',
+            background: 'rgba(102, 126, 234, 0.3)',
             filter: 'blur(120px)',
           }}
         />
@@ -91,7 +91,7 @@ export default function PartnerPortal() {
                 Partner Portal
               </Badge>
               <h1 className="mt-3 fw-bold display-5 text-white">
-                Access Your White-Label AI Toolkit
+                Access Your White Label AI Toolkit
               </h1>
               <p
                 className="mt-3 fs-5"
@@ -106,7 +106,7 @@ export default function PartnerPortal() {
                   className="px-4 py-3"
                   href="mailto:contact@multipleai.com.au"
                   style={{
-                    background: '#ffe066',
+                    background: '#667eea',
                     color: '#001326',
                     border: 'none',
                     borderRadius: '999px',
@@ -266,7 +266,7 @@ export default function PartnerPortal() {
                         Not a partner yet?
                       </h4>
                       <p className="mb-0 text-muted">
-                        Join the Multiple AI Partner Program for white-label services, commissioning revenue,
+                        Join the Multiple AI Partner Program for white label services, commissioning revenue,
                         and dedicated launch support.
                       </p>
                     </Col>

@@ -1,9 +1,71 @@
 'use client';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaBrain, FaRobot, FaChartLine, FaFileAlt, FaShieldAlt, FaUsers, FaPhone, FaCog, FaCalculator, FaPen, FaDatabase, FaLock, FaLightbulb, FaBars, FaTimes, FaQuoteLeft } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
+// Animated Counter Component
+function AnimatedCounter({ end, suffix = '', duration = 2000, label }: { end: number; suffix?: string; duration?: number; label: string }) {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const counterRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+            const startTime = Date.now();
+            const startValue = 0;
+
+            const animate = () => {
+              const now = Date.now();
+              const elapsed = now - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+
+              // Easing function for smooth animation
+              const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+              const currentValue = Math.floor(startValue + (end - startValue) * easeOutQuart);
+
+              setCount(currentValue);
+
+              if (progress < 1) {
+                requestAnimationFrame(animate);
+              } else {
+                setCount(end);
+              }
+            };
+
+            requestAnimationFrame(animate);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+
+    return () => {
+      if (counterRef.current) {
+        observer.unobserve(counterRef.current);
+      }
+    };
+  }, [end, duration, hasAnimated]);
+
+  return (
+    <div ref={counterRef} className="text-center">
+      <p className="mb-1" style={{ fontSize: '2rem', fontWeight: 700, color: 'white' }}>
+        {count.toLocaleString()}{suffix}
+      </p>
+      <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem' }}>{label}</span>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -28,7 +90,7 @@ export default function Home() {
             left: '-160px',
             width: '360px',
             height: '360px',
-            background: 'rgba(255, 204, 0, 0.35)',
+            background: 'rgba(102, 126, 234, 0.35)',
             filter: 'blur(120px)',
             transform: 'rotate(18deg)',
           }}
@@ -63,26 +125,31 @@ export default function Home() {
                   marginBottom: '24px',
                 }}
               >
-                Partner-First AI Studio
+                Partner First AI Studio
               </div>
-              <h1
-                className="display-3 fw-bold mb-4"
-                style={{
-                  color: 'white',
-                  lineHeight: '1.05',
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                Build <span style={{ color: '#ffe066' }}>Intelligent Services</span> Under Your Brand
-              </h1>
-              <p className="lead mb-4" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.82)', maxWidth: '540px' }}>
-                MultipleAI turns your firm into an AI powerhouse with white-label automations, analytics, and creative services tailored to regulated industries.
-              </p>
+              <div style={{ marginBottom: '2rem' }}>
+                <h1
+                  style={{
+                    fontSize: '3.5rem',
+                    fontWeight: 700,
+                    color: 'white',
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                  }}
+                >
+                  Empowering Businesses through AI
+                </h1>
+                <p className="lead mb-0" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.82)', maxWidth: '540px' }}>
+                  We design, build, and deliver intelligent automation, analytics, and creative AI services that power the next generation of
+                  professional businesses under your own brand.
+                </p>
+              </div>
               <div className="d-flex flex-wrap gap-3">
                 <Link
                   href="/ai-agents"
                   className="btn btn-light btn-lg px-4 py-3 rounded-pill fw-semibold"
-                  style={{ background: '#ffe066', color: '#001326', border: 'none' }}
+                  style={{ background: '#667eea', color: '#fff', border: 'none' }}
                 >
                   Explore Our Agents
                 </Link>
@@ -95,19 +162,17 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="d-flex flex-wrap gap-4 mt-5">
-                {[
-                  { metric: '45+', label: 'Scoped AI Playbooks' },
-                  { metric: '4-6 weeks', label: 'Average launch time' },
-                  { metric: '99.9%', label: 'Compliance uptime' },
-                ].map(({ metric, label }) => (
-                  <div key={metric}>
-                    <p className="mb-1" style={{ fontSize: '1.75rem', fontWeight: 700 }}>
-                      {metric}
-                    </p>
-                    <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>{label}</span>
-                  </div>
-                ))}
+              {/* Animated Statistics */}
+              <div className="row g-4 mt-5">
+                <div className="col-md-4">
+                  <AnimatedCounter end={100} suffix="%" label="24/7 Smart Automation" duration={1800} />
+                </div>
+                <div className="col-md-4">
+                  <AnimatedCounter end={10000} suffix="+" label="Automated Customer Interactions" duration={2000} />
+                </div>
+                <div className="col-md-4">
+                  <AnimatedCounter end={99} suffix="%" label="Accuracy & Response Understanding" duration={1800} />
+                </div>
               </div>
             </div>
             <div className="col-lg-6">
@@ -131,7 +196,7 @@ export default function Home() {
                     width: '120px',
                     height: '120px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, rgba(255,224,102,0.3), rgba(0,188,212,0.4))',
+                    background: 'linear-gradient(135deg, rgba(102,126,234,0.3), rgba(0,188,212,0.4))',
                     filter: 'blur(12px)',
                     zIndex: 0,
                   }}
@@ -178,11 +243,13 @@ export default function Home() {
                 Platform In Action
               </span>
               <h2 style={{ fontSize: '2.4rem', fontWeight: 700, color: '#132f4c', marginBottom: '12px' }}>
-                See How MultipleAI Delivers
+                What We Do
               </h2>
               <p style={{ color: '#486581', fontSize: '1.05rem', lineHeight: 1.6 }}>
-                Watch a quick overview of our partner-first platform, automations, and client experience to understand how we help you launch
-                intelligent services under your brand.
+              MultipleAI Solutions empowers accounting firms, marketing agencies and consultants to offer AI-driven services without hiring internal developers.
+
+Our white-label model lets you deliver AI products instantly. We provide the technology, security, and support; you keep the client relationship.
+
               </p>
             </div>
             <div className="col-lg-7">
@@ -212,111 +279,6 @@ export default function Home() {
       </section>
 
       {/* What We Do Section */}
-      <section
-        className="section"
-        style={{
-          background: 'linear-gradient(135deg, #f8fbff 0%, #eef4ff 45%, #ffffff 100%)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            top: '-140px',
-            right: '-120px',
-            width: '360px',
-            height: '360px',
-            background: 'rgba(0, 63, 125, 0.08)',
-            borderRadius: '50%',
-            filter: 'blur(120px)',
-          }}
-        />
-        <div className="container position-relative">
-          <div className="text-center mb-4">
-            <span
-              style={{
-                display: 'inline-block',
-                padding: '8px 16px',
-                borderRadius: '999px',
-                background: 'rgba(0, 63, 125, 0.1)',
-                color: '#003f7d',
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
-                fontSize: '0.78rem',
-                marginBottom: '16px',
-              }}
-            >
-              White-Label Capabilities
-            </span>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--text-dark)' }}>What We Do</h2>
-            <p style={{ maxWidth: '720px', margin: '18px auto 0', color: '#486581', fontSize: '1.05rem' }}>
-              MultipleAI empowers professional service partners to deliver polished AI solutions instantly. We engineer and support the technology while you
-              retain full ownership of the client relationship and brand.
-            </p>
-          </div>
-          
-          <div className="row g-4">
-            {[
-              {
-                title: 'AI Agents & Automation',
-                description: 'Conversational voice and chat agents that orchestrate onboarding, scheduling, triage, and proactive client follow-up.',
-                Icon: FaRobot,
-                accent: 'linear-gradient(135deg, rgba(0, 63, 125, 0.12), rgba(0, 188, 212, 0.25))',
-              },
-              {
-                title: 'Creative AI & Communication',
-                description: 'AI-crafted white papers, campaigns, and multimedia content packages aligned with your existing brand standards.',
-                Icon: FaPen,
-                accent: 'linear-gradient(135deg, rgba(0, 188, 212, 0.18), rgba(102, 126, 234, 0.3))',
-              },
-              {
-                title: 'Data & Predictive Intelligence',
-                description: 'Secure analytics, dashboards, and forecasting tools deployed on Australian infrastructure with controlled access.',
-                Icon: FaChartLine,
-                accent: 'linear-gradient(135deg, rgba(255, 204, 0, 0.2), rgba(255, 152, 0, 0.25))',
-              },
-              {
-                title: 'AI Consulting & Enablement',
-                description: 'Strategic advisory, integration playbooks, and enablement programs that embed AI capabilities into your services.',
-                Icon: FaLightbulb,
-                accent: 'linear-gradient(135deg, rgba(0, 63, 125, 0.18), rgba(0, 188, 212, 0.26))',
-              },
-            ].map(({ title, description, Icon, accent }) => (
-              <div className="col-lg-6 col-md-6" key={title}>
-                <div className="h-100 glass-card" style={{ padding: '32px' }}>
-                  <div
-                    className="glow-icon"
-                    style={{
-                      width: '60px',
-                      height: '60px',
-                      borderRadius: '18px',
-                      background: accent,
-                      color: '#003f7d',
-                      marginBottom: '22px',
-                      backgroundSize: '200% 200%',
-                    }}
-                  >
-                    <Icon size={26} />
-                  </div>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-dark)' }}>{title}</h3>
-                  <p style={{ color: 'var(--text-muted)', marginBottom: 0 }}>{description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-5">
-            <Link
-              href="/services"
-              className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ background: '#003f7d', color: '#fff', border: 'none' }}
-            >
-              Book a Strategy Call
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* How It Works */}
       <section
@@ -332,7 +294,7 @@ export default function Home() {
                 display: 'inline-block',
                 padding: '6px 14px',
                 borderRadius: '999px',
-                background: 'rgba(255, 224, 102, 0.25)',
+                background: 'rgba(102, 126, 234, 0.25)',
                 color: '#a26d00',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
@@ -343,7 +305,7 @@ export default function Home() {
             </span>
             <h2 style={{ fontSize: '2.4rem', fontWeight: 700, color: '#0f1f38', marginTop: '16px' }}>How It Works</h2>
             <p style={{ color: 'var(--text-muted)', maxWidth: '680px', margin: '12px auto 0' }}>
-              Education meets automation — our framework is built to help your team launch confidently and scale with ongoing support.
+              Education meets automation. Our framework is built to help your team launch confidently and scale with ongoing support.
             </p>
           </div>
           
@@ -356,8 +318,8 @@ export default function Home() {
               },
               {
                 step: '02',
-                title: 'White-Label Deployment',
-                copy: 'Launch your new AI services with co-branded playbooks, training assets, and ready-to-ship automations.',
+                title: 'White Label Deployment',
+                copy: 'Launch your new AI services with co-branded playbooks, training assets, and ready to ship automations.',
               },
               {
                 step: '03',
@@ -386,7 +348,7 @@ export default function Home() {
                         ? 'rgba(0, 63, 125, 0.18)'
                         : index === 1
                         ? 'rgba(0, 188, 212, 0.24)'
-                        : 'rgba(255, 204, 0, 0.3)',
+                        : 'rgba(102, 126, 234, 0.3)',
                       filter: 'blur(60px)',
                     }}
                   />
@@ -446,7 +408,7 @@ export default function Home() {
             right: '-120px',
             width: '420px',
             height: '420px',
-            background: 'rgba(255, 224, 102, 0.22)',
+            background: 'rgba(102, 126, 234, 0.22)',
             borderRadius: '50%',
             filter: 'blur(120px)',
           }}
@@ -480,7 +442,7 @@ export default function Home() {
               Why MultipleAI
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.75)', maxWidth: '720px', margin: '14px auto 0' }}>
-              A secure, proven platform with a human partner success team — purpose-built for agencies, consulting firms, and professional services.
+              A secure, proven platform with a human partner success team, purpose-built for agencies, consulting firms, and professional services.
             </p>
           </div>
           
@@ -488,7 +450,7 @@ export default function Home() {
             {[
               {
                 title: 'Proven & Tested',
-                copy: 'Battle-tested white-label framework across Australian professional services with measurable ROI.',
+                copy: 'Battle tested white label framework across Australian professional services with measurable ROI.',
                 Icon: FaShieldAlt,
                 accent: 'linear-gradient(135deg, rgba(255,255,255,0.22), rgba(0,188,212,0.35))',
               },
@@ -496,7 +458,7 @@ export default function Home() {
                 title: 'Quick to Market',
                 copy: 'Service design sprints and ready-to-go automations get you launching in weeks, not quarters.',
                 Icon: FaCog,
-                accent: 'linear-gradient(135deg, rgba(255,224,102,0.32), rgba(0,255,240,0.22))',
+                accent: 'linear-gradient(135deg, rgba(102,126,234,0.32), rgba(0,188,212,0.22))',
               },
               {
                 title: 'Local Platform',
@@ -515,6 +477,12 @@ export default function Home() {
                 copy: 'Volume-friendly pricing and shared success metrics that align with how you scale client services.',
                 Icon: FaChartLine,
                 accent: 'linear-gradient(135deg, rgba(0, 188, 212, 0.32), rgba(102, 126, 234, 0.28))',
+              },
+              {
+                title: 'Dedicated Support',
+                copy: 'Expert partner success team providing ongoing guidance, optimization, and strategic advice to ensure your success.',
+                Icon: FaUsers,
+                accent: 'linear-gradient(135deg, rgba(0,188,212,0.3), rgba(102,126,234,0.25))',
               },
             ].map(({ title, copy, Icon, accent }) => (
               <div className="col-lg-4 col-md-6" key={title}>
@@ -552,24 +520,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AI Solutions Section */}
+
+      {/* AI Agents Portfolio Section */}
       <section
         className="section"
         style={{
-          background: 'linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(235,246,255,1) 45%, rgba(255,255,255,1) 100%)',
+          background: 'linear-gradient(135deg, #ffffff 0%, #f0f7ff 50%, #ffffff 100%)',
           position: 'relative',
+          overflow: 'hidden',
         }}
       >
         <div
           style={{
             position: 'absolute',
             top: '-100px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '520px',
-            height: '520px',
-            background: 'rgba(0, 63, 125, 0.08)',
-            filter: 'blur(140px)',
+            right: '-100px',
+            width: '400px',
+            height: '400px',
+            background: 'rgba(0, 63, 125, 0.1)',
+            filter: 'blur(120px)',
             zIndex: 0,
           }}
         />
@@ -580,57 +549,71 @@ export default function Home() {
                 display: 'inline-block',
                 padding: '7px 18px',
                 borderRadius: '999px',
-                background: 'rgba(16, 42, 67, 0.08)',
-                color: '#0f1f38',
+                background: 'rgba(0, 63, 125, 0.1)',
+                color: '#003f7d',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
                 fontSize: '0.75rem',
                 marginBottom: '16px',
               }}
             >
-              Solution Catalogue
+              AI Agents Portfolio
             </span>
-            <h2 style={{ fontSize: '2.45rem', fontWeight: 700, color: '#132f4c' }}>AI Solutions for Every Stage of Growth</h2>
-            <p style={{ color: '#486581', maxWidth: '720px', margin: '16px auto 0' }}>
-              From front-of-house automations to board-ready analytics, we cover the use cases your clients ask for most — all delivered under your brand.
+            <h2 style={{ fontSize: '2.45rem', fontWeight: 700, color: '#132f4c', marginBottom: '12px' }}>
+              Powerful AI Agents for Every Business Need
+            </h2>
+            <p style={{ color: '#486581', maxWidth: '720px', margin: '0 auto 40px', fontSize: '1.05rem' }}>
+              Discover our comprehensive suite of intelligent AI agents designed to automate, enhance, and transform every aspect of your business operations, from reception to security.
             </p>
           </div>
           
-          <div className="row g-4">
+          <div className="row g-4 mb-5">
             {[
               {
-                title: 'AI Voice & Chat Agents',
-                description: 'Custom-trained conversational agents handling triage, scheduling, inbound/outbound calls, and multilingual support.',
-                Icon: FaPhone,
+                title: 'AI Receptionist Agent',
+                tagline: 'Your 24/7 Super Friendly Front Desk',
+                description: 'Never miss a call again. Our AI Receptionist Agent answers every inquiry with a warm, human like Australian voice.',
+                icon: FaPhone,
                 accent: 'linear-gradient(135deg, rgba(0,63,125,0.18), rgba(0,188,212,0.35))',
               },
               {
-                title: 'Business Automation',
-                description: 'Workflow bots that automate proposals, compliance packs, service delivery, and billing handoffs.',
-                Icon: FaCog,
-                accent: 'linear-gradient(135deg, rgba(0,188,212,0.2), rgba(102,126,234,0.3))',
+                title: 'Admin AI Agent',
+                tagline: 'Your Smart, Tireless Back Office Assistant',
+                description: 'Automate scheduling, reminders, follow ups, workflows, ticketing, and data entry with precision.',
+                icon: FaCog,
+                accent: 'linear-gradient(135deg, rgba(0,188,212,0.24), rgba(102,126,234,0.32))',
               },
               {
-                title: 'Data Analytics & Insights',
-                description: 'Interactive dashboards, anomaly detection, and forecast models surfaced via secure portals.',
-                Icon: FaDatabase,
-                accent: 'linear-gradient(135deg, rgba(255,204,0,0.28), rgba(255,152,0,0.3))',
+                title: 'Invoice, GST & Tax AI Agent',
+                tagline: 'Fast. Accurate. Stress Free Business Accounting',
+                description: 'Australian built financial assistant handling invoices, GST summaries, tax breakdowns, and compliance.',
+                icon: FaCalculator,
+                accent: 'linear-gradient(135deg, rgba(102,126,234,0.26), rgba(162,155,254,0.3))',
               },
               {
-                title: 'AI White Papers',
-                description: 'Investor-grade research, grant submissions, and strategic comms aligned to your clients’ objectives.',
-                Icon: FaFileAlt,
+                title: 'AI Sales Agent',
+                tagline: 'Your High Performance Closer Working 24/7',
+                description: 'Prospecting, follow ups, handling objections, warming leads, and booking calls without salary or commissions.',
+                icon: FaUsers,
                 accent: 'linear-gradient(135deg, rgba(0,63,125,0.22), rgba(0,188,212,0.32))',
               },
               {
-                title: 'AI Grant Advisory',
-                description: 'Funding intelligence, compliance-ready documentation, and submission automation.',
-                Icon: FaLightbulb,
-                accent: 'linear-gradient(135deg, rgba(0,188,212,0.26), rgba(102,126,234,0.3))',
+                title: 'SEO AI Agent',
+                tagline: 'Rank Higher. Faster. Smarter.',
+                description: 'Keyword research, competitor analysis, content strategy, backlink audits, and on page optimisation automated.',
+                icon: FaChartLine,
+                accent: 'linear-gradient(135deg, rgba(0,188,212,0.28), rgba(0,63,125,0.24))',
               },
-            ].map(({ title, description, Icon, accent }) => (
+              {
+                title: 'Social Media AI Agent',
+                tagline: 'Daily Content. Trend Insights. Perfect Consistency.',
+                description: 'Generates posts, captions, creatives, hashtags, trend analysis, and weekly content calendars.',
+                icon: FaPen,
+                accent: 'linear-gradient(135deg, rgba(162,155,254,0.28), rgba(0,188,212,0.24))',
+              },
+            ].map(({ title, tagline, description, icon: Icon, accent }) => (
               <div className="col-lg-4 col-md-6" key={title}>
-                <div className="glass-card" style={{ padding: '28px', height: '100%' }}>
+                <div className="glass-card" style={{ padding: '28px', height: '100%', transition: 'transform 0.3s ease' }}>
                   <div
                     className="glow-icon"
                     style={{
@@ -645,20 +628,21 @@ export default function Home() {
                   >
                     <Icon size={24} />
                   </div>
-                  <h4 style={{ fontSize: '1.3rem', color: 'var(--text-dark)', marginBottom: '12px' }}>{title}</h4>
-                  <p style={{ color: 'var(--text-muted)', marginBottom: 0 }}>{description}</p>
+                  <h4 style={{ fontSize: '1.3rem', color: 'var(--text-dark)', marginBottom: '8px' }}>{title}</h4>
+                  <p style={{ color: '#0b7285', fontSize: '0.9rem', fontWeight: 600, marginBottom: '12px' }}>{tagline}</p>
+                  <p style={{ color: 'var(--text-muted)', marginBottom: 0, fontSize: '0.95rem' }}>{description}</p>
                 </div>
               </div>
             ))}
           </div>
           
-          <div className="text-center mt-5">
+          <div className="text-center">
             <Link
-              href="/services"
+              href="/ai-agents"
               className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
               style={{ background: '#003f7d', color: '#fff', border: 'none' }}
             >
-              View All Solutions
+              Explore All AI Agents
             </Link>
           </div>
         </div>
@@ -668,7 +652,7 @@ export default function Home() {
       <section
         className="section"
         style={{
-          background: 'linear-gradient(135deg, rgba(0, 51, 102, 0.08) 0%, rgba(255, 204, 0, 0.12) 100%)',
+          background: 'linear-gradient(135deg, rgba(0, 51, 102, 0.08) 0%, rgba(102, 126, 234, 0.12) 100%)',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -693,7 +677,7 @@ export default function Home() {
             right: '-40px',
             width: '300px',
             height: '300px',
-            background: 'rgba(255, 204, 0, 0.18)',
+            background: 'rgba(102, 126, 234, 0.18)',
             borderRadius: '999px',
             filter: 'blur(18px)',
           }}
@@ -729,10 +713,10 @@ export default function Home() {
                     <FaQuoteLeft size={20} />
                   </div>
                 <p className="mb-4" style={{ fontStyle: 'italic', color: '#1f2d3d', fontSize: '1.05rem' }}>
-                  “MultipleAI’s team helped us launch an AI service line in under a month — seamlessly under our own brand.”
+                  "MultipleAI's team helped us launch an AI service line in under a month, seamlessly under our own brand."
                 </p>
                 <p className="mb-0 fw-semibold text-uppercase" style={{ fontSize: '0.85rem', letterSpacing: '0.08em', color: '#003366' }}>
-                  — Daniel K.
+                  Daniel K.
                 </p>
                 <span className="text-muted">Director, Marketing Agency Perth</span>
               </div>
@@ -755,10 +739,10 @@ export default function Home() {
                   <FaQuoteLeft size={20} />
                 </div>
                 <p className="mb-4" style={{ fontStyle: 'italic', color: '#1f2d3d', fontSize: '1.05rem' }}>
-                  “Their automation agents transformed how our accounting team works — consistent, compliant, and fast.”
+                  "Their automation agents transformed how our accounting team works, consistent, compliant, and fast."
                 </p>
                 <p className="mb-0 fw-semibold text-uppercase" style={{ fontSize: '0.85rem', letterSpacing: '0.08em', color: '#003366' }}>
-                  — Sarah L.
+                  Sarah L.
                 </p>
                 <span className="text-muted">Principal, CPA Firm Sydney</span>
               </div>
@@ -772,7 +756,7 @@ export default function Home() {
                     width: '48px',
                     height: '48px',
                     borderRadius: '14px',
-                    background: 'linear-gradient(135deg, #ffcc00 0%, #ff9800 100%)',
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                     color: 'white',
                     marginBottom: '20px',
                     backgroundSize: '200% 200%',
@@ -784,7 +768,7 @@ export default function Home() {
                   “A reliable AI back-office partner we trust with our clients.”
                 </p>
                 <p className="mb-0 fw-semibold text-uppercase" style={{ fontSize: '0.85rem', letterSpacing: '0.08em', color: '#003366' }}>
-                  — Michael T.
+                  Michael T.
                 </p>
                 <span className="text-muted">Consulting Partner Singapore</span>
               </div>
@@ -830,27 +814,38 @@ export default function Home() {
                 </h2>
                 <p style={{ color: 'rgba(255,255,255,0.8)' }}>
                   Whether you’re an accounting firm, marketing agency, or technology integrator, MultipleAI provides the AI capability,
-                  infrastructure, and ongoing support — you keep the client and the brand.
+                  infrastructure, and ongoing support. You keep the client and the brand.
                 </p>
                 <div
                   style={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    gap: '8px',
-                    marginTop: '24px',
+                    gap: '12px',
+                    marginTop: '28px',
                   }}
                 >
-                  {['White-label AI', 'Compliance Ready', 'Dedicated Partner Success'].map((tag) => (
+                  {['WHITE LABEL AI', 'COMPLIANCE READY', 'DEDICATED PARTNER SUCCESS'].map((tag) => (
                     <span
                       key={tag}
                       style={{
-                        padding: '8px 14px',
-                        borderRadius: '999px',
-                        background: 'rgba(255, 255, 255, 0.16)',
+                        padding: '12px 20px',
+                        borderRadius: '12px',
+                        background: 'rgba(255, 255, 255, 0.12)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
                         color: 'white',
-                        fontSize: '0.85rem',
-                        letterSpacing: '0.04em',
+                        fontSize: '0.9rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.05em',
                         textTransform: 'uppercase',
+                        transition: 'all 0.3s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.18)';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
+                        e.currentTarget.style.transform = 'translateY(0)';
                       }}
                     >
                       {tag}
@@ -928,7 +923,7 @@ export default function Home() {
             right: '-180px',
             width: '520px',
             height: '520px',
-            background: 'rgba(255, 224, 102, 0.28)',
+            background: 'rgba(102, 126, 234, 0.28)',
             filter: 'blur(160px)',
           }}
         />

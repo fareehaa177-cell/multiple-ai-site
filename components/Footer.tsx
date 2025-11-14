@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaBrain } from 'react-icons/fa';
 
 const companyLinks = [
   { href: '/about', label: 'About Us' },
@@ -53,7 +54,33 @@ export default function Footer() {
       <div className="container position-relative">
         <div className="row g-5 mb-5 align-items-start">
           <div className="col-lg-4 col-md-6">
-            <h3 style={{ color: '#ffe066', marginBottom: '18px', fontWeight: 700 }}>MultipleAI</h3>
+            <Link
+              href="/"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '14px',
+                textDecoration: 'none',
+                marginBottom: '18px',
+              }}
+            >
+              <div
+                style={{
+                  width: '72px',
+                  height: '72px',
+                  position: 'relative',
+                  flexShrink: 0,
+                }}
+              >
+                <Image
+                  src="/images/image.png"
+                  alt="MultipleAI Logo"
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+              <h3 style={{ color: '#a29bfe', margin: 0, fontWeight: 700, fontSize: '1.95rem' }}>MultipleAI</h3>
+            </Link>
             <p style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.8 }}>
               Empowering professional service firms with white-label AI solutions. We build the automation, analytics, and creative
               services — you keep the client relationship.

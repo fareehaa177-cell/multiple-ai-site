@@ -61,7 +61,7 @@ export default function Contact() {
             left: '-120px',
             width: '320px',
             height: '320px',
-            background: 'rgba(255, 224, 102, 0.3)',
+            background: 'rgba(102, 126, 234, 0.3)',
             filter: 'blur(120px)',
           }}
         />
@@ -152,7 +152,7 @@ export default function Contact() {
               </h2>
               <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)' }}>
                 Whether you&apos;re an accounting firm, marketing agency, or technology integrator,
-                Multiple AI provides the capability, infrastructure, and ongoing support—while you
+                Multiple AI provides the capability, infrastructure, and ongoing support, while you
                 retain the client relationship and the brand.
               </p>
 
@@ -346,7 +346,7 @@ export default function Contact() {
                       style={{
                         width: '44px',
                         height: '44px',
-                        background: 'linear-gradient(135deg, #FFCC00 0%, #FFD700 100%)',
+                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                         borderRadius: '12px',
                         display: 'flex',
                         alignItems: 'center',

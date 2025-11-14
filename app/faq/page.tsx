@@ -25,11 +25,11 @@ const FAQ_CONTENT: FAQItem[] = [
   {
     question: 'Who is Multiple AI Solutions for?',
     answer:
-      'Professional intermediaries — accountants, marketers, consultants, and IT providers — who want to deliver AI outcomes without building internal dev teams.',
+      'Professional intermediaries, accountants, marketers, consultants, and IT providers, who want to deliver AI outcomes without building internal dev teams.',
     category: 'Partners',
   },
   {
-    question: 'How does the white-label model work?',
+    question: 'How does the white label model work?',
     answer:
       'We deliver AI tools under your brand. You maintain the client relationship while we handle configuration, hosting, and ongoing optimisation.',
     category: 'Products',
@@ -118,7 +118,7 @@ export default function FAQ() {
             left: '-140px',
             width: '360px',
             height: '360px',
-            background: 'rgba(255, 224, 102, 0.32)',
+            background: 'rgba(102, 126, 234, 0.32)',
             filter: 'blur(120px)',
           }}
         />

@@ -24,7 +24,7 @@ export default function Terms() {
             left: '-140px',
             width: '360px',
             height: '360px',
-            background: 'rgba(255, 224, 102, 0.3)',
+            background: 'rgba(102, 126, 234, 0.3)',
             filter: 'blur(120px)',
           }}
         />
@@ -78,7 +78,7 @@ export default function Terms() {
                 <div className="mb-5">
                 <h2>2. Services</h2>
                 <p>
-                  Multiple AI provides AI-driven automation, data solutions, and related services.
+                  Multiple AI provides AI driven automation, data solutions, and related services.
                   Specific service deliverables or performance obligations may be detailed in separate
                   agreements or statements of work.
                 </p>

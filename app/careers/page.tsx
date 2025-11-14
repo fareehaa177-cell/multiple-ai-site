@@ -29,7 +29,7 @@ const roles = [
     title: 'Partner Success Manager',
     type: 'Full-time · Perth',
     description:
-      'Empower agency partners with enablement programs, coordinate feature releases, and drive adoption of our white-label AI toolkit.',
+      'Empower agency partners with enablement programs, coordinate feature releases, and drive adoption of our white label AI toolkit.',
     tags: ['Partnerships', 'Enablement', 'Growth'],
   },
 ];
@@ -74,7 +74,7 @@ export default function Careers() {
             left: '-140px',
             width: '360px',
             height: '360px',
-            background: 'rgba(255, 224, 102, 0.3)',
+            background: 'rgba(102, 126, 234, 0.3)',
             filter: 'blur(120px)',
           }}
         />
@@ -109,7 +109,7 @@ export default function Careers() {
                 Build the AI Backbone for the Professional Economy
               </h1>
               <p className="fs-5 mt-3" style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 640 }}>
-                Join product thinkers, engineers, designers, and partner specialists delivering white-label AI
+                Join product thinkers, engineers, designers, and partner specialists delivering white label AI
                 experiences that scale. We enable practical, ethical AI for business ecosystems across Australia
                 and beyond.
               </p>
@@ -119,7 +119,7 @@ export default function Careers() {
                   size="lg"
                   href="mailto:contact@multipleai.com.au?subject=Careers%20Enquiry"
                   style={{
-                    background: '#ffe066',
+                    background: '#667eea',
                     color: '#001326',
                     border: 'none',
                     borderRadius: '999px',
@@ -171,7 +171,7 @@ export default function Careers() {
                             width: 20,
                             height: 20,
                             borderRadius: '50%',
-                          background: '#ffe066',
+                          background: '#667eea',
                             display: 'inline-block',
                             marginTop: 4,
                           }}
@@ -199,7 +199,7 @@ export default function Careers() {
                 Open Roles
               </h2>
               <p className="lead" style={{ color: 'var(--text-muted)' }}>
-                High-impact opportunities for builders, storytellers, and partner-first leaders.
+                High impact opportunities for builders, storytellers, and partner first leaders.
               </p>
             </Col>
             <Col lg={5} className="text-lg-end">
@@ -340,7 +340,7 @@ export default function Careers() {
             right: '-140px',
             width: '360px',
             height: '360px',
-            background: 'rgba(255, 224, 102, 0.32)',
+            background: 'rgba(102, 126, 234, 0.32)',
             filter: 'blur(120px)',
           }}
         />
