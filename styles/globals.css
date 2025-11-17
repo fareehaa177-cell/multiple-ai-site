@@ -14,6 +14,10 @@
   --gradient-secondary: linear-gradient(135deg, #00bcd4 0%, #26c6da 100%);
 }
 
+html {
+  font-size: 100%; /* Standard base font size */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +26,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 18px; /* INCREASED: 17px → 18px (+1px) */
+  font-size: 16px; /* Standard body font size */
   color: var(--text-dark);
   background-color: #f5f8ff;
   line-height: 1.65;
@@ -32,43 +36,42 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
   margin-bottom: 1rem;
   color: var(--text-dark);
   letter-spacing: -0.01em;
 }
 
-h1 { font-size: 3.75rem; } /* INCREASED: 3.25rem → 3.75rem (+0.5rem) */
-h2 { font-size: 2.85rem; } /* INCREASED: 2.5rem → 2.85rem (+0.35rem) */
-h3 { font-size: 2.3rem; } /* INCREASED: 2rem → 2.3rem (+0.3rem) */
-h4 { font-size: 1.8rem; } /* INCREASED: 1.6rem → 1.8rem (+0.2rem) */
-h5 { font-size: 1.5rem; } /* INCREASED: 1.35rem → 1.5rem (+0.15rem) */
-h6 { font-size: 1.3rem; } /* INCREASED: 1.15rem → 1.3rem (+0.15rem) */
+h1 { font-size: 2.5rem; } /* Standard h1 size */
+h2 { font-size: 2rem; } /* Standard h2 size */
+h3 { font-size: 1.75rem; } /* Standard h3 size */
+h4 { font-size: 1.5rem; } /* Standard h4 size */
+h5 { font-size: 1.25rem; } /* Standard h5 size */
+h6 { font-size: 1rem; } /* Standard h6 size */
 
 p {
   margin-bottom: 1rem;
   color: var(--text-light);
-  font-size: 1.15rem; /* INCREASED: 1.05rem → 1.15rem (+0.1rem) */
+  font-size: 1rem; /* Standard paragraph size */
 }
 
-/* INCREASED: Added default font sizes for spans, lists, and other text elements */
 span {
-  font-size: 1.05rem; /* Base span size */
+  font-size: 1rem; /* Standard span size */
 }
 
 li {
-  font-size: 1.1rem; /* List item size */
+  font-size: 1rem; /* Standard list item size */
   line-height: 1.7;
 }
 
 ul, ol {
-  font-size: 1.1rem; /* List container size */
+  font-size: 1rem; /* Standard list container size */
 }
 
 a {
   text-decoration: none;
   color: var(--primary-color);
-  font-size: 1.05rem; /* INCREASED: Added base link font size */
+  font-size: 1rem; /* Standard link font size */
   transition: all 0.3s ease;
 }
 
@@ -93,13 +96,13 @@ a:hover {
 }
 
 .section-title h2 {
-  font-size: 3rem; /* INCREASED: 2.65rem → 3rem (+0.35rem) */
+  font-size: 2.5rem; /* Standard section title size */
   margin-bottom: 15px;
   color: inherit;
 }
 
 .section-title p {
-  font-size: 1.25rem; /* INCREASED: 1.15rem → 1.25rem (+0.1rem) */
+  font-size: 1.125rem; /* Standard section subtitle size */
   max-width: 700px;
   margin: 0 auto;
 }
@@ -112,7 +115,7 @@ a:hover {
   padding: 13px 34px;
   border-radius: 999px;
   font-weight: 600;
-  font-size: 1.05rem; /* INCREASED: Added button font size */
+  font-size: 1rem; /* Standard button font size */
   letter-spacing: 0.04em;
   transition: all 0.28s ease;
   display: inline-block;
@@ -132,7 +135,7 @@ a:hover {
   padding: 12px 30px;
   border-radius: 50px;
   font-weight: 600;
-  font-size: 1.05rem; /* INCREASED: Added button font size */
+  font-size: 1rem; /* Standard button font size */
   transition: all 0.3s ease;
   display: inline-block;
 }
@@ -143,23 +146,50 @@ a:hover {
   color: white;
 }
 
-.btn-outline {
+.btn-outline,
+.btn-outline-primary,
+.btn-outline-light,
+.btn-outline-custom {
   background: transparent;
-  border: 2px solid rgba(16, 42, 67, 0.2);
+  border: 2px solid var(--primary-color);
   color: var(--primary-color);
   padding: 12px 30px;
   border-radius: 999px;
   font-weight: 600;
-  font-size: 1.05rem; /* INCREASED: Added button font size */
+  font-size: 1rem; /* Standard button font size */
   letter-spacing: 0.04em;
   transition: all 0.3s ease;
   display: inline-block;
 }
 
-.btn-outline:hover {
-  background: rgba(16, 42, 67, 0.08);
+.btn-outline,
+.btn-outline-primary {
+  border-color: var(--primary-color);
   color: var(--primary-color);
-  transform: translateY(-2px);
+}
+
+.btn-outline-light,
+.btn-outline-custom {
+  border-color: rgba(255, 255, 255, 0.65);
+  color: #ffffff;
+}
+
+.btn-outline-light {
+  backdrop-filter: blur(4px);
+}
+
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-light:hover,
+.btn-outline-light:focus,
+.btn-outline-custom:hover,
+.btn-outline-custom:focus {
+  background: #ffffff;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 12px 26px rgba(0, 63, 125, 0.18);
 }
 
 /* Cards */
@@ -291,35 +321,34 @@ a:hover {
 }
 
 .card-title {
-  font-size: 1.65rem; /* INCREASED: 1.5rem → 1.65rem (+0.15rem) */
+  font-size: 1.5rem; /* Standard card title size */
   margin-bottom: 15px;
   color: var(--primary-color);
 }
 
 .card-text {
   color: var(--text-light);
-  font-size: 1.1rem; /* INCREASED: Added card text font size */
+  font-size: 1rem; /* Standard card text size */
 }
 
-/* INCREASED: Navigation and Footer text sizes */
 nav a {
-  font-size: 1.05rem; /* Navigation link size */
+  font-size: 1rem; /* Standard navigation link size */
 }
 
 nav button {
-  font-size: 1.05rem; /* Navigation button size */
+  font-size: 1rem; /* Standard navigation button size */
 }
 
 footer {
-  font-size: 1.05rem; /* Footer base size */
+  font-size: 1rem; /* Standard footer base size */
 }
 
 footer p {
-  font-size: 1.05rem; /* Footer paragraph size */
+  font-size: 1rem; /* Standard footer paragraph size */
 }
 
 footer a {
-  font-size: 1.05rem; /* Footer link size */
+  font-size: 1rem; /* Standard footer link size */
 }
 
 footer h3,
@@ -330,41 +359,40 @@ footer h6 {
 }
 
 footer li {
-  font-size: 1.05rem; /* Footer list item size */
+  font-size: 1rem; /* Standard footer list item size */
 }
 
-/* INCREASED: Button element font size */
 button {
-  font-size: 1.05rem; /* Base button font size */
+  font-size: 1rem; /* Standard button font size */
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   body {
-    font-size: 17px; /* INCREASED: 16px → 17px (+1px) */
+    font-size: 16px; /* Standard mobile body font size */
   }
   
-  h1 { font-size: 2.4rem; } /* INCREASED: 2.15rem → 2.4rem (+0.25rem) */
-  h2 { font-size: 2.1rem; } /* INCREASED: 1.9rem → 2.1rem (+0.2rem) */
-  h3 { font-size: 1.85rem; } /* INCREASED: 1.65rem → 1.85rem (+0.2rem) */
-  h4 { font-size: 1.6rem; } /* INCREASED: Added mobile h4 size */
-  h5 { font-size: 1.4rem; } /* INCREASED: Added mobile h5 size */
-  h6 { font-size: 1.2rem; } /* INCREASED: Added mobile h6 size */
+  h1 { font-size: 2rem; } /* Standard mobile h1 size */
+  h2 { font-size: 1.75rem; } /* Standard mobile h2 size */
+  h3 { font-size: 1.5rem; } /* Standard mobile h3 size */
+  h4 { font-size: 1.25rem; } /* Standard mobile h4 size */
+  h5 { font-size: 1.125rem; } /* Standard mobile h5 size */
+  h6 { font-size: 1rem; } /* Standard mobile h6 size */
   
   p {
-    font-size: 1.1rem; /* INCREASED: Mobile paragraph size */
+    font-size: 1rem; /* Standard mobile paragraph size */
   }
   
   span {
-    font-size: 1rem; /* INCREASED: Mobile span size */
+    font-size: 1rem; /* Standard mobile span size */
   }
   
   li {
-    font-size: 1.05rem; /* INCREASED: Mobile list item size */
+    font-size: 1rem; /* Standard mobile list item size */
   }
   
   a, button {
-    font-size: 1rem; /* INCREASED: Mobile link/button size */
+    font-size: 1rem; /* Standard mobile link/button size */
   }
   
   .section {
@@ -372,11 +400,11 @@ button {
   }
   
   .section-title h2 {
-    font-size: 2.4rem; /* INCREASED: 2.15rem → 2.4rem (+0.25rem) */
+    font-size: 2rem; /* Standard mobile section title size */
   }
   
   .section-title p {
-    font-size: 1.15rem; /* INCREASED: 1.05rem → 1.15rem (+0.1rem) */
+    font-size: 1rem; /* Standard mobile section subtitle size */
   }
   
   .navbar-logo {
@@ -385,21 +413,21 @@ button {
   }
   
   .navbar-brand-text {
-    font-size: 1.5rem !important; /* INCREASED: 1.45rem → 1.5rem (+0.05rem) */
+    font-size: 1.25rem !important; /* Standard mobile navbar brand size */
   }
   
   nav a {
-    font-size: 1rem; /* INCREASED: Mobile navigation size */
+    font-size: 1rem; /* Standard mobile navigation size */
   }
   
   footer {
-    font-size: 1rem; /* INCREASED: Mobile footer size */
+    font-size: 1rem; /* Standard mobile footer size */
   }
   
   footer p,
   footer a,
   footer li {
-    font-size: 1rem; /* INCREASED: Mobile footer text sizes */
+    font-size: 1rem; /* Standard mobile footer text sizes */
   }
 }
 

@@ -8,6 +8,7 @@ const serviceItems = [
   {
     id: '01',
     title: 'AI Consulting',
+    slug: 'ai-consulting',
     copy: 'We help identify the best AI opportunities for your business and build strategies that align with your goals so every investment delivers measurable outcomes.',
     features: [
       'Opportunity discovery workshops',
@@ -20,6 +21,7 @@ const serviceItems = [
   {
     id: '02',
     title: 'Automation Solutions',
+    slug: 'automation-solutions',
     copy: 'Streamline repetitive tasks and enhance efficiency with intelligent automation tailored to your operations, freeing teams to focus on high-value work.',
     features: [
       'Process mapping & automation design',
@@ -32,6 +34,7 @@ const serviceItems = [
   {
     id: '03',
     title: 'Custom AI Software Development',
+    slug: 'custom-ai-software',
     copy: 'From concept to deployment, we build AI-powered software that integrates seamlessly with your existing systems and scales with your business.',
     features: [
       'Product discovery & technical architecture',
@@ -44,6 +47,7 @@ const serviceItems = [
   {
     id: '04',
     title: 'Machine Learning Models',
+    slug: 'machine-learning',
     copy: 'Utilise data-driven insights with models that predict trends, optimise processes, and support smarter decision-making.',
     features: [
       'Predictive analytics & forecasting',
@@ -56,6 +60,7 @@ const serviceItems = [
   {
     id: '05',
     title: 'Web App Development',
+    slug: 'web-app-development',
     copy: 'We build custom web apps that simplify workflows, boost speed, and elevate customer experiences—ready to scale with your operations.',
     features: [
       'UX research & design system implementation',
@@ -68,6 +73,7 @@ const serviceItems = [
   {
     id: '06',
     title: 'Data Mining',
+    slug: 'data-mining',
     copy: 'Extract gold from messy databases and forgotten files. We uncover profitable patterns and hidden revenue streams from data you already own.',
     features: [
       'Data audits & enrichment strategies',
@@ -185,7 +191,7 @@ export default function Services() {
           </div>
 
           <div className="row g-4">
-            {serviceItems.map(({ id, title, copy, features, icon: Icon, accent }) => (
+            {serviceItems.map(({ id, title, copy, features, icon: Icon, accent, slug }) => (
               <div key={id} className="col-lg-6">
                 <div
                   style={{
@@ -197,7 +203,9 @@ export default function Services() {
                     height: '100%',
                     position: 'relative',
                     overflow: 'hidden',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   }}
+                  className="glass-card"
                 >
                   <div
                     style={{
@@ -249,13 +257,24 @@ export default function Services() {
                       </div>
                     </div>
                     <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '18px' }}>{copy}</p>
-                    <ul style={{ paddingLeft: '20px', color: 'var(--text-dark)', marginBottom: 0 }}>
+                    <ul style={{ paddingLeft: '20px', color: 'var(--text-dark)', marginBottom: '20px' }}>
                       {features.map((feature) => (
                         <li key={feature} style={{ marginBottom: '8px' }}>
                           {feature}
                         </li>
                       ))}
                     </ul>
+                    <Link
+                      href={`/services/${slug}`}
+                      className="btn btn-outline-primary rounded-pill"
+                      style={{
+                        fontWeight: 600,
+                        padding: '8px 20px',
+                        fontSize: '0.9rem',
+                      }}
+                    >
+                      Learn More →
+                    </Link>
                   </div>
                 </div>
               </div>

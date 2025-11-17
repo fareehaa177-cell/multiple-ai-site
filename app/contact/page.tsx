@@ -131,7 +131,7 @@ export default function Contact() {
       >
         <div className="container">
           <div className="row g-5">
-            <div className="col-lg-8">
+            <div className="col-lg-6">
               <span
                 style={{
                   display: 'inline-block',
@@ -267,137 +267,146 @@ export default function Contact() {
               </p>
             </div>
 
-            <div className="col-lg-4">
+            <div className="col-lg-6">
               <div
                 className="card border-0 shadow-sm"
                 style={{
                   borderRadius: '24px',
-                  background: 'linear-gradient(145deg, rgba(255,255,255,0.92), rgba(240,246,255,0.96))',
+                  background: '#ffffff',
                   boxShadow: '0 28px 48px rgba(0, 26, 60, 0.12)',
                   border: '1px solid rgba(16, 42, 67, 0.08)',
                 }}
               >
                 <div className="card-body p-4 p-lg-5">
-                  <h4 className="mb-4" style={{ color: 'var(--text-dark)', fontSize: '1.5rem' }}>
+                  <h4 className="mb-3" style={{ color: '#0f1f38', fontSize: '1.5rem', fontWeight: 900 }}>
                     Contact Information
                   </h4>
+                  <p style={{ color: '#6b7280', fontSize: '0.95rem', marginBottom: '28px', lineHeight: 1.6 }}>
+                    Get in touch with our team. We're here to help you explore how MultipleAI can transform your business operations.
+                  </p>
 
-                  <div className="d-flex align-items-start mb-4">
-                    <div
-                      style={{
-                        width: '44px',
-                        height: '44px',
-                        background: 'linear-gradient(135deg, #003f7d, #00bcd4)',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'white',
-                        marginRight: '15px',
-                        flexShrink: 0,
-                      }}
-                    >
-                      <FaPhone />
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                      <div
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                          background: '#0b7285',
+                          borderRadius: '14px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: 'white',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <FaPhone size={20} />
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <h6 className="mb-1" style={{ color: '#0f1f38', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>Phone</h6>
+                        <p className="mb-1" style={{ color: '#0f1f38', fontSize: '0.95rem', fontWeight: 500, marginBottom: '4px' }}>
+                          <a href="tel:0861898577" style={{ color: '#0f1f38', textDecoration: 'none' }}>
+                            08 6189 8577
+                          </a>
+                        </p>
+                        <small style={{ color: '#6b7280', fontSize: '0.85rem', display: 'block' }}>Call us for immediate support</small>
+                      </div>
                     </div>
-                    <div>
-                      <h6 className="mb-1">Phone</h6>
-                      <p className="mb-0">
-                        <a href="tel:0861898577" style={{ color: 'inherit', textDecoration: 'none' }}>
-                          08 6189 8577
-                        </a>
-                      </p>
-                      <small className="text-muted">Call us for immediate support</small>
+
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                      <div
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                          background: '#0b7285',
+                          borderRadius: '14px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: 'white',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <FaEnvelope size={20} />
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <h6 className="mb-1" style={{ color: '#0f1f38', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>Email</h6>
+                        <p className="mb-1" style={{ color: '#0f1f38', fontSize: '0.95rem', fontWeight: 500, marginBottom: '4px', wordBreak: 'break-word' }}>
+                          <a
+                            href="mailto:contact@multipleai.com.au"
+                            style={{ color: '#0f1f38', textDecoration: 'none' }}
+                          >
+                            contact@multipleai.com.au
+                          </a>
+                        </p>
+                        <small style={{ color: '#6b7280', fontSize: '0.85rem', display: 'block' }}>We respond within 2 hours on business days</small>
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                      <div
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                          background: '#667eea',
+                          borderRadius: '14px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: 'white',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <FaMapMarkerAlt size={20} />
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <h6 className="mb-1" style={{ color: '#0f1f38', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>Perth Office</h6>
+                        <p className="mb-0" style={{ color: '#0f1f38', fontSize: '0.95rem', lineHeight: 1.6 }}>
+                          <a
+                            href="https://www.google.com/maps?q=Level+28,+140+St+Georges+Tce,+Perth,+WA+6000"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: '#0f1f38', textDecoration: 'none' }}
+                          >
+                            Level 28, 140 St Georges Terrace,<br />
+                            Perth, WA 6000
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                      <div
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                          background: '#10b981',
+                          borderRadius: '14px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: 'white',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <FaClock size={20} />
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <h6 className="mb-1" style={{ color: '#0f1f38', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>Business Hours</h6>
+                        <p className="mb-0" style={{ color: '#0f1f38', fontSize: '0.95rem' }}>
+                          Mon-Fri: 9:00 AM – 5:00 PM
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="d-flex align-items-start mb-4">
-                    <div
-                      style={{
-                        width: '44px',
-                        height: '44px',
-                        background: 'var(--gradient-secondary)',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'white',
-                        marginRight: '15px',
-                        flexShrink: 0,
-                      }}
-                    >
-                      <FaEnvelope />
-                    </div>
-                    <div>
-                      <h6 className="mb-1">Email</h6>
-                      <p className="mb-0">
-                        <a
-                          href="mailto:contact@multipleai.com.au"
-                          style={{ color: 'inherit', textDecoration: 'none' }}
-                        >
-                          contact@multipleai.com.au
-                        </a>
-                      </p>
-                      <small className="text-muted">We respond within 2 hours on business days</small>
-                    </div>
-                  </div>
-
-                  <div className="d-flex align-items-start mb-4">
-                    <div
-                      style={{
-                        width: '44px',
-                        height: '44px',
-                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'white',
-                        marginRight: '15px',
-                        flexShrink: 0,
-                      }}
-                    >
-                      <FaMapMarkerAlt />
-                    </div>
-                    <div>
-                      <h6 className="mb-1">Perth Office</h6>
-                      <p className="mb-0 text-muted">
-                        <a
-                          href="https://www.google.com/maps?q=Level+28,+140+St+Georges+Tce,+Perth,+WA+6000"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ color: 'inherit', textDecoration: 'none' }}
-                        >
-                          Level 28, 140 St Georges Tce<br />
-                          Perth, WA 6000
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="d-flex align-items-start">
-                    <div
-                      style={{
-                        width: '44px',
-                        height: '44px',
-                        background: 'linear-gradient(135deg, #79F1A4 0%, #0E5CAD 100%)',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'white',
-                        marginRight: '15px',
-                        flexShrink: 0,
-                      }}
-                    >
-                      <FaClock />
-                    </div>
-                    <div>
-                      <h6 className="mb-1">Business Hours</h6>
-                      <p className="mb-0 text-muted">
-                        Mon–Fri: 9:00 AM – 4:00 PM<br />
-                        Weekends: Closed
-                      </p>
-                    </div>
+                  <div style={{ marginTop: '32px', paddingTop: '28px', borderTop: '1px solid rgba(16, 42, 67, 0.08)' }}>
+                    <p style={{ color: '#6b7280', fontSize: '0.9rem', marginBottom: '12px', fontWeight: 600 }}>
+                      Need immediate assistance?
+                    </p>
+                    <p style={{ color: '#6b7280', fontSize: '0.85rem', marginBottom: 0, lineHeight: 1.6 }}>
+                      Our Partner Success team is available during business hours to answer your questions and help you get started with our AI solutions.
+                    </p>
                   </div>
                 </div>
               </div>

@@ -82,8 +82,7 @@ export default function Footer() {
               <h3 style={{ color: '#a29bfe', margin: 0, fontWeight: 700, fontSize: '1.95rem' }}>MultipleAI</h3>
             </Link>
             <p style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.8 }}>
-              Empowering professional service firms with white-label AI solutions. We build the automation, analytics, and creative
-              services — you keep the client relationship.
+              Empowering professional service firms with white-label AI solutions. We build the automation, analytics, and creative services you keep the client relationship.
             </p>
             <div className="d-flex gap-3 mt-4">
               {socialLinks.map(({ href, icon }) => (

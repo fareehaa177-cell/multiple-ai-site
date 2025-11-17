@@ -1,4 +1,5 @@
 'use client';
+import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -31,6 +32,18 @@ const leadershipTeam = [
   { name: 'Jarrod Freer', role: 'Co-Founder' },
   { name: 'Ron Forlee', role: 'Chairman' },
 ];
+
+const leadParagraphStyle: CSSProperties = {
+  fontSize: '1.15rem',
+  color: '#0f1f38',
+  lineHeight: 1.7,
+};
+
+const bodyParagraphStyle: CSSProperties = {
+  fontSize: '1.05rem',
+  color: 'var(--text-muted)',
+  lineHeight: 1.7,
+};
 
 export default function About() {
   return (
@@ -144,10 +157,10 @@ export default function About() {
                   Mission
                 </span>
                 <h2 style={{ fontSize: '2.4rem', color: 'var(--text-dark)', marginBottom: '16px' }}>Our Mission</h2>
-                <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '18px' }}>
+                <p style={{ ...leadParagraphStyle, marginBottom: '18px' }}>
                   MultipleAI was founded to make applied AI accessible to every business leader, not just the tech giants.
                 </p>
-                  <p style={{ color: 'var(--text-muted)', marginBottom: '18px' }}>
+                <p style={{ ...bodyParagraphStyle, marginBottom: '18px' }}>
                   We empower accountants, marketers, consultants, and integrators with ready-to-deploy AI tools they can deliver under
                   their own brand. Our lean core team, specialist contractors, and graduate developers create a blended model that
                   scales without sacrificing expertise or compliance.
@@ -213,12 +226,12 @@ export default function About() {
               <span
                 style={{
                   display: 'inline-block',
-                  padding: '6px 14px',
+                  padding: '6px 16px',
                   borderRadius: '999px',
-                  background: 'rgba(102, 126, 234, 0.35)',
-                  color: '#a26d00',
+                  background: 'rgba(0, 63, 125, 0.12)',
+                  color: '#003f7d',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
+                  letterSpacing: '0.1em',
                   fontSize: '0.72rem',
                   marginBottom: '18px',
                 }}
@@ -226,14 +239,14 @@ export default function About() {
                 Vision
               </span>
               <h2 style={{ fontSize: '2.4rem', color: '#0f1f38' }}>Our Vision</h2>
-              <p style={{ fontSize: '1.08rem', color: '#364152', marginBottom: '18px' }}>
+              <p style={{ ...leadParagraphStyle, marginBottom: '18px' }}>
                 We believe every professional services firm deserves enterprise-grade automation, insight, and creativity, without sacrificing
                 human trust.
               </p>
-              <p style={{ color: 'var(--text-muted)', marginBottom: '16px' }}>
+              <p style={{ ...bodyParagraphStyle, marginBottom: '16px' }}>
                 From CFO dashboards to always-on marketing copilots, we design solutions that elevate decision-making and free teams to focus on the strategic work that clients value most.
               </p>
-                  <p style={{ color: 'var(--text-muted)' }}>
+              <p style={{ ...bodyParagraphStyle, marginBottom: 0 }}>
                 The result: faster innovation cycles, stronger customer outcomes, and new value streams for our partners and their clients.
               </p>
             </div>
@@ -259,35 +272,67 @@ export default function About() {
                 <div className="col-6">
                   <div
                     style={{
-                      borderRadius: '20px',
-                      overflow: 'hidden',
-                      boxShadow: '0 24px 40px rgba(15, 31, 56, 0.12)',
+                      borderRadius: '26px',
+                      background: '#ffffff',
+                      boxShadow: '0 25px 60px rgba(0, 63, 125, 0.12)',
+                      padding: '30px 28px',
+                      height: '100%',
                     }}
                   >
-                    <Image
-                      src="/images/image10.svg"
-                      alt="AI insight dashboards"
-                      width={320}
-                      height={220}
-                      style={{ width: '100%', height: 'auto' }}
-                    />
+                    <div
+                      style={{
+                        width: '60px',
+                        height: '60px',
+                        borderRadius: '18px',
+                        background: 'rgba(0, 63, 125, 0.08)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#003f7d',
+                        fontWeight: 700,
+                        fontSize: '1.2rem',
+                        marginBottom: '16px',
+                      }}
+                    >
+                      AI
+                    </div>
+                    <p style={{ fontWeight: 700, color: '#0f1f38', marginBottom: '8px' }}>Human + Machine</p>
+                    <p style={{ ...bodyParagraphStyle, marginBottom: 0, fontSize: '0.92rem' }}>
+                      We blend consultants and copilots to deliver trusted automation journeys.
+                    </p>
                   </div>
                 </div>
                 <div className="col-6">
                   <div
                     style={{
-                      borderRadius: '20px',
-                      overflow: 'hidden',
-                      boxShadow: '0 24px 40px rgba(15, 31, 56, 0.12)',
+                      borderRadius: '26px',
+                      background: '#ffffff',
+                      boxShadow: '0 25px 60px rgba(0, 63, 125, 0.12)',
+                      padding: '30px 28px',
+                      height: '100%',
                     }}
                   >
-                    <Image
-                      src="/images/image11.svg"
-                      alt="Innovation roadmap planning"
-                      width={320}
-                      height={220}
-                      style={{ width: '100%', height: 'auto' }}
-                    />
+                    <div
+                      style={{
+                        width: '60px',
+                        height: '60px',
+                        borderRadius: '18px',
+                        background: 'rgba(0, 188, 212, 0.12)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#00a0c6',
+                        fontWeight: 700,
+                        fontSize: '1.2rem',
+                        marginBottom: '16px',
+                      }}
+                    >
+                      ⚡
+                    </div>
+                    <p style={{ fontWeight: 700, color: '#0f1f38', marginBottom: '8px' }}>Innovation Sprints</p>
+                    <p style={{ ...bodyParagraphStyle, marginBottom: 0, fontSize: '0.92rem' }}>
+                      Quarterly roadmaps keep partners ahead with measurable outcomes.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -339,44 +384,62 @@ export default function About() {
                 Approach
               </span>
               <h2 style={{ fontSize: '2.35rem', color: 'var(--text-dark)', marginBottom: '16px' }}>Our Approach</h2>
-              <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', marginBottom: '16px' }}>
+              <p style={{ ...leadParagraphStyle, marginBottom: '16px' }}>
                 Secure, modular, and ethical by design. Every deployment follows a structured blueprint balancing compliance, scalability, and speed.
               </p>
-              <p style={{ color: 'var(--text-muted)', marginBottom: '24px' }}>
+              <p style={{ ...bodyParagraphStyle, marginBottom: '24px' }}>
                 We combine battle-tested AI frameworks with custom integrations so partners can launch quickly, then evolve confidently as their service lines grow.
               </p>
               <div className="row g-3">
                 {[
                   {
+                    icon: '🔐',
                     title: 'Secure by Design',
-                    copy: 'ISO-aligned practices, PolyVault encryption, and Australian data residency for regulated industries.',
+                    copy: 'ISO-aligned controls, PolyVault encryption, and Australian data residency.',
                   },
                   {
+                    icon: '🧩',
                     title: 'Modular Stack',
-                    copy: 'Composable components that slot into existing platforms via APIs without disrupting critical systems.',
+                    copy: 'Composable components that slot into your stack via secure APIs.',
                   },
                   {
+                    icon: '⚖️',
                     title: 'Ethical Frameworks',
-                    copy: 'Bias testing, governance playbooks, and human oversight ensure trustworthy outcomes.',
+                    copy: 'Bias testing and governance guardrails keep every agent trustworthy.',
                   },
                   {
+                    icon: '🤝',
                     title: 'Partner Enablement',
-                    copy: 'Dedicated squads, branded resources, and quarterly innovation sprints keep momentum high.',
+                    copy: 'Dedicated squads, branded playbooks, and quarterly innovation sprints.',
                   },
-                ].map(({ title, copy }) => (
+                ].map(({ icon, title, copy }) => (
                   <div className="col-md-6" key={title}>
                     <div
                       style={{
-                        borderRadius: '20px',
+                        borderRadius: '26px',
                         background: '#ffffff',
-                        border: '1px solid rgba(16, 42, 67, 0.08)',
-                        boxShadow: '0 16px 32px rgba(15, 31, 56, 0.08)',
-                        padding: '20px',
+                        boxShadow: '0 25px 60px rgba(0, 63, 125, 0.12)',
+                        padding: '26px 22px',
                         height: '100%',
                       }}
                     >
-                      <h5 style={{ color: '#0f1f38', fontSize: '1.05rem', marginBottom: '10px' }}>{title}</h5>
-                        <p style={{ color: 'var(--text-muted)', marginBottom: 0 }}>{copy}</p>
+                      <div
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: '16px',
+                          background: 'rgba(0, 63, 125, 0.06)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '1.2rem',
+                          marginBottom: '14px',
+                        }}
+                      >
+                        {icon}
+                      </div>
+                      <h5 style={{ color: '#0f1f38', fontSize: '1.05rem', marginBottom: '8px', fontWeight: 700 }}>{title}</h5>
+                      <p style={{ ...bodyParagraphStyle, marginBottom: 0, fontSize: '0.95rem' }}>{copy}</p>
                     </div>
                   </div>
                 ))}

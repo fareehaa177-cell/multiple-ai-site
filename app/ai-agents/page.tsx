@@ -8,8 +8,8 @@ const agents = [
   {
     title: 'AI Receptionist Agent',
     tagline: 'Your 24/7 Super Friendly Front Desk',
-    description: 'Never miss a call again. Our AI Receptionist Agent answers every inquiry with a warm, human like Australian voice greeting callers, capturing details, qualifying leads, and routing calls instantly.',
-    fullDescription: 'From taking messages to booking appointments, she handles everything professionally while maintaining a friendly vibe customers love.',
+    description: 'Answers every inquiry with a warm Australian voice, capturing details, qualifying leads, and routing calls instantly.',
+    fullDescription: 'Handles bookings and messages without missed calls so clients always feel looked after.',
     perfectFor: 'Businesses tired of missed calls, long wait times, and rising staffing costs.',
     features: [
       '24/7 call answering',
@@ -25,8 +25,8 @@ const agents = [
   {
     title: 'Admin AI Agent',
     tagline: 'Your Smart, Tireless Back Office Assistant',
-    description: 'Let your business breathe. Our Admin Agent automates day to day admin tasks like scheduling, reminders, customer follow ups, data entry, ticket creation, and workflow updates.',
-    fullDescription: 'She works with precision and keeps your operations running smoothly without breaks, mistakes, or delays.',
+    description: 'Automates scheduling, reminders, follow ups, and workflow updates to keep operations moving.',
+    fullDescription: 'Eliminates admin bottlenecks so your team stays focused on higher value work.',
     perfectFor: 'Teams drowning in admin work, compliance tasks, or repetitive workflows.',
     features: [
       'Scheduling & reminders',
@@ -42,8 +42,8 @@ const agents = [
   {
     title: 'Invoice, GST & Tax AI Agent',
     tagline: 'Fast. Accurate. Stress Free Business Accounting',
-    description: 'This AI Agent automates invoice creation, GST calculations, tax summaries, expense tracking, and compliance checks.',
-    fullDescription: 'Built for Australian businesses, it ensures accuracy, avoids human errors, and prepares your financial data in clean, accountant ready formats.',
+    description: 'Automates invoice creation, GST calculations, tax summaries, expense tracking, and compliance checks.',
+    fullDescription: 'Delivers accountant ready data with Australian accuracy and zero manual rework.',
     perfectFor: 'SMEs, tradies, solo operators, and agencies dealing with messy invoicing or growing paperwork.',
     features: [
       'Invoice generation',
@@ -59,8 +59,8 @@ const agents = [
   {
     title: 'AI Sales Agent',
     tagline: 'Your High Performance Closer Working 24/7',
-    description: 'This agent qualifies leads, handles objections, warms up cold prospects, books meetings, and keeps your pipeline full, all with natural conversational intelligence.',
-    fullDescription: 'She remembers your scripts, understands your offers, and positions your services like an expert salesperson.',
+    description: 'Qualifies leads, handles objections, books meetings, and keeps your pipeline warm around the clock.',
+    fullDescription: 'Speaks in your voice, follows your scripts, and sells like an expert teammate.',
     perfectFor: 'Businesses wanting higher conversions without expanding the sales team.',
     features: [
       'Cold & warm call follow ups',
@@ -76,8 +76,8 @@ const agents = [
   {
     title: 'SEO AI Agent',
     tagline: 'Rank Higher. Faster. Smarter.',
-    description: 'Our SEO Agent analyses your website, competitors, keywords, backlinks, and content structure, then builds a complete SEO plan tailored for you.',
-    fullDescription: 'She generates optimised content, metadata, blog ideas, and site improvements to boost your ranking on Google and drive quality organic traffic.',
+    description: 'Analyses your site, competitors, and keywords to build a tailored SEO plan.',
+    fullDescription: 'Creates optimised content and recommendations that boost rankings and organic traffic.',
     perfectFor: 'Business owners wanting measurable growth without paying expensive SEO retainers.',
     features: [
       'Keyword research',
@@ -93,8 +93,8 @@ const agents = [
   {
     title: 'Social Media AI Agent',
     tagline: 'Daily Content. Trend Insights. Perfect Consistency.',
-    description: 'This agent creates stunning posts, captions, hashtags, video ideas, ads scripts, and social calendars, all matched to your brand voice.',
-    fullDescription: 'She tracks competitors, analyses trends, and ensures your profiles stay active, engaging, and professional.',
+    description: 'Produces posts, captions, hashtags, and social calendars that match your brand voice.',
+    fullDescription: 'Tracks trends and keeps every profile active, engaging, and on schedule.',
     perfectFor: 'Companies that want consistent content without hiring a full time social media manager.',
     features: [
       'Daily posts & captions',
@@ -110,8 +110,8 @@ const agents = [
   {
     title: 'Customer Support AI Agent',
     tagline: 'Instant Answers. Zero Wait Time. 100% Satisfaction.',
-    description: 'Your customers receive round the clock support with a polite, human like agent that handles FAQs, troubleshooting, product queries, billing requests, and more.',
-    fullDescription: 'She integrates with your CRM and support systems to provide accurate, personalised responses, every time.',
+    description: 'Delivers 24/7 support, handling FAQs, troubleshooting, billing requests, and product questions.',
+    fullDescription: 'Integrates with your systems to give accurate, personalised answers instantly.',
     perfectFor: 'Businesses looking to improve customer experience while reducing support costs.',
     features: [
       '24/7 instant replies',
@@ -127,8 +127,8 @@ const agents = [
   {
     title: 'Data Reactivation AI Agent',
     tagline: 'Turn Old Leads Into New Revenue',
-    description: 'This agent automatically contacts old leads, inactive customers, and abandoned inquiries, re engaging them with personalised conversations.',
-    fullDescription: 'Perfect for reviving your pipeline and converting lost opportunities into buyers.',
+    description: 'Reaches out to old leads, inactive customers, and abandoned inquiries with personalised follow ups.',
+    fullDescription: 'Turns dormant databases back into booked calls and new revenue.',
     perfectFor: 'Real estate agents, coaches, agencies, home services, and anyone with a dormant database.',
     features: [
       'Reactivation sequences',
@@ -159,8 +159,8 @@ const agents = [
   {
     title: 'Cyber Security AI Agent',
     tagline: 'Smart Protection Against Modern Digital Threats',
-    description: 'This agent scans your systems, identifies security vulnerabilities, detects suspicious behaviour, and advises best practice actions.',
-    fullDescription: 'She provides ongoing monitoring and alerts, helping businesses stay protected from cyber attacks, data leaks, and compliance risks.',
+    description: 'Scans systems for vulnerabilities, detects suspicious behaviour, and recommends fixes.',
+    fullDescription: 'Provides ongoing monitoring and alerts so you stay protected from attacks and compliance risks.',
     perfectFor: 'Businesses wanting enterprise grade security without enterprise level costs.',
     features: [
       'Threat monitoring',
@@ -283,37 +283,41 @@ export default function AIAgents() {
                       }}
                     />
                     <div style={{ position: 'relative', zIndex: 1 }}>
-                      <div
-                        className="glow-icon"
-                        style={{
-                          width: '72px',
-                          height: '72px',
-                          borderRadius: '20px',
-                          background: agent.accent,
-                          color: '#0f1f38',
-                          marginBottom: '24px',
-                          backgroundSize: '200% 200%',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <Icon size={28} />
+                      <div style={{ display: 'flex', gap: '18px', alignItems: 'flex-start', marginBottom: '18px', flexWrap: 'wrap' }}>
+                        <div
+                          className="glow-icon"
+                          style={{
+                            width: '72px',
+                            height: '72px',
+                            borderRadius: '20px',
+                            background: agent.accent,
+                            color: '#0f1f38',
+                            backgroundSize: '200% 200%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                          }}
+                        >
+                          <Icon size={28} />
+                        </div>
+                        <div style={{ flex: '1 1 220px' }}>
+                          <h2 style={{ fontSize: '1.8rem', color: 'var(--text-dark)', marginBottom: '8px', fontWeight: 700 }}>
+                            {agent.title}
+                          </h2>
+                          <p
+                            style={{
+                              color: '#0b7285',
+                              fontSize: '1.05rem',
+                              fontWeight: 600,
+                              marginBottom: 0,
+                              fontStyle: 'italic',
+                            }}
+                          >
+                            {agent.tagline}
+                          </p>
+                        </div>
                       </div>
-                      <h2 style={{ fontSize: '1.8rem', color: 'var(--text-dark)', marginBottom: '12px', fontWeight: 700 }}>
-                        {agent.title}
-                      </h2>
-                      <p
-                        style={{
-                          color: '#0b7285',
-                          fontSize: '1.05rem',
-                          fontWeight: 600,
-                          marginBottom: '16px',
-                          fontStyle: 'italic',
-                        }}
-                      >
-                        {agent.tagline}
-                      </p>
                       <p style={{ color: 'var(--text-muted)', marginBottom: '16px', fontSize: '1rem', lineHeight: 1.7 }}>
                         {agent.description}
                       </p>
@@ -398,8 +402,7 @@ export default function AIAgents() {
             </Link>
             <Link
               href="/contact"
-              className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ borderColor: 'rgba(16, 42, 67, 0.2)', color: '#003f7d' }}
+              className="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill fw-semibold"
             >
               Book a Consultation
             </Link>

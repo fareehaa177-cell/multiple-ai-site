@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, type CSSProperties } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaBrain, FaRobot, FaChartLine, FaFileAlt, FaShieldAlt, FaUsers, FaPhone, FaCog, FaCalculator, FaPen, FaDatabase, FaLock, FaLightbulb, FaBars, FaTimes, FaQuoteLeft } from 'react-icons/fa';
@@ -68,6 +68,23 @@ function AnimatedCounter({ end, suffix = '', duration = 2000, label }: { end: nu
 }
 
 export default function Home() {
+  const formInputStyle: CSSProperties = {
+    padding: '14px 16px',
+    borderRadius: '14px',
+    border: '1px solid rgba(0, 26, 51, 0.18)',
+    background: 'rgba(255, 255, 255, 0.95)',
+    color: '#0A2A6A',
+    fontWeight: 500,
+    boxShadow: '0 8px 20px rgba(10, 42, 106, 0.12)',
+  };
+
+  const formLabelStyle: CSSProperties = {
+    color: '#0A2A6A',
+    fontWeight: 700,
+    letterSpacing: '0.05em',
+    marginBottom: '6px',
+  };
+
   return (
     <>
       <Navbar />
@@ -76,57 +93,20 @@ export default function Home() {
       <section
         className="hero-section"
         style={{
-          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
+          backgroundImage:
+            "linear-gradient(130deg, rgba(0, 19, 38, 0.9) 0%, rgba(0, 63, 125, 0.8) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/hero%20image.jpeg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           color: 'white',
           padding: '140px 0 110px',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        <div
-          style={{
-            position: 'absolute',
-            top: '-120px',
-            left: '-160px',
-            width: '360px',
-            height: '360px',
-            background: 'rgba(102, 126, 234, 0.35)',
-            filter: 'blur(120px)',
-            transform: 'rotate(18deg)',
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '-180px',
-            right: '-120px',
-            width: '480px',
-            height: '480px',
-            background: 'rgba(0, 188, 212, 0.28)',
-            filter: 'blur(120px)',
-            transform: 'rotate(-12deg)',
-          }}
-        />
         <div className="container position-relative">
           <div className="row align-items-center gy-5">
             <div className="col-lg-6">
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 18px',
-                  borderRadius: '999px',
-                  background: 'rgba(255, 255, 255, 0.16)',
-                  color: 'rgba(255,255,255,0.85)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.12em',
-                  fontSize: '0.8rem',
-                  marginBottom: '24px',
-                }}
-              >
-                Partner First AI Studio
-              </div>
               <div style={{ marginBottom: '2rem' }}>
                 <h1
                   style={{
@@ -138,7 +118,7 @@ export default function Home() {
                     marginBottom: '16px',
                   }}
                 >
-                  Empowering Businesses through AI
+                  Empowering Businesses <br />through AI
                 </h1>
                 <p className="lead mb-0" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.82)', maxWidth: '540px' }}>
                   We design, build, and deliver intelligent automation, analytics, and creative AI services that power the next generation of
@@ -156,7 +136,6 @@ export default function Home() {
                 <Link
                   href="/contact"
                   className="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-semibold"
-                  style={{ borderColor: 'rgba(255,255,255,0.45)', color: 'white' }}
                 >
                   Partner with Us
                 </Link>
@@ -171,44 +150,7 @@ export default function Home() {
                   <AnimatedCounter end={10000} suffix="+" label="Automated Customer Interactions" duration={2000} />
                 </div>
                 <div className="col-md-4">
-                  <AnimatedCounter end={99} suffix="%" label="Accuracy & Response Understanding" duration={1800} />
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div
-                style={{
-                  position: 'relative',
-                  maxWidth: '520px',
-                  margin: '0 auto',
-                  borderRadius: '36px',
-                  padding: '24px',
-                  background: 'linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  boxShadow: '0 40px 80px rgba(0,0,0,0.32)',
-                }}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '-40px',
-                    right: '-40px',
-                    width: '120px',
-                    height: '120px',
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, rgba(102,126,234,0.3), rgba(0,188,212,0.4))',
-                    filter: 'blur(12px)',
-                    zIndex: 0,
-                  }}
-                />
-                <div style={{ position: 'relative', height: '360px', zIndex: 1 }}>
-                  <Image
-                    src="/images/image1.png"
-                    alt="AI Solutions Dashboard"
-                    fill
-                    style={{ objectFit: 'contain' }}
-                    priority
-                  />
+                  <AnimatedCounter end={99.9} suffix="%" label="Accuracy & Response Understanding" duration={1800} />
                 </div>
               </div>
             </div>
@@ -240,17 +182,25 @@ export default function Home() {
                   marginBottom: '16px',
                 }}
               >
-                Platform In Action
+                See the Platform Live
               </span>
               <h2 style={{ fontSize: '2.4rem', fontWeight: 700, color: '#132f4c', marginBottom: '12px' }}>
                 What We Do
               </h2>
               <p style={{ color: '#486581', fontSize: '1.05rem', lineHeight: 1.6 }}>
-              MultipleAI Solutions empowers accounting firms, marketing agencies and consultants to offer AI-driven services without hiring internal developers.
-
-Our white-label model lets you deliver AI products instantly. We provide the technology, security, and support; you keep the client relationship.
-
+                MultipleAI Solutions empowers accounting firms, marketing agencies, and consultants to offer AI-driven services without hiring internal developers.
+                <br />
+                Our white-label model lets you deliver AI products instantly. We provide the technology, security, and support; you keep the client relationship.
               </p>
+              <div className="mt-4">
+                <Link
+                  href="/contact"
+                  className="btn btn-primary btn-lg px-4 py-3 rounded-pill fw-semibold"
+                  style={{ background: '#003f7d', border: 'none' }}
+                >
+                  Book a Live Demo
+                </Link>
+              </div>
             </div>
             <div className="col-lg-7">
               <div
@@ -295,17 +245,17 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
                 padding: '6px 14px',
                 borderRadius: '999px',
                 background: 'rgba(102, 126, 234, 0.25)',
-                color: '#a26d00',
+                color: '#003f7d',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
                 fontSize: '0.72rem',
               }}
             >
-              Simple Partner Journey
+              Partner Launch Blueprint
             </span>
             <h2 style={{ fontSize: '2.4rem', fontWeight: 700, color: '#0f1f38', marginTop: '16px' }}>How It Works</h2>
             <p style={{ color: 'var(--text-muted)', maxWidth: '680px', margin: '12px auto 0' }}>
-              Education meets automation. Our framework is built to help your team launch confidently and scale with ongoing support.
+              Strategy meets execution. We guide your team from discovery to scale with ready-made playbooks, technical expertise, and ongoing optimization.
             </p>
           </div>
           
@@ -376,6 +326,15 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
               </div>
             ))}
           </div>
+          <div className="text-center mt-5">
+            <Link
+              href="/contact"
+              className="btn btn-dark btn-lg px-5 py-3 rounded-pill fw-semibold"
+              style={{ background: '#003f7d', border: 'none' }}
+            >
+              Start Your Partner Journey
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -415,21 +374,6 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
         />
         <div className="container position-relative">
           <div className="text-center mb-5">
-            <span
-              style={{
-                display: 'inline-block',
-                padding: '6px 15px',
-                borderRadius: '999px',
-                background: 'rgba(255, 255, 255, 0.12)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                fontSize: '0.75rem',
-                color: 'rgba(255,255,255,0.85)',
-                marginBottom: '16px',
-              }}
-            >
-              Why Partners Stay
-            </span>
             <h2
               style={{
                 fontSize: '2.4rem',
@@ -461,8 +405,8 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
                 accent: 'linear-gradient(135deg, rgba(102,126,234,0.32), rgba(0,188,212,0.22))',
               },
               {
-                title: 'Local Platform',
-                copy: 'Australian data residency, ISO-aligned practices, and compliance controls tailored to regulated industries.',
+                title: 'Powered by Local Talent',
+                copy: 'Australian professionals delivering consistent quality, fast response times, and work aligned with local expectations.',
                 Icon: FaLock,
                 accent: 'linear-gradient(135deg, rgba(0,188,212,0.35), rgba(0,63,125,0.35))',
               },
@@ -615,22 +559,37 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
               <div className="col-lg-4 col-md-6" key={title}>
                 <div className="glass-card" style={{ padding: '28px', height: '100%', transition: 'transform 0.3s ease' }}>
                   <div
-                    className="glow-icon"
                     style={{
-                      width: '56px',
-                      height: '56px',
-                      borderRadius: '18px',
-                      background: accent,
-                      color: '#0f1f38',
-                      marginBottom: '18px',
-                      backgroundSize: '200% 200%',
+                      display: 'grid',
+                      gridTemplateColumns: '64px 1fr',
+                      columnGap: '18px',
+                      rowGap: '6px',
+                      alignItems: 'flex-start',
                     }}
                   >
-                    <Icon size={24} />
+                    <div
+                      className="glow-icon"
+                      style={{
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: '18px',
+                        background: accent,
+                        color: '#0f1f38',
+                        backgroundSize: '200% 200%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gridRow: 'span 2',
+                      }}
+                    >
+                      <Icon size={24} />
+                    </div>
+                    <h4 style={{ fontSize: '1.3rem', color: 'var(--text-dark)', marginBottom: '2px' }}>{title}</h4>
+                    <p style={{ color: '#0b7285', fontSize: '0.9rem', fontWeight: 600, marginBottom: 0 }}>{tagline}</p>
+                    <div style={{ gridColumn: '2 / -1', gridRow: 'span 1' }}>
+                      <p style={{ color: 'var(--text-muted)', marginBottom: 0, fontSize: '0.95rem' }}>{description}</p>
+                    </div>
                   </div>
-                  <h4 style={{ fontSize: '1.3rem', color: 'var(--text-dark)', marginBottom: '8px' }}>{title}</h4>
-                  <p style={{ color: '#0b7285', fontSize: '0.9rem', fontWeight: 600, marginBottom: '12px' }}>{tagline}</p>
-                  <p style={{ color: 'var(--text-muted)', marginBottom: 0, fontSize: '0.95rem' }}>{description}</p>
                 </div>
               </div>
             ))}
@@ -808,11 +767,11 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
         <div className="container position-relative">
           <div className="row g-5 align-items-center justify-content-between">
             <div className="col-lg-5">
-              <div className="section-title" style={{ color: '#ffffff' }}>
+              <div className="section-title text-center" style={{ color: '#ffffff' }}>
                 <h2 style={{ color: '#ffffff', textShadow: '0 12px 28px rgba(0, 0, 0, 0.45)' }}>
-                  Let’s Build Intelligent Solutions Together
+                  Let’s Build AI Intelligent Solutions Together
                 </h2>
-                <p style={{ color: 'rgba(255,255,255,0.8)' }}>
+                <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem' }}>
                   Whether you’re an accounting firm, marketing agency, or technology integrator, MultipleAI provides the AI capability,
                   infrastructure, and ongoing support. You keep the client and the brand.
                 </p>
@@ -822,6 +781,7 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
                     flexWrap: 'wrap',
                     gap: '12px',
                     marginTop: '28px',
+                    justifyContent: 'center',
                   }}
                 >
                   {['WHITE LABEL AI', 'COMPLIANCE READY', 'DEDICATED PARTNER SUCCESS'].map((tag) => (
@@ -856,27 +816,35 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
             </div>
 
             <div className="col-lg-7">
-              <form className="glass-card glass-card--flush glass-card--static p-4 p-lg-5 shadow-sm" style={{ borderRadius: '28px' }}>
-                <div className="row g-3">
+              <form
+                className="glass-card glass-card--flush glass-card--static p-4 p-lg-5 shadow-sm contact-form"
+                style={{
+                  borderRadius: '28px',
+                  background: '#ffffff',
+                  border: '1px solid rgba(0, 26, 51, 0.08)',
+                  boxShadow: '0 25px 70px rgba(0, 26, 51, 0.18)',
+                }}
+              >
+                <div className="row gy-4 gx-4">
                   <div className="col-md-6">
-                    <label htmlFor="contact-name" className="form-label fw-semibold">Name</label>
-                    <input type="text" id="contact-name" name="name" className="form-control" placeholder="Jane Smith" />
+                    <label htmlFor="contact-name" className="form-label fw-semibold" style={formLabelStyle}>Name</label>
+                    <input type="text" id="contact-name" name="name" className="form-control" placeholder="Jane Smith" style={formInputStyle} />
                   </div>
                   <div className="col-md-6">
-                    <label htmlFor="contact-organisation" className="form-label fw-semibold">Organisation</label>
-                    <input type="text" id="contact-organisation" name="organisation" className="form-control" placeholder="Your Company" />
+                    <label htmlFor="contact-organisation" className="form-label fw-semibold" style={formLabelStyle}>Organisation</label>
+                    <input type="text" id="contact-organisation" name="organisation" className="form-control" placeholder="Your Company" style={formInputStyle} />
                   </div>
                   <div className="col-md-6">
-                    <label htmlFor="contact-email" className="form-label fw-semibold">Email</label>
-                    <input type="email" id="contact-email" name="email" className="form-control" placeholder="you@company.com" />
+                    <label htmlFor="contact-email" className="form-label fw-semibold" style={formLabelStyle}>Email</label>
+                    <input type="email" id="contact-email" name="email" className="form-control" placeholder="you@company.com" style={formInputStyle} />
                   </div>
                   <div className="col-md-6">
-                    <label htmlFor="contact-phone" className="form-label fw-semibold">Phone</label>
-                    <input type="tel" id="contact-phone" name="phone" className="form-control" placeholder="+61 400 000 000" />
+                    <label htmlFor="contact-phone" className="form-label fw-semibold" style={formLabelStyle}>Phone</label>
+                    <input type="tel" id="contact-phone" name="phone" className="form-control" placeholder="+61 400 000 000" style={formInputStyle} />
                   </div>
                   <div className="col-12">
-                    <label htmlFor="contact-interest" className="form-label fw-semibold">Area of Interest</label>
-                    <select id="contact-interest" name="interest" className="form-select">
+                    <label htmlFor="contact-interest" className="form-label fw-semibold" style={formLabelStyle}>Area of Interest</label>
+                    <select id="contact-interest" name="interest" className="form-select" style={{ ...formInputStyle, background: 'rgba(255, 255, 255, 0.98)' }}>
                       <option value="">Select an option</option>
                       <option value="consulting">Consulting</option>
                       <option value="bespoke-agent">Bespoke Agent</option>
@@ -887,10 +855,17 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
                     </select>
                   </div>
                   <div className="col-12">
-                    <label htmlFor="contact-message" className="form-label fw-semibold">Message</label>
-                    <textarea id="contact-message" name="message" className="form-control" rows={4} placeholder="Tell us about your goals..."></textarea>
+                    <label htmlFor="contact-message" className="form-label fw-semibold" style={formLabelStyle}>Message</label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      className="form-control"
+                      rows={4}
+                      placeholder="Tell us about your goals..."
+                      style={{ ...formInputStyle, minHeight: '140px' }}
+                    ></textarea>
                   </div>
-                  <div className="col-12 d-flex justify-content-md-end">
+                  <div className="col-12 d-flex justify-content-center">
                     <button
                       type="submit"
                       className="btn btn-dark btn-lg px-5 py-3 rounded-pill fw-semibold"
@@ -974,7 +949,6 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
             <Link
               href="/services"
               className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ borderColor: 'rgba(255,255,255,0.45)', color: 'white' }}
             >
               Explore Capabilities
             </Link>
@@ -983,6 +957,13 @@ Our white-label model lets you deliver AI products instantly. We provide the tec
       </section>
       
       <Footer />
+
+      <style jsx>{`
+        .contact-form ::placeholder {
+          color: #0A2A6A;
+          opacity: 0.85;
+        }
+      `}</style>
     </>
   );
 }

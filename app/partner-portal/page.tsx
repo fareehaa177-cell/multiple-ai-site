@@ -10,6 +10,14 @@ import {
   Form,
   Row,
 } from 'react-bootstrap';
+import {
+  FaRocket,
+  FaCogs,
+  FaChartLine,
+  FaShieldAlt,
+  FaHandshake,
+  FaStar,
+} from 'react-icons/fa';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
@@ -18,16 +26,25 @@ const capabilityCards = [
     title: 'Launch Kits & Branding Assets',
     description:
       'Download proposals, client decks, brand assets, and onboarding templates to accelerate go-to-market.',
+    icon: FaRocket,
   },
   {
     title: 'Deployment Control',
     description:
       'Manage AI automations, view pipeline status, and request enhancements directly from the delivery squad.',
+    icon: FaCogs,
   },
   {
     title: 'Performance Insights',
     description:
       'Track adoption, ROI, and campaign outcomes with dashboards built for technology partners.',
+    icon: FaChartLine,
+  },
+  {
+    title: 'Compliance & Security Hub',
+    description:
+      'Stay audit-ready with live compliance checklists, security updates, and auto-generated risk briefings for clients.',
+    icon: FaShieldAlt,
   },
 ];
 
@@ -141,7 +158,7 @@ export default function PartnerPortal() {
                 }}
               >
                 <Card.Body className="text-center text-white py-4 px-4">
-                  <h5 className="fw-semibold">Trusted by Partners Across ANZ</h5>
+                  <h5 className="fw-semibold">Trusted by Partners Across Australia</h5>
                   <p className="mb-0" style={{ color: 'rgba(255,255,255,0.85)' }}>
                     400+ automations orchestrated through the Multiple AI partner network.
                   </p>
@@ -163,8 +180,9 @@ export default function PartnerPortal() {
                 className="shadow-lg border-0 h-100"
                 style={{
                   borderRadius: 26,
-                  border: '1px solid rgba(16, 42, 67, 0.08)',
-                  boxShadow: '0 28px 48px rgba(0, 26, 60, 0.08)',
+                  border: '1px solid rgba(16, 42, 67, 0.12)',
+                  boxShadow: '0 30px 60px rgba(13, 42, 92, 0.18)',
+                  background: 'linear-gradient(145deg, #ffffff 0%, #eff6ff 100%)',
                 }}
               >
                 <Card.Body className="p-4 p-lg-5">
@@ -173,7 +191,7 @@ export default function PartnerPortal() {
                       Partner Login
                     </Badge>
                     <h3 className="mt-3 mb-0" style={{ color: 'var(--primary-color)' }}>
-                      Secure Access
+                      Join Us
                     </h3>
                     <p className="text-muted mt-2 mb-4">
                       Sign in with the credentials provided by your Partner Manager to access your
@@ -200,13 +218,24 @@ export default function PartnerPortal() {
                         size="lg"
                       />
                       <div className="text-end mt-2">
-                        <Button variant="link" className="p-0" style={{ color: 'var(--primary-color)' }}>
+                        <Button variant="link" className="p-0" style={{ color: '#003f7d', fontWeight: 600 }}>
                           Forgot password?
                         </Button>
                       </div>
                     </Form.Group>
 
-                    <Button type="submit" size="lg" className="btn-primary py-3">
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="py-3"
+                      style={{
+                        background: 'linear-gradient(135deg, #003f7d, #00bcd4)',
+                        border: 'none',
+                        fontWeight: 600,
+                        borderRadius: 999,
+                        letterSpacing: '0.04em',
+                      }}
+                    >
                       Sign In
                     </Button>
                   </Form>
@@ -237,14 +266,25 @@ export default function PartnerPortal() {
                       }}
                     >
                       <Card.Body className="p-4">
-                        <Badge
-                          bg="secondary"
-                          className="mb-3"
-                          style={{ background: '#eef2ff', color: 'var(--primary-color)' }}
-                        >
-                          Capability
-                        </Badge>
-                        <Card.Title style={{ color: 'var(--primary-color)' }}>{item.title}</Card.Title>
+                        <div className="d-flex align-items-center gap-3 mb-2">
+                          {item.icon && (
+                            <div
+                              style={{
+                                width: 46,
+                                height: 46,
+                                borderRadius: 14,
+                                background: 'rgba(0, 63, 125, 0.08)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: 'var(--primary-color)',
+                              }}
+                            >
+                              <item.icon size={20} />
+                            </div>
+                          )}
+                          <Card.Title style={{ color: 'var(--primary-color)', marginBottom: 0 }}>{item.title}</Card.Title>
+                        </div>
                         <Card.Text className="text-muted">{item.description}</Card.Text>
                       </Card.Body>
                     </Card>
@@ -306,7 +346,7 @@ export default function PartnerPortal() {
             <Col lg={7}>
               <Row className="g-3">
                 {[
-                  'Dedicated Partner Success teams across ANZ',
+                  'Dedicated Partner Success teams across Australia',
                   'End-to-end security with PolyVault and ISO-aligned controls',
                   'Shared roadmap planning and quarterly innovation briefings',
                   'Access to beta features, co-marketing, and deal registration',
