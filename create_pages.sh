@@ -65,7 +65,7 @@ export default function Services() {
           <div className="card mb-5">
             <div className="row align-items-center">
               <div className="col-md-2">
-                <div className="card-icon" style={{ width: '80px', height: '80px', background: 'linear-gradient(135deg, #FFCC00 0%, #FFD700 100%)' }}>
+                <div className="card-icon" style={{ width: '80px', height: '80px', background: 'linear-gradient(135deg, #00bcd4 0%, #26c6da 100%)' }}>
                   <FaChartLine size={40} />
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default function AIAgents() {
       icon: <FaCalculator />,
       examples: 'Accounts Agent, Cashflow Agent',
       description: 'Tracks payments, sends reminders, and generates financial reports.',
-      gradient: 'linear-gradient(135deg, #FFCC00 0%, #FFD700 100%)'
+      gradient: 'linear-gradient(135deg, #00bcd4 0%, #26c6da 100%)'
     },
     {
       category: 'Creative & Content',
@@ -402,7 +402,7 @@ export default function Resources() {
 
             <div className="col-lg-4">
               <div className="card h-100 text-center">
-                <div className="card-icon mx-auto" style={{ background: 'linear-gradient(135deg, #FFCC00 0%, #FFD700 100%)' }}>
+                <div className="card-icon mx-auto" style={{ background: 'linear-gradient(135deg, #00bcd4 0%, #26c6da 100%)' }}>
                   <FaFileDownload />
                 </div>
                 <h3 className="card-title">eBooks</h3>

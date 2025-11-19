@@ -129,7 +129,11 @@ export default function Home() {
                 <Link
                   href="/ai-agents"
                   className="btn btn-light btn-lg px-4 py-3 rounded-pill fw-semibold"
-                  style={{ background: '#667eea', color: '#fff', border: 'none' }}
+                  style={{
+                    background: 'linear-gradient(135deg, #00d0dd, #00a5c5)',
+                    color: '#00263f',
+                    border: 'none',
+                  }}
                 >
                   Explore Our Agents
                 </Link>
@@ -158,6 +162,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Trusted By */}
+      <section
+        className="section"
+        style={{
+          background: 'linear-gradient(135deg, #f4fbfd 0%, #e5f9ff 55%, #ffffff 100%)',
+          padding: '70px 0',
+        }}
+      >
+        <div className="container">
+          <div className="text-center mb-4">
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                borderRadius: '999px',
+                background: 'rgba(0, 188, 212, 0.18)',
+                color: '#006d77',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                fontSize: '0.72rem',
+              }}
+            >
+              Trusted By Leading Institutions
+            </span>
+            <h3 style={{ marginTop: '14px', color: '#0f1f38', fontWeight: 700 }}>Universities, Accelerators & Enterprise Partners</h3>
+          </div>
+          <div className="row g-4 align-items-center justify-content-center">
+            {[
+              { name: 'UWA', logo: '/images/image3.png' },
+              { name: 'Curtin University', logo: '/images/image4.png' },
+              { name: 'Perth Partners', logo: '/images/image5.jpeg' },
+              { name: 'Federal Grants', logo: '/images/image6.png' },
+              { name: 'Innovate WA', logo: '/images/image7.png' },
+              { name: 'Tech Hub', logo: '/images/image8.png' },
+            ].map(({ name, logo }) => (
+              <div key={name} className="col-6 col-sm-4 col-lg-2">
+                <div
+                  style={{
+                    background: 'white',
+                    borderRadius: '18px',
+                    padding: '18px 20px',
+                    border: '1px solid rgba(0, 188, 212, 0.16)',
+                    boxShadow: '0 12px 26px rgba(15, 31, 56, 0.08)',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Image src={logo} alt={name} width={120} height={60} style={{ maxWidth: '100%', height: 'auto' }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Intro Video */}
       <section
         className="section"
@@ -174,18 +235,18 @@ export default function Home() {
                   display: 'inline-block',
                   padding: '8px 16px',
                   borderRadius: '999px',
-                  background: 'rgba(0, 63, 125, 0.08)',
-                  color: '#003f7d',
+                  background: 'rgba(0, 188, 212, 0.16)',
+                  color: '#006d77',
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
                   fontSize: '0.78rem',
                   marginBottom: '16px',
                 }}
               >
-                See the Platform Live
+                What We Do
               </span>
               <h2 style={{ fontSize: '2.4rem', fontWeight: 700, color: '#132f4c', marginBottom: '12px' }}>
-                What We Do
+                Empowering Businesses Through AI Solutions
               </h2>
               <p style={{ color: '#486581', fontSize: '1.05rem', lineHeight: 1.6 }}>
                 MultipleAI Solutions empowers accounting firms, marketing agencies, and consultants to offer AI-driven services without hiring internal developers.
@@ -234,7 +295,8 @@ export default function Home() {
       <section
         className="section"
         style={{
-          background: 'radial-gradient(circle at top left, rgba(0, 63, 125, 0.18), transparent 55%), #ffffff',
+          background:
+            'radial-gradient(circle at top left, rgba(0, 188, 212, 0.18), transparent 55%), linear-gradient(135deg, #ffffff 0%, #f3fdff 60%, #ffffff 100%)',
         }}
       >
         <div className="container">
@@ -255,7 +317,7 @@ export default function Home() {
             </span>
             <h2 style={{ fontSize: '2.4rem', fontWeight: 700, color: '#0f1f38', marginTop: '16px' }}>How It Works</h2>
             <p style={{ color: 'var(--text-muted)', maxWidth: '680px', margin: '12px auto 0' }}>
-              Strategy meets execution. We guide your team from discovery to scale with ready-made playbooks, technical expertise, and ongoing optimization.
+              Strategy meets execution. We guide your team from discovery to scale with ready-made playbooks, technical expertise, and ongoing optimisation.
             </p>
           </div>
           
@@ -302,22 +364,22 @@ export default function Home() {
                       filter: 'blur(60px)',
                     }}
                   />
-                  <div
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '64px',
-                      height: '64px',
-                      borderRadius: '18px',
-                      background: 'linear-gradient(135deg, #003f7d, #00bcd4)',
-                      color: 'white',
-                      fontWeight: 700,
-                      fontSize: '1.3rem',
-                      marginBottom: '26px',
-                      letterSpacing: '0.05em',
-                    }}
-                  >
+                    <div
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '64px',
+                        height: '64px',
+                        borderRadius: '18px',
+                        background: 'linear-gradient(135deg, #00d0dd, #00a5c5)',
+                        color: '#00263f',
+                        fontWeight: 700,
+                        fontSize: '1.3rem',
+                        marginBottom: '26px',
+                        letterSpacing: '0.05em',
+                      }}
+                    >
                     {step}
                   </div>
                   <h4 style={{ fontSize: '1.4rem', color: '#0f1f38', marginBottom: '14px' }}>{title}</h4>
@@ -424,7 +486,7 @@ export default function Home() {
               },
               {
                 title: 'Dedicated Support',
-                copy: 'Expert partner success team providing ongoing guidance, optimization, and strategic advice to ensure your success.',
+                copy: 'Expert partner success team providing ongoing guidance, optimisation, and strategic advice to ensure your success.',
                 Icon: FaUsers,
                 accent: 'linear-gradient(135deg, rgba(0,188,212,0.3), rgba(102,126,234,0.25))',
               },
@@ -744,12 +806,12 @@ export default function Home() {
 
       {/* Contact / Partner Form */}
       <section
-        className="section"
         style={{
           background: 'linear-gradient(135deg, #003366 0%, #005599 60%, #00bcd4 100%)',
           color: 'white',
           position: 'relative',
           overflow: 'hidden',
+          padding: '70px 0',
         }}
       >
         <div
@@ -765,14 +827,92 @@ export default function Home() {
           }}
         />
         <div className="container position-relative">
-          <div className="row g-5 align-items-center justify-content-between">
-            <div className="col-lg-5">
-              <div className="section-title text-center" style={{ color: '#ffffff' }}>
-                <h2 style={{ color: '#ffffff', textShadow: '0 12px 28px rgba(0, 0, 0, 0.45)' }}>
-                  Let’s Build AI Intelligent Solutions Together
+          <div className="row g-4 align-items-stretch">
+            <div className="col-lg-6 d-flex">
+              <div className="section-title text-center d-flex flex-column justify-content-center" style={{ color: '#ffffff', width: '100%', padding: '0', margin: '0' }}>
+                {/* AI Icon with Animation */}
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginBottom: '32px',
+                    position: 'relative',
+                  }}
+                >
+                  <div
+                    style={{
+                      position: 'relative',
+                      width: '180px',
+                      height: '180px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    {/* Glow Effect */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '50%',
+                        background: 'radial-gradient(circle, rgba(0, 188, 212, 0.4) 0%, rgba(0, 63, 125, 0.2) 50%, transparent 70%)',
+                        animation: 'pulse 3s ease-in-out infinite',
+                        filter: 'blur(30px)',
+                      }}
+                    />
+                    {/* Circuit Pattern Background */}
+                    <svg
+                      width="180"
+                      height="180"
+                      viewBox="0 0 180 180"
+                      style={{
+                        position: 'absolute',
+                        opacity: 0.3,
+                        animation: 'rotate 20s linear infinite',
+                      }}
+                    >
+                      <defs>
+                        <linearGradient id="circuitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#00bcd4" stopOpacity="0.6" />
+                          <stop offset="100%" stopColor="#003f7d" stopOpacity="0.4" />
+                        </linearGradient>
+                      </defs>
+                      <path
+                        d="M30 30 L60 30 L60 60 L90 60 L90 30 L120 30 L120 90 L150 90 M30 90 L60 90 M30 150 L60 150 L60 120 L90 120 L90 150 L120 150"
+                        stroke="url(#circuitGradient)"
+                        strokeWidth="3"
+                        fill="none"
+                        strokeLinecap="round"
+                      />
+                      <circle cx="60" cy="60" r="4" fill="#00bcd4" opacity="0.6" />
+                      <circle cx="90" cy="120" r="4" fill="#00bcd4" opacity="0.6" />
+                      <circle cx="120" cy="90" r="4" fill="#00bcd4" opacity="0.6" />
+                    </svg>
+                    {/* Robot Icon */}
+                    <div
+                      style={{
+                        position: 'relative',
+                        zIndex: 2,
+                        animation: 'float 4s ease-in-out infinite',
+                      }}
+                    >
+                      <FaRobot
+                        size={100}
+                        style={{
+                          color: 'white',
+                          filter: 'drop-shadow(0 0 25px rgba(0, 188, 212, 0.7)) drop-shadow(0 0 50px rgba(0, 63, 125, 0.5))',
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <h2 style={{ color: '#ffffff', textShadow: '0 12px 28px rgba(0, 0, 0, 0.45)', marginBottom: '16px', marginTop: '0' }}>
+                  Let's Build AI Intelligent Solutions Together
                 </h2>
-                <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem' }}>
-                  Whether you’re an accounting firm, marketing agency, or technology integrator, MultipleAI provides the AI capability,
+                <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem', marginBottom: '24px' }}>
+                  Whether you're an accounting firm, marketing agency, or technology integrator, MultipleAI provides the AI capability,
                   infrastructure, and ongoing support. You keep the client and the brand.
                 </p>
                 <div
@@ -780,7 +920,7 @@ export default function Home() {
                     display: 'flex',
                     flexWrap: 'wrap',
                     gap: '12px',
-                    marginTop: '28px',
+                    marginTop: '0',
                     justifyContent: 'center',
                   }}
                 >
@@ -815,17 +955,19 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-7">
+            <div className="col-lg-6 d-flex">
               <form
-                className="glass-card glass-card--flush glass-card--static p-4 p-lg-5 shadow-sm contact-form"
+                className="glass-card glass-card--flush glass-card--static p-4 p-lg-5 shadow-sm contact-form d-flex flex-column"
                 style={{
                   borderRadius: '28px',
                   background: '#ffffff',
                   border: '1px solid rgba(0, 26, 51, 0.08)',
                   boxShadow: '0 25px 70px rgba(0, 26, 51, 0.18)',
+                  width: '100%',
+                  margin: 0,
                 }}
               >
-                <div className="row gy-4 gx-4">
+                <div className="row gy-4 gx-4 flex-grow-1">
                   <div className="col-md-6">
                     <label htmlFor="contact-name" className="form-label fw-semibold" style={formLabelStyle}>Name</label>
                     <input type="text" id="contact-name" name="name" className="form-control" placeholder="Jane Smith" style={formInputStyle} />
@@ -865,7 +1007,7 @@ export default function Home() {
                       style={{ ...formInputStyle, minHeight: '140px' }}
                     ></textarea>
                   </div>
-                  <div className="col-12 d-flex justify-content-center">
+                  <div className="col-12 d-flex justify-content-center mt-auto">
                     <button
                       type="submit"
                       className="btn btn-dark btn-lg px-5 py-3 rounded-pill fw-semibold"
@@ -962,6 +1104,35 @@ export default function Home() {
         .contact-form ::placeholder {
           color: #0A2A6A;
           opacity: 0.85;
+        }
+        
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 0.6;
+          }
+          50% {
+            transform: scale(1.1);
+            opacity: 0.8;
+          }
+        }
+        
+        @keyframes rotate {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
         }
       `}</style>
     </>

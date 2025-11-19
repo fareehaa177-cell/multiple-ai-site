@@ -181,7 +181,11 @@ export default function AIAgents() {
       
       <section
         style={{
-          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
+          backgroundImage:
+            "linear-gradient(135deg, rgba(0, 19, 38, 0.92) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/hero image.jpeg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           color: 'white',
           padding: '110px 0 90px',
           position: 'relative',

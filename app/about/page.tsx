@@ -6,31 +6,80 @@ import Footer from '../../components/Footer';
 
 const teamMembers = [
   {
-    name: 'Amelia Hart',
-    role: 'Partner Enablement Lead',
-    photo: '/images/image14.jpeg',
+    name: 'Ariful Islam',
+    role: 'Chief Technology Officer',
+    photo: '/images/about us page/ariful.png',
   },
   {
-    name: 'Liam Chen',
-    role: 'Head of Applied AI',
-    photo: '/images/image15.jpeg',
+    name: 'Meaghan',
+    role: 'Chief Marketing Officer',
+    photo: '/images/about us page/Meaghan.png',
   },
   {
-    name: 'Priya Nair',
-    role: 'Director of Compliance',
-    photo: '/images/image16.png',
+    name: 'Purna Dhakshika Kodituwakku',
+    role: 'Business Analyst',
+    photo: '/images/about us page/Purna Dhakshika Kodituwakku.png',
   },
   {
-    name: 'Marcus Rivera',
-    role: 'Solutions Architect',
-    photo: '/images/image17.jpeg',
+    name: 'Jan Jemi Gerwayne Tiu',
+    role: 'CTO (AI)',
+    photo: '/images/about us page/Jan Jemi Gerwayne Tiu.png',
   },
 ];
 
+type LeadershipBio = {
+  name: string;
+  role: string;
+  photo: string;
+  bio: string;
+  note?: string;
+  accent: string;
+};
+
 const leadershipTeam = [
-  { name: 'Ali Shahroz', role: 'Founder / CEO' },
-  { name: 'Jarrod Freer', role: 'Co-Founder' },
-  { name: 'Ron Forlee', role: 'Chairman' },
+  { name: 'Ali Shahroz', role: 'Founder / CEO', photo: '/images/about us page/Ali Shahroz.png' },
+  { name: 'Jarrod Freer', role: 'Co-Founder', photo: '/images/about us page/Jarrod Freer.png' },
+  { name: 'Ron Forlee', role: 'Chairman', photo: '/images/about us page/ron.png' },
+  { name: 'Terry Smith', role: 'CFO', photo: '/images/about us page/Terry Smith (CFO).png' },
+  { name: 'Sundas Shuja', role: 'Chief AI Manager', photo: '/images/about us page/Sundas Shuja.png' },
+];
+
+const leadershipBios: LeadershipBio[] = [
+  {
+    name: 'Ron Forlee',
+    role: 'Chairman & Co-Founder',
+    photo: '/images/about us page/ron.png',
+    bio: `Ron Forlee is a seasoned entrepreneur, architect, and property developer with over 45 years of experience delivering major projects and guiding innovative ventures across Australia and internationally. As Chairman and Co-Founder of MultipleAI Solutions, Ron provides strategic leadership, commercial insight, and a strong vision for ethical, practical AI adoption. His background in development management, education, and business innovation helps steer MultipleAI’s national growth while nurturing the next generation of AI and automation talent.`,
+    accent: '#00bcd4',
+  },
+  {
+    name: 'Terry Smith',
+    role: 'Chief Financial Officer',
+    photo: '/images/about us page/Terry Smith (CFO).png',
+    bio: `Terry Smith is a Chartered Accountant with over 25 years of experience, including roles at Deloitte and running his own accounting practice. He has managed the financial administration of more than 20 property developments across Western Australia. As CFO of MultipleAI Solutions, Terry oversees financial strategy, forecasting, and partner economics, ensuring strong governance and supporting the company’s national growth.`,
+    accent: '#5e5ce6',
+  },
+  {
+    name: 'Ali Shahroz',
+    role: 'Founder & CEO',
+    photo: '/images/about us page/Ali Shahroz.png',
+    bio: `Ali Shahroz founded MultipleAI Solutions after leading automation, analytics, and innovation programs for professional service firms across Australia. He blends product vision with hands-on delivery, partnering with accounting, marketing, and consulting leaders to stand up white-label AI services that scale. Ali guides the company’s solution roadmap, culture, and national expansion while remaining actively involved in key client transformations.`,
+    accent: '#f97316',
+  },
+  {
+    name: 'Jarrod Freer',
+    role: 'Co-Founder & COO',
+    photo: '/images/about us page/Jarrod Freer.png',
+    bio: `Jarrod Freer brings two decades of operational leadership across technology, finance, and growth-stage ventures. At MultipleAI Solutions he owns delivery operations, compliance, and partner onboarding, ensuring every engagement launches with clear processes, measurable outcomes, and premium service. Jarrod collaborates closely with partners to translate strategy into executable AI programs.`,
+    accent: '#9333ea',
+  },
+  {
+    name: 'Sundas Shuja',
+    role: 'Chief AI Manager',
+    photo: '/images/about us page/Sundas Shuja.png',
+    bio: `Sundas Shuja leads MultipleAI’s AI delivery teams, combining a background in enterprise automation with deep experience in conversational design and agent training. She oversees solution quality, ethics, and optimisation frameworks, helping partners deploy AI agents that feel human yet remain secure and compliant. Sundas also mentors the company’s Graduate Talent Hub to grow emerging AI specialists.`,
+    accent: '#00c49a',
+  },
 ];
 
 const leadParagraphStyle: CSSProperties = {
@@ -53,9 +102,12 @@ export default function About() {
       {/* Hero */}
       <section
         style={{
-          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
+          backgroundImage:
+            "linear-gradient(135deg, rgba(0, 19, 38, 0.92) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/hero image.jpeg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
           color: 'white',
-          padding: '120px 0 100px',
+          padding: '100px 0 80px',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -140,7 +192,7 @@ export default function About() {
         <div className="container position-relative">
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
-              <div className="glass-card" style={{ padding: '40px' }}>
+              <div className="glass-card" style={{ padding: '32px', borderRadius: '28px' }}>
                 <span
                   style={{
                     display: 'inline-block',
@@ -158,12 +210,10 @@ export default function About() {
                 </span>
                 <h2 style={{ fontSize: '2.4rem', color: 'var(--text-dark)', marginBottom: '16px' }}>Our Mission</h2>
                 <p style={{ ...leadParagraphStyle, marginBottom: '18px' }}>
-                  MultipleAI was founded to make applied AI accessible to every business leader, not just the tech giants.
+                  Making applied AI accessible to every business leader, not just tech giants.
                 </p>
                 <p style={{ ...bodyParagraphStyle, marginBottom: '18px' }}>
-                  We empower accountants, marketers, consultants, and integrators with ready-to-deploy AI tools they can deliver under
-                  their own brand. Our lean core team, specialist contractors, and graduate developers create a blended model that
-                  scales without sacrificing expertise or compliance.
+                  We empower accountants, marketers, and consultants with ready-to-deploy AI tools under their own brand. Our blended team model scales without sacrificing expertise or compliance.
                 </p>
                 <div
                   style={{
@@ -201,8 +251,8 @@ export default function About() {
                 }}
               >
                 <Image
-                  src="/images/image8.png"
-                  alt="Partners discussing AI mission"
+                  src="/images/about us page/our mission.jpg"
+                  alt="Our Mission"
                   width={660}
                   height={440}
                   style={{ width: '100%', height: 'auto' }}
@@ -240,101 +290,30 @@ export default function About() {
               </span>
               <h2 style={{ fontSize: '2.4rem', color: '#0f1f38' }}>Our Vision</h2>
               <p style={{ ...leadParagraphStyle, marginBottom: '18px' }}>
-                We believe every professional services firm deserves enterprise-grade automation, insight, and creativity, without sacrificing
-                human trust.
+                Every professional services firm deserves enterprise-grade automation, insight, and creativity without sacrificing human trust.
               </p>
               <p style={{ ...bodyParagraphStyle, marginBottom: '16px' }}>
-                From CFO dashboards to always-on marketing copilots, we design solutions that elevate decision-making and free teams to focus on the strategic work that clients value most.
+                From CFO dashboards to marketing copilots, we design solutions that elevate decision-making and free teams to focus on strategic work.
               </p>
               <p style={{ ...bodyParagraphStyle, marginBottom: 0 }}>
-                The result: faster innovation cycles, stronger customer outcomes, and new value streams for our partners and their clients.
+                Result: faster innovation, stronger customer outcomes, and new value streams for partners and clients.
               </p>
             </div>
             <div className="col-lg-6">
-              <div className="row g-3">
-                <div className="col-12">
-                  <div
-                    style={{
-                      borderRadius: '24px',
-                      overflow: 'hidden',
-                      boxShadow: '0 28px 48px rgba(0, 26, 60, 0.18)',
-                    }}
-                  >
-                    <Image
-                      src="/images/image9.png"
-                      alt="Strategic vision mapping session"
-                      width={660}
-                      height={420}
-                      style={{ width: '100%', height: 'auto' }}
-                    />
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div
-                    style={{
-                      borderRadius: '26px',
-                      background: '#ffffff',
-                      boxShadow: '0 25px 60px rgba(0, 63, 125, 0.12)',
-                      padding: '30px 28px',
-                      height: '100%',
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '18px',
-                        background: 'rgba(0, 63, 125, 0.08)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#003f7d',
-                        fontWeight: 700,
-                        fontSize: '1.2rem',
-                        marginBottom: '16px',
-                      }}
-                    >
-                      AI
-                    </div>
-                    <p style={{ fontWeight: 700, color: '#0f1f38', marginBottom: '8px' }}>Human + Machine</p>
-                    <p style={{ ...bodyParagraphStyle, marginBottom: 0, fontSize: '0.92rem' }}>
-                      We blend consultants and copilots to deliver trusted automation journeys.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div
-                    style={{
-                      borderRadius: '26px',
-                      background: '#ffffff',
-                      boxShadow: '0 25px 60px rgba(0, 63, 125, 0.12)',
-                      padding: '30px 28px',
-                      height: '100%',
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '18px',
-                        background: 'rgba(0, 188, 212, 0.12)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#00a0c6',
-                        fontWeight: 700,
-                        fontSize: '1.2rem',
-                        marginBottom: '16px',
-                      }}
-                    >
-                      ⚡
-                    </div>
-                    <p style={{ fontWeight: 700, color: '#0f1f38', marginBottom: '8px' }}>Innovation Sprints</p>
-                    <p style={{ ...bodyParagraphStyle, marginBottom: 0, fontSize: '0.92rem' }}>
-                      Quarterly roadmaps keep partners ahead with measurable outcomes.
-                    </p>
-                  </div>
-                </div>
+              <div
+                style={{
+                  borderRadius: '30px',
+                  overflow: 'hidden',
+                  boxShadow: '0 32px 60px rgba(0, 26, 60, 0.18)',
+                }}
+              >
+                <Image
+                  src="/images/about us page/our vission.jpeg"
+                  alt="Our Vision"
+                  width={660}
+                  height={420}
+                  style={{ width: '100%', height: 'auto' }}
+                />
               </div>
             </div>
           </div>
@@ -359,8 +338,8 @@ export default function About() {
                 }}
               >
                 <Image
-                  src="/images/image13.png"
-                  alt="Secure modular AI solutions portfolio"
+                  src="/images/about us page/Our Approach.jpg"
+                  alt="Our Approach"
                   width={660}
                   height={440}
                   style={{ width: '100%', height: 'auto' }}
@@ -385,32 +364,32 @@ export default function About() {
               </span>
               <h2 style={{ fontSize: '2.35rem', color: 'var(--text-dark)', marginBottom: '16px' }}>Our Approach</h2>
               <p style={{ ...leadParagraphStyle, marginBottom: '16px' }}>
-                Secure, modular, and ethical by design. Every deployment follows a structured blueprint balancing compliance, scalability, and speed.
+                Enterprise-grade AI without the complexity. Secure, scalable solutions that integrate seamlessly into your workflows.
               </p>
               <p style={{ ...bodyParagraphStyle, marginBottom: '24px' }}>
-                We combine battle-tested AI frameworks with custom integrations so partners can launch quickly, then evolve confidently as their service lines grow.
+                Our methodology combines security standards, flexible architecture, and ethical AI practices. From deployment to optimisation, we ensure your AI services grow while maintaining trust and compliance.
               </p>
               <div className="row g-3">
                 {[
                   {
-                    icon: '🔐',
-                    title: 'Secure by Design',
-                    copy: 'ISO-aligned controls, PolyVault encryption, and Australian data residency.',
+                    icon: '🚀',
+                    title: 'Comprehensive AI Service Portfolio',
+                    copy: 'AI receptionist agents, automation solutions, and white-label deployments. Ready-made and bespoke solutions.',
                   },
                   {
                     icon: '🧩',
                     title: 'Modular Stack',
-                    copy: 'Composable components that slot into your stack via secure APIs.',
+                    copy: 'Flexible, API-first architecture that integrates with your existing tools. Build custom solutions.',
                   },
                   {
                     icon: '⚖️',
                     title: 'Ethical Frameworks',
-                    copy: 'Bias testing and governance guardrails keep every agent trustworthy.',
+                    copy: 'Bias detection, transparent governance, and continuous monitoring for fair AI operations.',
                   },
                   {
                     icon: '🤝',
                     title: 'Partner Enablement',
-                    copy: 'Dedicated squads, branded playbooks, and quarterly innovation sprints.',
+                    copy: 'Dedicated success teams, white-label resources, and workshops to launch and scale your AI services.',
                   },
                 ].map(({ icon, title, copy }) => (
                   <div className="col-md-6" key={title}>
@@ -445,6 +424,151 @@ export default function About() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Bios */}
+      <section
+        className="section"
+        style={{
+          background: 'linear-gradient(135deg, #ffffff 0%, #f3fbff 45%, #ffffff 100%)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: '-140px',
+            right: '-120px',
+            width: '320px',
+            height: '320px',
+            background: 'rgba(0, 188, 212, 0.18)',
+            filter: 'blur(120px)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '-160px',
+            left: '-100px',
+            width: '280px',
+            height: '280px',
+            background: 'rgba(102, 126, 234, 0.16)',
+            filter: 'blur(110px)',
+          }}
+        />
+        <div className="container position-relative">
+          <div className="text-center mb-5">
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                borderRadius: '999px',
+                background: 'rgba(0, 63, 125, 0.08)',
+                color: '#003f7d',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                fontSize: '0.75rem',
+              }}
+            >
+              Leadership Bios
+            </span>
+            <h2 style={{ fontSize: '2.3rem', color: 'var(--text-dark)', marginTop: '16px' }}>Experience That Powers Our Vision</h2>
+          </div>
+          <div className="row g-4 justify-content-center">
+            {leadershipBios.map(({ name, role, photo, bio, note, accent }) => (
+              <div className="col-lg-6" key={name}>
+                <div
+                  className="glass-card"
+                  style={{
+                    position: 'relative',
+                    padding: '32px',
+                    borderRadius: '30px',
+                    height: '100%',
+                    display: 'grid',
+                    gridTemplateColumns: 'minmax(140px, 160px) 1fr',
+                    gap: '24px',
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.98), rgba(232, 247, 255, 0.95))',
+                    border: `1px solid ${accent}1f`,
+                    boxShadow: '0 25px 50px rgba(15, 31, 56, 0.12)',
+                  }}
+                >
+                  <div style={{ position: 'absolute', inset: '12px', borderRadius: '26px', background: `${accent}12`, filter: 'blur(60px)' }} />
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div
+                      style={{
+                        width: '140px',
+                        height: '140px',
+                        borderRadius: '30px',
+                        padding: '6px',
+                        background: `linear-gradient(135deg, ${accent}, rgba(255,255,255,0.85))`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '0 18px 30px rgba(15, 31, 56, 0.18)',
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: '24px',
+                          overflow: 'hidden',
+                          background: '#ffffff',
+                        }}
+                      >
+                        {photo ? (
+                          <Image src={photo} alt={name} width={180} height={180} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        ) : (
+                          <div
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              color: '#0f1f38',
+                              fontWeight: 700,
+                              padding: '10px',
+                              textAlign: 'center',
+                            }}
+                          >
+                            {note ?? 'Image coming soon'}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <span
+                      style={{
+                        display: 'inline-block',
+                        padding: '6px 14px',
+                        borderRadius: '999px',
+                        background: `${accent}1f`,
+                        color: '#0b7285',
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        fontSize: '0.7rem',
+                        marginBottom: '10px',
+                      }}
+                    >
+                      Leadership
+                    </span>
+                    <h3 style={{ marginBottom: '4px', color: '#0f1f38', fontSize: '1.4rem' }}>{name}</h3>
+                    <p style={{ marginBottom: '14px', color: '#0b7285', fontWeight: 600 }}>{role}</p>
+                    <p style={{ ...bodyParagraphStyle, marginBottom: '8px' }}>{bio}</p>
+                    {note && (
+                      <small style={{ color: 'var(--text-muted)' }}>
+                        {note}
+                      </small>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -490,11 +614,11 @@ export default function About() {
             </p>
           </div>
           <div className="row g-4 justify-content-center">
-            {leadershipTeam.map(({ name, role }) => (
+            {leadershipTeam.map(({ name, role, photo }) => (
               <div key={name} className="col-md-4">
                 <div
                   style={{
-                    borderRadius: '24px',
+                    borderRadius: '28px',
                     background: '#ffffff',
                     border: '1px solid rgba(16, 42, 67, 0.08)',
                     boxShadow: '0 24px 48px rgba(15, 31, 56, 0.08)',
@@ -505,13 +629,24 @@ export default function About() {
                 >
                   <div
                     style={{
-                      width: '64px',
-                      height: '64px',
-                      borderRadius: '16px',
-                      margin: '0 auto 16px',
-                      background: 'linear-gradient(135deg, rgba(0,63,125,0.15), rgba(0,188,212,0.25))',
+                      width: '140px',
+                      height: '140px',
+                      margin: '0 auto 20px',
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      position: 'relative',
+                      border: '2px solid rgba(0, 63, 125, 0.1)',
+                      boxShadow: '0 12px 24px rgba(15, 31, 56, 0.12)',
                     }}
-                  />
+                  >
+                    <Image
+                      src={photo}
+                      alt={name}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 768px) 160px, 140px"
+                    />
+                  </div>
                   <h3 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '8px' }}>{name}</h3>
                   <p style={{ color: 'var(--text-muted)', marginBottom: 0 }}>{role}</p>
                 </div>
@@ -568,7 +703,10 @@ export default function About() {
           <div className="row g-4">
             {teamMembers.map(({ name, role, photo }) => (
               <div key={name} className="col-lg-3 col-md-6">
-                <div className="glass-card glass-card--dark" style={{ textAlign: 'center', padding: '28px 20px', height: '100%' }}>
+                <div
+                  className="glass-card glass-card--dark"
+                  style={{ textAlign: 'center', padding: '28px 20px', height: '100%', borderRadius: '28px' }}
+                >
                   <div
                     style={{
                       width: '140px',

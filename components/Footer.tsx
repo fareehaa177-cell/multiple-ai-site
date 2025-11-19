@@ -5,7 +5,6 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaBrain } from 'react-i
 const companyLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services' },
-  { href: '/projects', label: 'Projects' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -33,9 +32,9 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: 'linear-gradient(135deg, #001326 0%, #002c57 55%, #004f94 100%)',
+        background: 'linear-gradient(135deg, #001326 0%, #012d44 55%, #036977 100%)',
         color: 'white',
-        padding: '80px 0 30px',
+        padding: '90px 0 40px',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -54,33 +53,47 @@ export default function Footer() {
       <div className="container position-relative">
         <div className="row g-5 mb-5 align-items-start">
           <div className="col-lg-4 col-md-6">
-            <Link
-              href="/"
+            <div
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '14px',
-                textDecoration: 'none',
-                marginBottom: '18px',
+                borderRadius: '28px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                padding: '18px 22px',
+                marginBottom: '22px',
+                boxShadow: '0 18px 42px rgba(1, 20, 44, 0.35)',
+                backdropFilter: 'blur(6px)',
               }}
             >
-              <div
+              <Link
+                href="/"
                 style={{
-                  width: '72px',
-                  height: '72px',
-                  position: 'relative',
-                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '14px',
+                  textDecoration: 'none',
                 }}
               >
-                <Image
-                  src="/images/image.png"
-                  alt="MultipleAI Logo"
-                  fill
-                  style={{ objectFit: 'contain' }}
-                />
-              </div>
-              <h3 style={{ color: '#a29bfe', margin: 0, fontWeight: 700, fontSize: '1.95rem' }}>MultipleAI</h3>
-            </Link>
+                <div
+                  style={{
+                    width: '72px',
+                    height: '72px',
+                    position: 'relative',
+                    flexShrink: 0,
+                  }}
+                >
+                  <Image
+                    src="/images/image.png"
+                    alt="MultipleAI Logo"
+                    fill
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+                <div>
+                  <h3 style={{ color: '#7ef0ff', margin: 0, fontWeight: 700, fontSize: '2rem' }}>MultipleAI</h3>
+                  <small style={{ color: 'rgba(255,255,255,0.85)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>AI Partners</small>
+                </div>
+              </Link>
+            </div>
             <p style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.8 }}>
               Empowering professional service firms with white-label AI solutions. We build the automation, analytics, and creative services you keep the client relationship.
             </p>

@@ -51,7 +51,7 @@ const serviceItems = [
     copy: 'Utilise data-driven insights with models that predict trends, optimise processes, and support smarter decision-making.',
     features: [
       'Predictive analytics & forecasting',
-      'Optimization and recommendation engines',
+      'Optimisation and recommendation engines',
       'Model monitoring, tuning, and validation',
     ],
     icon: FaChartLine,
@@ -94,9 +94,13 @@ export default function Services() {
       {/* Hero */}
       <section
         style={{
-          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
+          backgroundImage:
+            "linear-gradient(135deg, rgba(0, 19, 38, 0.9) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/hero image.jpeg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           color: 'white',
-          padding: '120px 0 100px',
+          padding: '100px 0 80px',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -191,15 +195,15 @@ export default function Services() {
           </div>
 
           <div className="row g-4">
-            {serviceItems.map(({ id, title, copy, features, icon: Icon, accent, slug }) => (
+            {serviceItems.map(({ id, title, copy, features, accent, slug }) => (
               <div key={id} className="col-lg-6">
                 <div
                   style={{
-                    borderRadius: '26px',
+                    borderRadius: '28px',
                     background: '#ffffff',
-                    border: '1px solid rgba(16, 42, 67, 0.08)',
-                    boxShadow: '0 25px 45px rgba(15, 31, 56, 0.08)',
-                    padding: '32px',
+                    border: '1px solid rgba(0, 188, 212, 0.2)',
+                    boxShadow: '0 30px 60px rgba(0, 63, 125, 0.08)',
+                    padding: '32px 32px 36px',
                     height: '100%',
                     position: 'relative',
                     overflow: 'hidden',
@@ -209,52 +213,31 @@ export default function Services() {
                 >
                   <div
                     style={{
-                      position: 'absolute',
-                      top: '-90px',
-                      right: '-70px',
-                      width: '220px',
-                      height: '220px',
-                      background: accent,
-                      filter: 'blur(90px)',
-                      opacity: 0.7,
+                      height: '6px',
+                      width: '110px',
+                      borderRadius: '999px',
+                      background: accent ?? 'linear-gradient(135deg, #00bcd4, #26c6da)',
+                      marginBottom: '18px',
                     }}
                   />
                   <div style={{ position: 'relative' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <div
-                          style={{
-                            width: '64px',
-                            height: '64px',
-                            borderRadius: '20px',
-                            background: accent,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: '#0f1f38',
-                            boxShadow: '0 18px 32px rgba(15, 31, 56, 0.12)',
-                          }}
-                        >
-                          <Icon size={26} />
-                        </div>
-                        <div>
-                          <span
-                            style={{
-                              display: 'inline-block',
-                              padding: '4px 12px',
-                              borderRadius: '999px',
-                              background: 'rgba(0, 63, 125, 0.08)',
-                              color: '#003f7d',
-                              fontSize: '0.75rem',
-                              letterSpacing: '0.08em',
-                              textTransform: 'uppercase',
-                            }}
-                          >
-                            {id}
-                          </span>
-                          <h3 style={{ fontSize: '1.6rem', color: 'var(--text-dark)', marginTop: '8px', marginBottom: 0 }}>{title}</h3>
-                        </div>
-                      </div>
+                    <div style={{ marginBottom: '18px' }}>
+                      <span
+                        style={{
+                          display: 'inline-block',
+                          padding: '4px 12px',
+                          borderRadius: '999px',
+                          background: 'rgba(0, 188, 212, 0.15)',
+                          color: '#0b7285',
+                          fontSize: '0.75rem',
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          fontWeight: 600,
+                        }}
+                      >
+                        {id}
+                      </span>
+                      <h3 style={{ fontSize: '1.6rem', color: 'var(--text-dark)', marginTop: '10px', marginBottom: 0 }}>{title}</h3>
                     </div>
                     <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '18px' }}>{copy}</p>
                     <ul style={{ paddingLeft: '20px', color: 'var(--text-dark)', marginBottom: '20px' }}>

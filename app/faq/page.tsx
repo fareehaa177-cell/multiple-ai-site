@@ -23,6 +23,96 @@ type FAQItem = {
 
 const FAQ_CONTENT: FAQItem[] = [
   {
+    question: 'What does Multiple AI Solutions do?',
+    answer:
+      'We develop custom AI software and automation tools to help businesses save time, reduce admin, and grow faster—with no technical knowledge required.',
+    category: 'Products',
+  },
+  {
+    question: 'Do I need technical skills to use your AI products?',
+    answer:
+      'No. Our solutions are user-friendly and fully supported. We handle setup, training, and updates—so you can focus on running your business.',
+    category: 'Products',
+  },
+  {
+    question: 'How can an AI receptionist help my business?',
+    answer:
+      'Our AI receptionist answers calls 24/7, books appointments, sends reminders, and follows up with clients—saving you hours every week.',
+    category: 'Products',
+  },
+  {
+    question: 'Is my data safe with your AI tools?',
+    answer:
+      'Absolutely. We prioritise security and only work with Australian-standard-compliant platforms to ensure full data protection and privacy.',
+    category: 'Security',
+  },
+  {
+    question: 'Can your solutions integrate with my existing systems?',
+    answer:
+      'Yes. We build AI tools that work seamlessly with your current CRM, calendar, email, and other business tools.',
+    category: 'Products',
+  },
+  {
+    question: 'What industries do you work with?',
+    answer:
+      'We support a wide range of industries including trades, finance, real estate, legal, and small businesses across Australia.',
+    category: 'Services',
+  },
+  {
+    question: 'How do I get started with Multiple AI Solutions?',
+    answer:
+      "Book a free consultation and we'll assess your workflows, recommend solutions, and create a tailored AI plan for your business.",
+    category: 'Services',
+  },
+  {
+    question: 'How much do your AI products cost?',
+    answer:
+      'Our pricing is flexible and based on your business size and needs. We offer affordable packages for startups to large teams.',
+    category: 'Pricing',
+  },
+  {
+    question: 'Do you offer local support?',
+    answer:
+      "Yes. We're based in Perth and offer personalised, face-to-face and remote support to ensure you're always covered.",
+    category: 'Services',
+  },
+  {
+    question: 'What kind of automation can I implement?',
+    answer:
+      'We automate admin tasks, document creation, invoicing, client communication, lead follow-ups, and more.',
+    category: 'Products',
+  },
+  {
+    question: 'Can I try your services before committing?',
+    answer:
+      'Yes. We offer a free discovery session to help you explore how AI can help before you commit to anything.',
+    category: 'Services',
+  },
+  {
+    question: 'What makes your AI tools different?',
+    answer:
+      'Our tools are designed specifically for Australian businesses, with local support, easy integration, and zero-tech-stress setup.',
+    category: 'Products',
+  },
+  {
+    question: 'Are your AI solutions scalable?',
+    answer:
+      "Yes. Whether you're a solo operator or a growing team, our solutions scale with your business.",
+    category: 'Products',
+  },
+  {
+    question: 'How quickly can I get started?',
+    answer:
+      'Many of our tools can be implemented within days. Custom software may take longer depending on scope.',
+    category: 'Delivery',
+  },
+  {
+    question: "What's coming next from Multiple AI Solutions?",
+    answer:
+      "We're constantly innovating. Stay tuned—new AI-powered products and features are launching soon to make your business even smarter.",
+    category: 'Products',
+  },
+  {
     question: 'Who is Multiple AI Solutions for?',
     answer:
       'Professional intermediaries, accountants, marketers, consultants, and IT providers, who want to deliver AI outcomes without building internal dev teams.',

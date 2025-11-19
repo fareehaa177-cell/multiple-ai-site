@@ -22,7 +22,6 @@ const links = [
   { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services' },
   { href: '/ai-agents', label: 'AI Agents' },
-  { href: '/projects', label: 'Projects' },
   { href: '/resources', label: 'Resources' },
   { href: '/faq', label: 'FAQ' },
 ];
@@ -46,7 +45,7 @@ const serviceCategories = [
   },
   {
     title: 'Data Services',
-    dotColor: '#f7c766',
+    dotColor: '#26c6da',
     items: [
       { label: 'Machine Learning Models', href: '/services/machine-learning', icon: FaChartLine },
       { label: 'Data Mining', href: '/services/data-mining', icon: FaDatabase },
@@ -186,6 +185,20 @@ export default function Navbar() {
                           <p style={{ margin: 0, color: '#5b6b84', fontSize: '0.95rem' }}>
                             Comprehensive AI and data solutions for your business
                           </p>
+                          <Link
+                            href="/services"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              marginTop: '12px',
+                              color: '#003f7d',
+                              fontWeight: 600,
+                              textDecoration: 'none',
+                            }}
+                          >
+                            View All Services →
+                          </Link>
                         </div>
 
                         <div style={{ display: 'flex', gap: '24px' }}>

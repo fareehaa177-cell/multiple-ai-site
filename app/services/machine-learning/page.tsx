@@ -168,7 +168,7 @@ export default function MachineLearning() {
                 accent: 'linear-gradient(135deg, rgba(0,63,125,0.18), rgba(0,188,212,0.35))',
               },
               {
-                title: 'Optimization & Recommendation Engines',
+                title: 'Optimisation & Recommendation Engines',
                 description: 'Recommendation, allocation, and pricing engines that balance customer experience with profit.',
                 icon: FaProjectDiagram,
                 accent: 'linear-gradient(135deg, rgba(0,188,212,0.24), rgba(102,126,234,0.32))',

@@ -13,7 +13,11 @@ export default function Resources() {
       {/* Hero Section */}
       <section
         style={{
-          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
+          backgroundImage:
+            "linear-gradient(135deg, rgba(0, 19, 38, 0.92) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/hero image.jpeg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           color: 'white',
           padding: '110px 0 90px',
           position: 'relative',
@@ -81,8 +85,8 @@ export default function Resources() {
               {
                 title: 'Articles',
                 icon: <FaBookOpen />,
-                description: 'Practical automation ideas for accounting and marketing teams.',
-                cta: 'Browse Articles',
+                description: 'In-depth analysis, playbooks, and interviews on AI-led transformation.',
+                cta: 'Read Articles',
                 accent: 'linear-gradient(135deg, rgba(0,63,125,0.18), rgba(0,188,212,0.3))',
               },
               {
@@ -155,7 +159,7 @@ export default function Resources() {
                   <h3 style={{ fontSize: '1.5rem', color: 'var(--text-dark)', marginBottom: '12px', position: 'relative' }}>{title}</h3>
                   <p style={{ color: 'var(--text-muted)', marginBottom: '22px', position: 'relative' }}>{description}</p>
                   <Link
-                    href="#articles"
+                    href={title === 'Articles' ? '#articles' : '#ebooks'}
                     className="btn btn-light rounded-pill fw-semibold"
                     style={{
                       background: '#003f7d',
@@ -168,6 +172,118 @@ export default function Resources() {
                   >
                     {cta}
                   </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* eBooks */}
+      <section id="ebooks" className="section" style={{ background: 'linear-gradient(135deg, #f8fbff 0%, #ffffff 100%)' }}>
+        <div className="container">
+          <div className="text-center mb-5">
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                borderRadius: '999px',
+                background: 'rgba(0, 63, 125, 0.08)',
+                color: '#003f7d',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                fontSize: '0.75rem',
+              }}
+            >
+              eBooks
+            </span>
+            <h2 style={{ fontSize: '2.35rem', color: 'var(--text-dark)', marginTop: '16px' }}>Downloadable Guides</h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '720px', margin: '12px auto 0' }}>
+              Tactical playbooks to help you plan, package, and launch AI services.
+            </p>
+          </div>
+          <div className="row g-4">
+            {[
+              {
+                title: 'AI Spark Challenge',
+                summary:
+                  'Join the ultimate AI innovation challenge. Compete for over $18,500 in prizes and bring your AI ideas to life with expert mentorship and resources.',
+                features: ['Over $18,500 in prizes', 'Expert mentorship program', 'AI tools & resources', 'Network with innovators'],
+              },
+              {
+                title: 'Fund Your AI Project',
+                summary:
+                  'Discover funding opportunities, grant programs, and investment strategies to bring your AI project from concept to reality.',
+                features: ['Funding strategies', 'Grant opportunities', 'Investor connections', 'Pitch deck templates'],
+              },
+              {
+                title: 'Got A Startup Idea?',
+                summary:
+                  'Turn your startup vision into reality. Get step-by-step guidance on validating, building, and launching your AI-powered business.',
+                features: ['Idea validation framework', 'Business plan templates', 'Market research tools', 'Launch roadmap'],
+              },
+              {
+                title: 'AI Lead Generation',
+                summary:
+                  'Stop chasing leads, let AI bring them to you. Learn how to build automated lead generation systems that work 24/7 for your business.',
+                features: ['24/7 automated systems', 'AI agent implementation', 'Conversion optimisation', 'Complete framework'],
+              },
+            ].map(({ title, summary, features }, idx) => (
+              <div key={title} className="col-lg-4 col-md-6">
+                <div
+                  className="glass-card"
+                  style={{
+                    padding: '26px',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <div>
+                    <div
+                      style={{
+                        width: '60px',
+                        height: '60px',
+                        borderRadius: '16px',
+                        background: 'rgba(0, 63, 125, 0.08)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '16px',
+                        color: '#003f7d',
+                        fontSize: '1.2rem',
+                        fontWeight: 700,
+                      }}
+                    >
+                      {String(idx + 1).padStart(2, '0')}
+                    </div>
+                    <h4 style={{ fontSize: '1.2rem', color: 'var(--text-dark)', marginBottom: '10px' }}>{title}</h4>
+                    <p style={{ color: 'var(--text-muted)' }}>{summary}</p>
+                    {features && (
+                      <ul style={{ paddingLeft: '18px', margin: '12px 0', color: 'var(--text-dark)' }}>
+                        {features.map((feature) => (
+                          <li key={feature} style={{ fontSize: '0.95rem', marginBottom: '6px' }}>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      padding: '6px 14px',
+                      borderRadius: '999px',
+                      background: 'rgba(0, 188, 212, 0.12)',
+                      color: '#0b7285',
+                      fontWeight: 600,
+                      fontSize: '0.8rem',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    Explore it
+                  </span>
                 </div>
               </div>
             ))}
@@ -217,9 +333,9 @@ export default function Resources() {
               {
                 title: 'Predictive Analytics for Small Business Growth',
                 category: 'Tutorial',
-                excerpt: 'Harness the power of AI-driven data analytics to forecast trends, optimize inventory, and make informed business decisions.',
+                excerpt: 'Harness the power of AI-driven data analytics to forecast trends, optimise inventory, and make informed business decisions.',
                 icon: <FaChartLine />,
-                gradient: 'linear-gradient(135deg, #FFCC00 0%, #FFD700 100%)',
+                gradient: 'linear-gradient(135deg, #00bcd4 0%, #26c6da 100%)',
               },
             ].map((article, idx) => (
               <div key={idx} className="col-lg-4">
@@ -293,214 +409,6 @@ export default function Resources() {
                       Read More →
                     </Link>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Explore Our Programs Section */}
-      <section
-        className="section"
-        style={{
-          background: 'linear-gradient(135deg, #f8fbff 0%, #ffffff 100%)',
-          position: 'relative',
-        }}
-      >
-        <div className="container">
-          <div className="text-center mb-5">
-            <span
-              style={{
-                display: 'inline-block',
-                padding: '6px 16px',
-                borderRadius: '999px',
-                background: 'rgba(0, 188, 212, 0.12)',
-                color: '#003f7d',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                marginBottom: '16px',
-              }}
-            >
-              Programs
-            </span>
-            <h2 style={{ fontSize: '2.35rem', color: 'var(--text-dark)', marginBottom: '12px' }}>
-              Explore Our Programs
-            </h2>
-            <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto' }}>
-              Choose the path that fits your AI journey
-            </p>
-          </div>
-          <div className="row g-4">
-            {[
-              {
-                tag: 'Challenge',
-                title: 'AI Spark Challenge',
-                description:
-                  'Join the ultimate AI innovation challenge. Compete for over $18,500 in prizes and bring your AI ideas to life with expert mentorship and resources.',
-                features: ['Over $18,500 in prizes', 'Expert mentorship program', 'AI tools & resources', 'Network with innovators'],
-                gradient: 'linear-gradient(135deg, rgba(0,63,125,0.1), rgba(0,188,212,0.15))',
-                accentColor: '#003f7d',
-              },
-              {
-                tag: 'Funding',
-                title: 'Fund Your AI Project',
-                description:
-                  'Discover funding opportunities, grant programs, and investment strategies to bring your AI project from concept to reality.',
-                features: ['Funding strategies', 'Grant opportunities', 'Investor connections', 'Pitch deck templates'],
-                gradient: 'linear-gradient(135deg, rgba(0,188,212,0.1), rgba(102,126,234,0.15))',
-                accentColor: '#00bcd4',
-              },
-              {
-                tag: 'Startup',
-                title: 'Got A Startup Idea?',
-                description:
-                  'Turn your startup vision into reality. Get step-by-step guidance on validating, building, and launching your AI-powered business.',
-                features: ['Idea validation framework', 'Business plan templates', 'Market research tools', 'Launch roadmap'],
-                gradient: 'linear-gradient(135deg, rgba(102,126,234,0.1), rgba(162,155,254,0.15))',
-                accentColor: '#667eea',
-              },
-              {
-                tag: 'Lead Gen',
-                title: 'AI Lead Generation',
-                description:
-                  'Stop chasing leads, let AI bring them to you. Learn how to build automated lead generation systems that work 24/7 for your business.',
-                features: ['24/7 automated systems', 'AI agent implementation', 'Conversion optimization', 'Complete framework'],
-                gradient: 'linear-gradient(135deg, rgba(255,204,0,0.1), rgba(255,179,0,0.15))',
-                accentColor: '#FFCC00',
-              },
-            ].map((program, idx) => (
-              <div key={idx} className="col-lg-6">
-                <div
-                  style={{
-                    borderRadius: '24px',
-                    background: '#ffffff',
-                    border: '1px solid rgba(16, 42, 67, 0.08)',
-                    boxShadow: '0 20px 40px rgba(0, 26, 60, 0.08)',
-                    padding: '32px',
-                    height: '100%',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    transition: 'all 0.3s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-5px)';
-                    e.currentTarget.style.boxShadow = '0 25px 50px rgba(0, 26, 60, 0.12)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 26, 60, 0.08)';
-                  }}
-                >
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: '-80px',
-                      right: '-80px',
-                      width: '200px',
-                      height: '200px',
-                      background: program.gradient,
-                      filter: 'blur(60px)',
-                      opacity: 0.5,
-                    }}
-                  />
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      padding: '6px 14px',
-                      borderRadius: '999px',
-                      background: program.gradient,
-                      color: program.accentColor,
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      letterSpacing: '0.08em',
-                      textTransform: 'uppercase',
-                      marginBottom: '16px',
-                      position: 'relative',
-                    }}
-                  >
-                    {program.tag}
-                  </span>
-                  <h3
-                    style={{
-                      fontSize: '1.5rem',
-                      color: 'var(--text-dark)',
-                      marginBottom: '12px',
-                      fontWeight: 700,
-                      position: 'relative',
-                    }}
-                  >
-                    {program.title}
-                  </h3>
-                  <p
-                    style={{
-                      color: 'var(--text-muted)',
-                      lineHeight: '1.7',
-                      marginBottom: '20px',
-                      position: 'relative',
-                    }}
-                  >
-                    {program.description}
-                  </p>
-                  <ul
-                    style={{
-                      listStyle: 'none',
-                      padding: 0,
-                      margin: '0 0 24px 0',
-                      position: 'relative',
-                    }}
-                  >
-                    {program.features.map((feature, featureIdx) => (
-                      <li
-                        key={featureIdx}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          marginBottom: '10px',
-                          color: 'var(--text-dark)',
-                          fontSize: '0.95rem',
-                        }}
-                      >
-                        <span
-                          style={{
-                            display: 'inline-block',
-                            width: '6px',
-                            height: '6px',
-                            borderRadius: '50%',
-                            background: program.accentColor,
-                            marginRight: '12px',
-                            flexShrink: 0,
-                          }}
-                        />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href="#"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      color: program.accentColor,
-                      fontWeight: 600,
-                      textDecoration: 'none',
-                      fontSize: '0.95rem',
-                      position: 'relative',
-                      transition: 'gap 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.gap = '12px';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.gap = '8px';
-                    }}
-                  >
-                    Explore Program
-                    <span style={{ fontSize: '1.2rem' }}>→</span>
-                  </Link>
                 </div>
               </div>
             ))}
