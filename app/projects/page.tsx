@@ -156,14 +156,7 @@ export default function Projects() {
                     </div>
                     <Link
                       href="/contact"
-                      className="btn btn-light rounded-pill fw-semibold"
-                      style={{
-                        background: '#003f7d',
-                        color: '#fff',
-                        border: 'none',
-                        padding: '12px 28px',
-                        letterSpacing: '0.04em',
-                      }}
+                      className="btn-pill btn-pill-gradient"
                     >
                       Plan Your Project
                     </Link>
@@ -245,8 +238,7 @@ export default function Projects() {
           <div className="text-center mt-5">
             <Link
               href="/contact"
-              className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ color: '#003f7d' }}
+              className="btn-pill btn-pill-white"
             >
               Partner with Us
             </Link>

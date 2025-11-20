@@ -36,14 +36,13 @@ export default function Error({
         <div className="d-flex gap-3 justify-content-center flex-wrap">
           <button
             onClick={reset}
-            className="btn btn-light btn-lg px-4 py-3 rounded-pill fw-semibold"
-            style={{ color: '#003f7d' }}
+            className="btn-pill btn-pill-white"
           >
             Try again
           </button>
           <Link
             href="/"
-            className="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-semibold"
+            className="btn-pill btn-pill-gradient"
           >
             Go home
           </Link>

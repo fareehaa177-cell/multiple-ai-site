@@ -47,7 +47,11 @@ export default function Contact() {
 
       <section
         style={{
-          background: 'linear-gradient(135deg, #001326 0%, #003f7d 55%, #00bcd4 100%)',
+          backgroundImage:
+            "linear-gradient(135deg, rgba(0, 19, 38, 0.9) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/heroimage/heroimage8.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           color: 'white',
           padding: '110px 0 90px',
           position: 'relative',
@@ -250,11 +254,10 @@ export default function Contact() {
                       onChange={handleChange}
                     ></textarea>
                   </div>
-                  <div className="col-12 d-flex justify-content-end">
+                  <div className="col-12 d-flex justify-content-end mt-3">
                     <button
                       type="submit"
-                      className="btn btn-dark btn-lg px-5 py-3 rounded-pill fw-semibold"
-                      style={{ background: '#003f7d', border: 'none' }}
+                      className="btn-pill btn-pill-gradient"
                     >
                       Book a Strategy Call
                     </button>
@@ -282,7 +285,7 @@ export default function Contact() {
                     Contact Information
                   </h4>
                   <p style={{ color: '#6b7280', fontSize: '0.95rem', marginBottom: '28px', lineHeight: 1.6 }}>
-                    Get in touch with our team. We're here to help you explore how MultipleAI can transform your business operations.
+                    Get in touch with our team. We&apos;re here to help you explore how MultipleAI can transform your business operations.
                   </p>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
@@ -436,8 +439,7 @@ export default function Contact() {
               <div className="col-lg-4 text-lg-end">
                 <a
                   href="mailto:contact@multipleai.com.au"
-                  className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-                  style={{ background: '#003f7d', color: '#fff', border: 'none' }}
+                  className="btn-pill btn-pill-gradient"
                 >
                   Email Our Team
                 </a>

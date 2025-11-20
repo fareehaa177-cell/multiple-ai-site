@@ -14,7 +14,7 @@ export default function Resources() {
       <section
         style={{
           backgroundImage:
-            "linear-gradient(135deg, rgba(0, 19, 38, 0.92) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/hero image.jpeg')",
+            "linear-gradient(135deg, rgba(0, 19, 38, 0.92) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/heroimage/heroimage6.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -160,15 +160,8 @@ export default function Resources() {
                   <p style={{ color: 'var(--text-muted)', marginBottom: '22px', position: 'relative' }}>{description}</p>
                   <Link
                     href={title === 'Articles' ? '#articles' : '#ebooks'}
-                    className="btn btn-light rounded-pill fw-semibold"
-                    style={{
-                      background: '#003f7d',
-                      color: '#fff',
-                      border: 'none',
-                      padding: '12px 28px',
-                      letterSpacing: '0.04em',
-                      position: 'relative',
-                    }}
+                    className="btn-pill btn-pill-gradient"
+                    style={{ position: 'relative' }}
                   >
                     {cta}
                   </Link>

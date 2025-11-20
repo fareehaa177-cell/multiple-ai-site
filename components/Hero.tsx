@@ -28,7 +28,7 @@ export default function Hero() {
           <Col lg={6} className="mt-5 mt-lg-0">
             <div className="hero-image text-center">
               <img 
-                src="/images/image3.png" 
+                src="/images/heroimage/heroimage7.jpg" 
                 alt="AI Solutions" 
                 className="img-fluid rounded"
                 style={{ maxWidth: '100%' }}

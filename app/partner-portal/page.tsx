@@ -1,9 +1,9 @@
 'use client';
 import { FormEvent, useState } from 'react';
+import Link from 'next/link';
 import {
   Alert,
   Badge,
-  Button,
   Card,
   Col,
   Container,
@@ -118,32 +118,18 @@ export default function PartnerPortal() {
                 clients. Stay aligned with launches, product updates, and enablement programs.
               </p>
               <div className="d-flex flex-wrap gap-3 mt-4">
-                <Button
-                  variant="light"
-                  className="px-4 py-3"
+                <a
                   href="mailto:contact@multipleai.com.au"
-                  style={{
-                    background: '#667eea',
-                    color: '#001326',
-                    border: 'none',
-                    borderRadius: '999px',
-                    letterSpacing: '0.05em',
-                  }}
+                  className="btn-pill btn-pill-gradient"
                 >
                   Request Partner Access
-                </Button>
-                <Button
-                  variant="outline-light"
-                  className="px-4 py-3"
+                </a>
+                <Link
                   href="/careers"
-                  style={{
-                    borderRadius: '999px',
-                    letterSpacing: '0.05em',
-                    borderWidth: 2,
-                  }}
+                  className="btn-pill btn-pill-white"
                 >
                   Join the Delivery Squad
-                </Button>
+                </Link>
               </div>
             </Col>
             <Col lg={4} className="text-lg-end">
@@ -218,26 +204,38 @@ export default function PartnerPortal() {
                         size="lg"
                       />
                       <div className="text-end mt-2">
-                        <Button variant="link" className="p-0" style={{ color: '#003f7d', fontWeight: 600 }}>
+                        <button
+                          type="button"
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            padding: 0,
+                            color: '#003f7d',
+                            fontWeight: 600,
+                            cursor: 'pointer',
+                          }}
+                        >
                           Forgot password?
-                        </Button>
+                        </button>
                       </div>
                     </Form.Group>
 
-                    <Button
+                    <button
                       type="submit"
-                      size="lg"
-                      className="py-3"
                       style={{
+                        width: '100%',
+                        padding: '14px 0',
                         background: 'linear-gradient(135deg, #003f7d, #00bcd4)',
                         border: 'none',
                         fontWeight: 600,
-                        borderRadius: 999,
+                        borderRadius: '999px',
                         letterSpacing: '0.04em',
+                        color: '#ffffff',
+                        boxShadow: '0 18px 32px rgba(0, 63, 125, 0.25)',
                       }}
                     >
                       Sign In
-                    </Button>
+                    </button>
                   </Form>
 
                   {status === 'submitted' && (
@@ -311,12 +309,12 @@ export default function PartnerPortal() {
                       </p>
                     </Col>
                     <Col lg={4} className="text-lg-end">
-                      <Button
+                      <a
                         href="mailto:contact@multipleai.com.au"
-                        className="btn-primary px-4 py-3"
+                        className="btn-pill btn-pill-gradient"
                       >
                         Request Invite
-                      </Button>
+                      </a>
                     </Col>
                   </Row>
                 </Card.Body>

@@ -95,7 +95,7 @@ export default function Services() {
       <section
         style={{
           backgroundImage:
-            "linear-gradient(135deg, rgba(0, 19, 38, 0.9) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/hero image.jpeg')",
+            "linear-gradient(135deg, rgba(0, 19, 38, 0.9) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/heroimage/heroimage4.jpeg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -249,12 +249,7 @@ export default function Services() {
                     </ul>
                     <Link
                       href={`/services/${slug}`}
-                      className="btn btn-outline-primary rounded-pill"
-                      style={{
-                        fontWeight: 600,
-                        padding: '8px 20px',
-                        fontSize: '0.9rem',
-                      }}
+                      className="btn-pill btn-pill-gradient"
                     >
                       Learn More →
                     </Link>
@@ -267,8 +262,7 @@ export default function Services() {
           <div className="text-center mt-5">
             <Link
               href="/contact"
-              className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ background: '#003f7d', color: '#fff', border: 'none' }}
+              className="btn-pill btn-pill-gradient"
             >
               Book a Consultation
             </Link>

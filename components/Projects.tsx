@@ -105,7 +105,7 @@ export default function Projects() {
                       opacity: 0.3
                     }}></i>
                   </div>
-                  <p className="testimonial-text">"{testimonial.text}"</p>
+                  <p className="testimonial-text" dangerouslySetInnerHTML={{ __html: `&ldquo;${testimonial.text.replace(/'/g, '&apos;')}&rdquo;` }} />
                   <div className="testimonial-author">{testimonial.author}</div>
                   <div className="testimonial-position">{testimonial.position}</div>
                 </div>

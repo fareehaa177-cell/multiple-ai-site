@@ -45,7 +45,7 @@ export default function Contact() {
                 marginBottom: '15px',
                 color: '#2C3E50'
               }}>
-                Let's Build Intelligent Solutions Together
+                Let&apos;s Build Intelligent Solutions Together
               </h3>
               <p style={{ 
                 textAlign: 'center', 
@@ -53,7 +53,7 @@ export default function Contact() {
                 color: '#666',
                 fontSize: '1.05rem'
               }}>
-                Whether you're an accounting firm, marketing agency, or technology integrator, 
+                Whether you&apos;re an accounting firm, marketing agency, or technology integrator, 
                 MultipleAI provides the AI capability, infrastructure, and ongoing support - 
                 you keep the client and the brand.
               </p>

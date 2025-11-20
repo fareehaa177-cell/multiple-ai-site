@@ -103,7 +103,7 @@ export default function About() {
       <section
         style={{
           backgroundImage:
-            "linear-gradient(135deg, rgba(0, 19, 38, 0.92) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/hero image.jpeg')",
+            "linear-gradient(135deg, rgba(0, 19, 38, 0.92) 0%, rgba(0, 63, 125, 0.85) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/heroimage/heroimage3.jpeg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           color: 'white',
@@ -573,7 +573,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* Leadership */}
+      {/* Leadership section hidden at client request */}
+      {/*
       <section
         className="section"
         style={{
@@ -655,13 +656,14 @@ export default function About() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Team */}
       <section
         className="section"
         style={{
-          background: 'linear-gradient(135deg, #001326 0%, #01294c 55%, #004f94 100%)',
-          color: 'white',
+          background: 'linear-gradient(135deg, #ffffff 0%, #e8f3ff 55%, #d8ecff 100%)',
+          color: '#0f1f38',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -694,8 +696,8 @@ export default function About() {
             >
               Partner Success Team
             </span>
-            <h2 style={{ fontSize: '2.35rem', fontWeight: 700, marginBottom: '10px', color: '#ffe8a3' }}>Meet Our Team</h2>
-            <p style={{ color: 'rgba(255,255,255,0.75)', maxWidth: '680px', margin: '0 auto' }}>
+            <h2 style={{ fontSize: '2.35rem', fontWeight: 700, marginBottom: '10px', color: '#0f1f38' }}>Meet Our Team</h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '680px', margin: '0 auto' }}>
               A hybrid collective of strategists, engineers, creatives, and compliance experts focused on partner outcomes.
             </p>
           </div>
@@ -727,8 +729,8 @@ export default function About() {
                       sizes="(max-width: 992px) 160px, 140px"
                     />
                   </div>
-                  <h4 style={{ color: 'white', fontSize: '1.1rem', marginBottom: '6px' }}>{name}</h4>
-                  <p style={{ color: 'rgba(255,255,255,0.78)', marginBottom: 0 }}>{role}</p>
+                  <h4 style={{ color: '#0f1f38', fontSize: '1.1rem', marginBottom: '6px' }}>{name}</h4>
+                  <p style={{ color: 'var(--text-muted)', marginBottom: 0 }}>{role}</p>
                 </div>
               </div>
             ))}

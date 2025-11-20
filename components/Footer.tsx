@@ -1,84 +1,109 @@
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaBrain } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import ScrollAnimation from './ScrollAnimation';
 
-const companyLinks = [
+const aboutLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services' },
-  { href: '/contact', label: 'Contact' },
-];
-
-const solutionLinks = [
   { href: '/ai-agents', label: 'AI Agents' },
   { href: '/resources', label: 'Resources' },
+];
+
+const supportLinks = [
   { href: '/faq', label: 'FAQ' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/partner-portal', label: 'Partner Portal' },
+  { href: '/careers', label: 'Careers' },
 ];
 
 const legalLinks = [
   { href: '/terms', label: 'Terms & Conditions' },
   { href: '/privacy-policy', label: 'Privacy Policy' },
-  { href: '/partner-portal', label: 'Partner Portal Login' },
-  { href: '/careers', label: 'Careers' },
 ];
 
 const socialLinks = [
-  { href: 'https://www.facebook.com/profile.php?id=61573805013855', icon: <FaFacebook /> },
-  { href: '#', icon: <FaTwitter /> },
-  { href: 'https://www.linkedin.com/company/multiple-ai-solutions/', icon: <FaLinkedin /> },
-  { href: '#', icon: <FaInstagram /> },
+  { href: 'https://www.facebook.com/profile.php?id=61573805013855', icon: FaFacebook, label: 'Facebook' },
+  { href: '#', icon: FaTwitter, label: 'Twitter' },
+  { href: 'https://www.linkedin.com/company/multiple-ai-solutions/', icon: FaLinkedin, label: 'LinkedIn' },
+  { href: '#', icon: FaInstagram, label: 'Instagram' },
 ];
 
 export default function Footer() {
   return (
     <footer
       style={{
-        background: 'linear-gradient(135deg, #001326 0%, #012d44 55%, #036977 100%)',
-        color: 'white',
-        padding: '90px 0 40px',
+        background:
+          'linear-gradient(145deg, #f4fbff 0%, #dff1ff 45%, #c7e8ff 70%, #b4e2ff 100%)',
+        color: '#0f1f38',
+        padding: '100px 0 50px',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
+      {/* Background Effects */}
       <div
         style={{
           position: 'absolute',
-          top: '-120px',
-          right: '-120px',
-          width: '320px',
-          height: '320px',
-          background: 'rgba(0, 188, 212, 0.28)',
-          filter: 'blur(140px)',
+          top: '-150px',
+          right: '-150px',
+          width: '400px',
+          height: '400px',
+          background: 'rgba(0, 138, 194, 0.18)',
+          borderRadius: '50%',
+          filter: 'blur(120px)',
+          zIndex: 0,
         }}
       />
-      <div className="container position-relative">
-        <div className="row g-5 mb-5 align-items-start">
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-100px',
+          left: '-100px',
+          width: '350px',
+          height: '350px',
+          background: 'rgba(0, 173, 223, 0.25)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          zIndex: 0,
+        }}
+      />
+
+      <div className="container position-relative" style={{ zIndex: 1 }}>
+        {/* Main Footer Content */}
+        <div className="row g-5 mb-5">
+          {/* About Column */}
           <div className="col-lg-4 col-md-6">
-            <div
-              style={{
-                borderRadius: '28px',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                padding: '18px 22px',
-                marginBottom: '22px',
-                boxShadow: '0 18px 42px rgba(1, 20, 44, 0.35)',
-                backdropFilter: 'blur(6px)',
-              }}
-            >
+            <ScrollAnimation delay={0}>
               <Link
                 href="/"
                 style={{
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   gap: '14px',
                   textDecoration: 'none',
+                  marginBottom: '28px',
+                  transition: 'transform 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
                 }}
               >
                 <div
                   style={{
-                    width: '72px',
-                    height: '72px',
+                    width: '70px',
+                    height: '70px',
                     position: 'relative',
                     flexShrink: 0,
+                    borderRadius: '16px',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    padding: '8px',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
                   }}
                 >
                   <Image
@@ -89,95 +114,225 @@ export default function Footer() {
                   />
                 </div>
                 <div>
-                  <h3 style={{ color: '#7ef0ff', margin: 0, fontWeight: 700, fontSize: '2rem' }}>MultipleAI</h3>
-                  <small style={{ color: 'rgba(255,255,255,0.85)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>AI Partners</small>
+                  <h3 style={{ color: '#008ac2', margin: 0, fontWeight: 700, fontSize: '1.85rem', letterSpacing: '-0.01em' }}>
+                    MultipleAI
+                  </h3>
+                  <small style={{ color: 'rgba(15,31,56,0.6)', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.75rem' }}>
+                    AI Solutions Partner
+                  </small>
                 </div>
               </Link>
-            </div>
-            <p style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.8 }}>
-              Empowering professional service firms with white-label AI solutions. We build the automation, analytics, and creative services you keep the client relationship.
-            </p>
-            <div className="d-flex gap-3 mt-4">
-              {socialLinks.map(({ href, icon }) => (
-                <a
-                  key={href}
-                  href={href}
-                  style={{
-                    color: 'white',
-                    fontSize: '1.35rem',
-                    opacity: 0.85,
-                    transition: 'opacity 0.2s ease',
-                  }}
-                >
-                  {icon}
-                </a>
-              ))}
-            </div>
+              <p style={{ color: 'rgba(15,31,56,0.8)', lineHeight: 1.8, marginBottom: '28px', fontSize: '0.98rem' }}>
+                Empowering professional service firms with white-label AI solutions. We build the automation, analytics, and creative services—you keep the client relationship.
+              </p>
+              
+              {/* Social Icons */}
+              <div className="d-flex gap-3">
+                {socialLinks.map(({ href, icon: Icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    style={{
+                      width: '44px',
+                      height: '44px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: '12px',
+                      background: 'rgba(0, 138, 194, 0.08)',
+                      border: '1px solid rgba(0, 138, 194, 0.2)',
+                      color: '#008ac2',
+                      fontSize: '1.2rem',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(0, 138, 194, 0.16)';
+                      e.currentTarget.style.borderColor = '#008ac2';
+                      e.currentTarget.style.transform = 'translateY(-4px) scale(1.1)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 188, 212, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(0, 138, 194, 0.08)';
+                      e.currentTarget.style.borderColor = 'rgba(0, 138, 194, 0.2)';
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
+                  >
+                    <Icon />
+                  </a>
+                ))}
+              </div>
+            </ScrollAnimation>
           </div>
 
+          {/* About Column */}
           <div className="col-lg-2 col-md-6">
-            <h6 style={{ marginBottom: '18px', letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)' }}>
-              Company
-            </h6>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              {companyLinks.map(({ href, label }) => (
-                <li key={href} style={{ marginBottom: '12px' }}>
-                  <Link href={href} style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none', fontSize: '0.98rem' }}>
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <ScrollAnimation delay={100}>
+              <h5
+                style={{
+                  marginBottom: '24px',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  fontSize: '0.85rem',
+                  color: '#008ac2',
+                  fontWeight: 700,
+                }}
+              >
+                About
+              </h5>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                {aboutLinks.map(({ href, label }) => (
+                  <li key={href} style={{ marginBottom: '14px' }}>
+                    <Link
+                      href={href}
+                      style={{
+                        color: 'rgba(15,31,56,0.85)',
+                        textDecoration: 'none',
+                        fontSize: '0.95rem',
+                        transition: 'all 0.3s ease',
+                        display: 'inline-block',
+                        position: 'relative',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = '#008ac2';
+                        e.currentTarget.style.transform = 'translateX(6px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'rgba(15,31,56,0.85)';
+                        e.currentTarget.style.transform = 'translateX(0)';
+                      }}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </ScrollAnimation>
           </div>
 
+          {/* Support Column */}
           <div className="col-lg-3 col-md-6">
-            <h6 style={{ marginBottom: '18px', letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)' }}>
-              Solutions
-            </h6>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              {solutionLinks.map(({ href, label }) => (
-                <li key={href} style={{ marginBottom: '12px' }}>
-                  <Link href={href} style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none', fontSize: '0.98rem' }}>
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <ScrollAnimation delay={200}>
+              <h5
+                style={{
+                  marginBottom: '24px',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  fontSize: '0.85rem',
+                  color: '#00bcd4',
+                  fontWeight: 700,
+                }}
+              >
+                Support
+              </h5>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, marginBottom: '32px' }}>
+                {supportLinks.map(({ href, label }) => (
+                  <li key={href} style={{ marginBottom: '14px' }}>
+                    <Link
+                      href={href}
+                      style={{
+                        color: 'rgba(15,31,56,0.85)',
+                        textDecoration: 'none',
+                        fontSize: '0.95rem',
+                        transition: 'all 0.3s ease',
+                        display: 'inline-block',
+                        position: 'relative',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = '#008ac2';
+                        e.currentTarget.style.transform = 'translateX(6px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'rgba(15,31,56,0.85)';
+                        e.currentTarget.style.transform = 'translateX(0)';
+                      }}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </ScrollAnimation>
           </div>
 
+          {/* Contact Column */}
           <div className="col-lg-3 col-md-6">
-            <h6 style={{ marginBottom: '18px', letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)' }}>
-              Legal
-            </h6>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              {legalLinks.map(({ href, label }) => (
-                <li key={href} style={{ marginBottom: '12px' }}>
-                  <Link href={href} style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none', fontSize: '0.98rem' }}>
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <ScrollAnimation delay={300}>
+              <h5
+                style={{
+                  marginBottom: '24px',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  fontSize: '0.85rem',
+                  color: '#00bcd4',
+                  fontWeight: 700,
+                }}
+              >
+                Contact
+              </h5>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                {legalLinks.map(({ href, label }) => (
+                  <li key={href} style={{ marginBottom: '14px' }}>
+                    <Link
+                      href={href}
+                      style={{
+                        color: 'rgba(15,31,56,0.85)',
+                        textDecoration: 'none',
+                        fontSize: '0.95rem',
+                        transition: 'all 0.3s ease',
+                        display: 'inline-block',
+                        position: 'relative',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = '#008ac2';
+                        e.currentTarget.style.transform = 'translateX(6px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'rgba(15,31,56,0.85)';
+                        e.currentTarget.style.transform = 'translateX(0)';
+                      }}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </ScrollAnimation>
           </div>
         </div>
 
+        {/* Divider */}
         <div
           style={{
-            borderTop: '1px solid rgba(255,255,255,0.12)',
-            paddingTop: '22px',
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent, rgba(0, 188, 212, 0.5), transparent)',
+            margin: '50px 0 30px',
+          }}
+        />
+
+        {/* Copyright */}
+        <div
+          style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '12px',
+            gap: '16px',
             justifyContent: 'space-between',
             alignItems: 'center',
-            color: 'rgba(255,255,255,0.65)',
+            color: '#00315a',
             fontSize: '0.9rem',
           }}
         >
-          <p style={{ margin: 0 }}>
+          <p style={{ margin: 0, color: '#00315a' }}>
             &copy; {new Date().getFullYear()} MultipleAI Solutions. All rights reserved.
           </p>
-          <p style={{ margin: 0 }}>Powered by MultipleAI</p>
+          <p style={{ margin: 0, color: '#00315a' }}>
+            Powered by{' '}
+            <span style={{ color: '#008ac2', fontWeight: 600 }}>MultipleAI</span>
+          </p>
         </div>
       </div>
     </footer>

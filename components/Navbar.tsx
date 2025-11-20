@@ -289,15 +289,7 @@ export default function Navbar() {
             })}
             <Link
               href="/contact"
-              className="btn btn-light rounded-pill fw-semibold"
-              style={{
-                background: 'var(--gradient-primary)',
-                border: 'none',
-                color: 'white',
-                padding: '12px 28px',
-                letterSpacing: '0.05em',
-                boxShadow: '0 18px 32px rgba(0, 63, 125, 0.25)',
-              }}
+              className="btn-pill btn-pill-gradient"
             >
               Contact
             </Link>
@@ -407,14 +399,7 @@ export default function Navbar() {
             })}
             <Link
               href="/contact"
-              className="btn btn-light d-block text-center mt-3 fw-semibold"
-              style={{
-                background: 'var(--gradient-primary)',
-                border: 'none',
-                color: 'white',
-                borderRadius: '999px',
-                padding: '12px 0',
-              }}
+              className="btn-pill btn-pill-gradient w-100 justify-content-center mt-3"
             >
               Contact
             </Link>

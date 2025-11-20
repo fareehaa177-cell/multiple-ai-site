@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FaBrain, FaRobot, FaChartLine, FaFileAlt, FaShieldAlt, FaUsers, FaPhone, FaCog, FaCalculator, FaPen, FaDatabase, FaLock, FaLightbulb, FaBars, FaTimes, FaQuoteLeft } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ScrollAnimation from '../components/ScrollAnimation';
 
 // Animated Counter Component
 function AnimatedCounter({ end, suffix = '', duration = 2000, label }: { end: number; suffix?: string; duration?: number; label: string }) {
@@ -46,13 +47,14 @@ function AnimatedCounter({ end, suffix = '', duration = 2000, label }: { end: nu
       { threshold: 0.3 }
     );
 
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
+    const currentRef = counterRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [end, duration, hasAnimated]);
@@ -68,6 +70,30 @@ function AnimatedCounter({ end, suffix = '', duration = 2000, label }: { end: nu
 }
 
 export default function Home() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLElement>(null);
+  const primaryButtonClass = 'btn-pill btn-pill-gradient';
+  const outlineButtonClass = 'btn-pill btn-pill-white';
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
+        setMousePosition({ x, y });
+      }
+    };
+
+    const heroSection = heroRef.current;
+    if (heroSection) {
+      heroSection.addEventListener('mousemove', handleMouseMove);
+      return () => {
+        heroSection.removeEventListener('mousemove', handleMouseMove);
+      };
+    }
+  }, []);
+
   const formInputStyle: CSSProperties = {
     padding: '14px 16px',
     borderRadius: '14px',
@@ -91,55 +117,113 @@ export default function Home() {
       
       {/* Hero Section */}
       <section
+        ref={heroRef}
         className="hero-section"
         style={{
           backgroundImage:
-            "linear-gradient(130deg, rgba(0, 19, 38, 0.9) 0%, rgba(0, 63, 125, 0.8) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/hero%20image.jpeg')",
+            "linear-gradient(130deg, rgba(0, 19, 38, 0.9) 0%, rgba(0, 63, 125, 0.8) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/heroimage/heroimage2.jpeg')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: `calc(50% + ${mousePosition.x}px) calc(50% + ${mousePosition.y}px)`,
           backgroundRepeat: 'no-repeat',
           color: 'white',
-          padding: '140px 0 110px',
+          padding: '160px 0 130px',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        <div className="container position-relative">
+        {/* Floating Elements */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '20%',
+            right: '10%',
+            width: '120px',
+            height: '120px',
+            borderRadius: '50%',
+            background: 'rgba(0, 188, 212, 0.15)',
+            filter: 'blur(40px)',
+            transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
+            transition: 'transform 0.1s ease-out',
+            animation: 'float 6s ease-in-out infinite',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '15%',
+            left: '8%',
+            width: '150px',
+            height: '150px',
+            borderRadius: '50%',
+            background: 'rgba(38, 198, 218, 0.12)',
+            filter: 'blur(50px)',
+            transform: `translate(${mousePosition.x * -0.3}px, ${mousePosition.y * -0.3}px)`,
+            transition: 'transform 0.1s ease-out',
+            animation: 'float 8s ease-in-out infinite',
+            animationDelay: '1s',
+          }}
+        />
+
+        {/* Glow Effect */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(0, 188, 212, 0.2) 0%, transparent 70%)',
+            transform: `translate(calc(-50% + ${mousePosition.x * 0.8}px), calc(-50% + ${mousePosition.y * 0.8}px))`,
+            transition: 'transform 0.15s ease-out',
+            filter: 'blur(60px)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        <div className="container position-relative" style={{ zIndex: 2 }}>
           <div className="row align-items-center gy-5">
             <div className="col-lg-6">
-              <div style={{ marginBottom: '2rem' }}>
+              <div style={{ marginBottom: '2.5rem' }}>
                 <h1
+                  className="fade-in-up"
                   style={{
-                    fontSize: '3.5rem',
+                    fontSize: '3.75rem',
                     fontWeight: 700,
                     color: 'white',
-                    lineHeight: 1.1,
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
+                    lineHeight: 1.15,
+                    letterSpacing: '-0.03em',
+                    marginBottom: '20px',
+                    textShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
                   }}
                 >
                   Empowering Businesses <br />through AI
                 </h1>
-                <p className="lead mb-0" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.82)', maxWidth: '540px' }}>
+                <p
+                  className="fade-in-up"
+                  style={{
+                    animationDelay: '0.2s',
+                    fontSize: '1.25rem',
+                    color: 'rgba(255,255,255,0.9)',
+                    maxWidth: '560px',
+                    lineHeight: 1.7,
+                    marginBottom: 0,
+                  }}
+                >
                   We design, build, and deliver intelligent automation, analytics, and creative AI services that power the next generation of
                   professional businesses under your own brand.
                 </p>
               </div>
-              <div className="d-flex flex-wrap gap-3">
+              <div className="d-flex flex-wrap gap-3 fade-in-up" style={{ animationDelay: '0.4s' }}>
                 <Link
                   href="/ai-agents"
-                  className="btn btn-light btn-lg px-4 py-3 rounded-pill fw-semibold"
-                  style={{
-                    background: 'linear-gradient(135deg, #00d0dd, #00a5c5)',
-                    color: '#00263f',
-                    border: 'none',
-                  }}
+                  className={primaryButtonClass}
                 >
                   Explore Our Agents
                 </Link>
                 <Link
                   href="/contact"
-                  className="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-semibold"
+                  className={outlineButtonClass}
                 >
                   Partner with Us
                 </Link>
@@ -148,13 +232,19 @@ export default function Home() {
               {/* Animated Statistics */}
               <div className="row g-4 mt-5">
                 <div className="col-md-4">
-                  <AnimatedCounter end={100} suffix="%" label="24/7 Smart Automation" duration={1800} />
+                  <div className="fade-in-up" style={{ animationDelay: '0.6s' }}>
+                    <AnimatedCounter end={100} suffix="%" label="24/7 Smart Automation" duration={1800} />
+                  </div>
                 </div>
                 <div className="col-md-4">
-                  <AnimatedCounter end={10000} suffix="+" label="Automated Customer Interactions" duration={2000} />
+                  <div className="fade-in-up" style={{ animationDelay: '0.7s' }}>
+                    <AnimatedCounter end={10000} suffix="+" label="Automated Customer Interactions" duration={2000} />
+                  </div>
                 </div>
                 <div className="col-md-4">
-                  <AnimatedCounter end={99.9} suffix="%" label="Accuracy & Response Understanding" duration={1800} />
+                  <div className="fade-in-up" style={{ animationDelay: '0.8s' }}>
+                    <AnimatedCounter end={99.9} suffix="%" label="Accuracy & Response Understanding" duration={1800} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -167,27 +257,20 @@ export default function Home() {
         className="section"
         style={{
           background: 'linear-gradient(135deg, #f4fbfd 0%, #e5f9ff 55%, #ffffff 100%)',
-          padding: '70px 0',
+          padding: '80px 0',
         }}
       >
         <div className="container">
-          <div className="text-center mb-4">
-            <span
-              style={{
-                display: 'inline-block',
-                padding: '6px 16px',
-                borderRadius: '999px',
-                background: 'rgba(0, 188, 212, 0.18)',
-                color: '#006d77',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                fontSize: '0.72rem',
-              }}
-            >
-              Trusted By Leading Institutions
-            </span>
-            <h3 style={{ marginTop: '14px', color: '#0f1f38', fontWeight: 700 }}>Universities, Accelerators & Enterprise Partners</h3>
-          </div>
+          <ScrollAnimation>
+            <div className="text-center mb-5">
+              <span className="section-badge">
+                Trusted By Leading Institutions
+              </span>
+              <h3 style={{ marginTop: '8px', color: '#0f1f38', fontWeight: 700, fontSize: '2rem' }}>
+                Universities, Accelerators & Enterprise Partners
+              </h3>
+            </div>
+          </ScrollAnimation>
           <div className="row g-4 align-items-center justify-content-center">
             {[
               { name: 'UWA', logo: '/images/image3.png' },
@@ -196,23 +279,13 @@ export default function Home() {
               { name: 'Federal Grants', logo: '/images/image6.png' },
               { name: 'Innovate WA', logo: '/images/image7.png' },
               { name: 'Tech Hub', logo: '/images/image8.png' },
-            ].map(({ name, logo }) => (
+            ].map(({ name, logo }, index) => (
               <div key={name} className="col-6 col-sm-4 col-lg-2">
-                <div
-                  style={{
-                    background: 'white',
-                    borderRadius: '18px',
-                    padding: '18px 20px',
-                    border: '1px solid rgba(0, 188, 212, 0.16)',
-                    boxShadow: '0 12px 26px rgba(15, 31, 56, 0.08)',
-                    height: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Image src={logo} alt={name} width={120} height={60} style={{ maxWidth: '100%', height: 'auto' }} />
-                </div>
+                <ScrollAnimation delay={index * 50}>
+                    <div className="trusted-card glass-card">
+                    <Image src={logo} alt={name} width={120} height={60} style={{ maxWidth: '100%', height: 'auto', objectFit: 'contain' }} />
+                  </div>
+                </ScrollAnimation>
               </div>
             ))}
           </div>
@@ -230,19 +303,7 @@ export default function Home() {
         <div className="container">
           <div className="row align-items-center g-5">
             <div className="col-lg-5">
-              <span
-                style={{
-                  display: 'inline-block',
-                  padding: '8px 16px',
-                  borderRadius: '999px',
-                  background: 'rgba(0, 188, 212, 0.16)',
-                  color: '#006d77',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  fontSize: '0.78rem',
-                  marginBottom: '16px',
-                }}
-              >
+              <span className="section-badge section-badge--subtle">
                 What We Do
               </span>
               <h2 style={{ fontSize: '2.4rem', fontWeight: 700, color: '#132f4c', marginBottom: '12px' }}>
@@ -256,8 +317,7 @@ export default function Home() {
               <div className="mt-4">
                 <Link
                   href="/contact"
-                  className="btn btn-primary btn-lg px-4 py-3 rounded-pill fw-semibold"
-                  style={{ background: '#003f7d', border: 'none' }}
+                  className={primaryButtonClass}
                 >
                   Book a Live Demo
                 </Link>
@@ -301,18 +361,7 @@ export default function Home() {
       >
         <div className="container">
           <div className="text-center mb-5">
-            <span
-              style={{
-                display: 'inline-block',
-                padding: '6px 14px',
-                borderRadius: '999px',
-                background: 'rgba(102, 126, 234, 0.25)',
-                color: '#003f7d',
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
-                fontSize: '0.72rem',
-              }}
-            >
+            <span className="section-badge section-badge--outline">
               Partner Launch Blueprint
             </span>
             <h2 style={{ fontSize: '2.4rem', fontWeight: 700, color: '#0f1f38', marginTop: '16px' }}>How It Works</h2>
@@ -340,59 +389,61 @@ export default function Home() {
               },
             ].map(({ step, title, copy }, index) => (
               <div className="col-lg-4 col-md-6" key={title}>
-                <div
-                  className="glass-card"
-                  style={{
-                    position: 'relative',
-                    padding: '36px 30px',
-                    height: '100%',
-                    overflow: 'hidden',
-                  }}
-                >
+                <ScrollAnimation delay={index * 150}>
                   <div
+                    className="glass-card"
                     style={{
-                      position: 'absolute',
-                      top: '-60px',
-                      right: '-40px',
-                      width: '180px',
-                      height: '180px',
-                      background: index === 0
-                        ? 'rgba(0, 63, 125, 0.18)'
-                        : index === 1
-                        ? 'rgba(0, 188, 212, 0.24)'
-                        : 'rgba(102, 126, 234, 0.3)',
-                      filter: 'blur(60px)',
+                      position: 'relative',
+                      padding: '40px 32px',
+                      height: '100%',
+                      overflow: 'hidden',
                     }}
-                  />
+                  >
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '-60px',
+                        right: '-40px',
+                        width: '180px',
+                        height: '180px',
+                        background: index === 0
+                          ? 'rgba(0, 63, 125, 0.15)'
+                          : index === 1
+                          ? 'rgba(0, 188, 212, 0.2)'
+                          : 'rgba(38, 198, 218, 0.25)',
+                        filter: 'blur(60px)',
+                      }}
+                    />
                     <div
                       style={{
                         display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        width: '64px',
-                        height: '64px',
+                        width: '70px',
+                        height: '70px',
                         borderRadius: '18px',
-                        background: 'linear-gradient(135deg, #00d0dd, #00a5c5)',
-                        color: '#00263f',
+                        background: 'var(--gradient-secondary)',
+                        color: 'white',
                         fontWeight: 700,
-                        fontSize: '1.3rem',
-                        marginBottom: '26px',
+                        fontSize: '1.4rem',
+                        marginBottom: '28px',
                         letterSpacing: '0.05em',
+                        boxShadow: '0 12px 28px rgba(0, 188, 212, 0.3)',
                       }}
                     >
-                    {step}
+                      {step}
+                    </div>
+                    <h4 style={{ fontSize: '1.5rem', color: '#0f1f38', marginBottom: '16px', fontWeight: 700 }}>{title}</h4>
+                    <p style={{ color: 'var(--text-muted)', marginBottom: 0, lineHeight: 1.7 }}>{copy}</p>
                   </div>
-                  <h4 style={{ fontSize: '1.4rem', color: '#0f1f38', marginBottom: '14px' }}>{title}</h4>
-                  <p style={{ color: 'var(--text-muted)', marginBottom: 0 }}>{copy}</p>
-                </div>
+                </ScrollAnimation>
               </div>
             ))}
           </div>
           <div className="text-center mt-5">
             <Link
               href="/contact"
-              className="btn btn-dark btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ background: '#003f7d', border: 'none' }}
+              className={primaryButtonClass}
             >
               Start Your Partner Journey
             </Link>
@@ -490,26 +541,28 @@ export default function Home() {
                 Icon: FaUsers,
                 accent: 'linear-gradient(135deg, rgba(0,188,212,0.3), rgba(102,126,234,0.25))',
               },
-            ].map(({ title, copy, Icon, accent }) => (
+            ].map(({ title, copy, Icon, accent }, index) => (
               <div className="col-lg-4 col-md-6" key={title}>
-                <div className="glass-card glass-card--dark" style={{ padding: '28px', height: '100%' }}>
-                  <div
-                    className="glow-icon glow-icon--inverted"
-                    style={{
-                      width: '56px',
-                      height: '56px',
-                      borderRadius: '18px',
-                      background: accent,
-                      color: 'white',
-                      marginBottom: '20px',
-                      backgroundSize: '200% 200%',
-                    }}
-                  >
-                    <Icon size={24} />
+                <ScrollAnimation delay={index * 100}>
+                  <div className="glass-card glass-card--dark" style={{ padding: '32px', height: '100%' }}>
+                    <div
+                      className="glow-icon glow-icon--inverted"
+                      style={{
+                        width: '60px',
+                        height: '60px',
+                        borderRadius: '18px',
+                        background: accent,
+                        color: 'white',
+                        marginBottom: '22px',
+                        backgroundSize: '200% 200%',
+                      }}
+                    >
+                      <Icon size={26} />
+                    </div>
+                    <h5 style={{ color: 'white', fontSize: '1.3rem', marginBottom: '12px', fontWeight: 700 }}>{title}</h5>
+                    <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: 0, lineHeight: 1.7 }}>{copy}</p>
                   </div>
-                  <h5 style={{ color: 'white', fontSize: '1.2rem', marginBottom: '10px' }}>{title}</h5>
-                  <p style={{ color: 'rgba(255,255,255,0.72)', marginBottom: 0 }}>{copy}</p>
-                </div>
+                </ScrollAnimation>
               </div>
             ))}
           </div>
@@ -517,8 +570,7 @@ export default function Home() {
           <div className="text-center mt-5">
             <Link
               href="/contact"
-              className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ color: '#003f7d' }}
+              className="btn-pill btn-pill-white"
             >
               Request a Demo
             </Link>
@@ -550,19 +602,7 @@ export default function Home() {
         />
         <div className="container position-relative" style={{ zIndex: 1 }}>
           <div className="text-center mb-5">
-            <span
-              style={{
-                display: 'inline-block',
-                padding: '7px 18px',
-                borderRadius: '999px',
-                background: 'rgba(0, 63, 125, 0.1)',
-                color: '#003f7d',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                fontSize: '0.75rem',
-                marginBottom: '16px',
-              }}
-            >
+            <span className="section-badge">
               AI Agents Portfolio
             </span>
             <h2 style={{ fontSize: '2.45rem', fontWeight: 700, color: '#132f4c', marginBottom: '12px' }}>
@@ -617,42 +657,44 @@ export default function Home() {
                 icon: FaPen,
                 accent: 'linear-gradient(135deg, rgba(162,155,254,0.28), rgba(0,188,212,0.24))',
               },
-            ].map(({ title, tagline, description, icon: Icon, accent }) => (
+            ].map(({ title, tagline, description, icon: Icon, accent }, index) => (
               <div className="col-lg-4 col-md-6" key={title}>
-                <div className="glass-card" style={{ padding: '28px', height: '100%', transition: 'transform 0.3s ease' }}>
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: '64px 1fr',
-                      columnGap: '18px',
-                      rowGap: '6px',
-                      alignItems: 'flex-start',
-                    }}
-                  >
+                <ScrollAnimation delay={index * 100}>
+                  <div className="glass-card" style={{ padding: '32px', height: '100%' }}>
                     <div
-                      className="glow-icon"
                       style={{
-                        width: '56px',
-                        height: '56px',
-                        borderRadius: '18px',
-                        background: accent,
-                        color: '#0f1f38',
-                        backgroundSize: '200% 200%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gridRow: 'span 2',
+                        display: 'grid',
+                        gridTemplateColumns: '64px 1fr',
+                        columnGap: '20px',
+                        rowGap: '8px',
+                        alignItems: 'flex-start',
                       }}
                     >
-                      <Icon size={24} />
-                    </div>
-                    <h4 style={{ fontSize: '1.3rem', color: 'var(--text-dark)', marginBottom: '2px' }}>{title}</h4>
-                    <p style={{ color: '#0b7285', fontSize: '0.9rem', fontWeight: 600, marginBottom: 0 }}>{tagline}</p>
-                    <div style={{ gridColumn: '2 / -1', gridRow: 'span 1' }}>
-                      <p style={{ color: 'var(--text-muted)', marginBottom: 0, fontSize: '0.95rem' }}>{description}</p>
+                      <div
+                        className="glow-icon"
+                        style={{
+                          width: '60px',
+                          height: '60px',
+                          borderRadius: '18px',
+                          background: accent,
+                          color: '#0f1f38',
+                          backgroundSize: '200% 200%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gridRow: 'span 2',
+                        }}
+                      >
+                        <Icon size={26} />
+                      </div>
+                      <h4 style={{ fontSize: '1.35rem', color: 'var(--text-dark)', marginBottom: '4px', fontWeight: 700 }}>{title}</h4>
+                      <p style={{ color: '#003f7d', fontSize: '0.95rem', fontWeight: 600, marginBottom: 0 }}>{tagline}</p>
+                      <div style={{ gridColumn: '2 / -1', gridRow: 'span 1' }}>
+                        <p style={{ color: 'var(--text-muted)', marginBottom: 0, fontSize: '0.98rem', lineHeight: 1.7 }}>{description}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ScrollAnimation>
               </div>
             ))}
           </div>
@@ -660,8 +702,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/ai-agents"
-              className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ background: '#003f7d', color: '#fff', border: 'none' }}
+              className={primaryButtonClass}
             >
               Explore All AI Agents
             </Link>
@@ -734,7 +775,7 @@ export default function Home() {
                     <FaQuoteLeft size={20} />
                   </div>
                 <p className="mb-4" style={{ fontStyle: 'italic', color: '#1f2d3d', fontSize: '1.05rem' }}>
-                  "MultipleAI's team helped us launch an AI service line in under a month, seamlessly under our own brand."
+                  &ldquo;MultipleAI&apos;s team helped us launch an AI service line in under a month, seamlessly under our own brand.&rdquo;
                 </p>
                 <p className="mb-0 fw-semibold text-uppercase" style={{ fontSize: '0.85rem', letterSpacing: '0.08em', color: '#003366' }}>
                   Daniel K.
@@ -760,7 +801,7 @@ export default function Home() {
                   <FaQuoteLeft size={20} />
                 </div>
                 <p className="mb-4" style={{ fontStyle: 'italic', color: '#1f2d3d', fontSize: '1.05rem' }}>
-                  "Their automation agents transformed how our accounting team works, consistent, compliant, and fast."
+                  &ldquo;Their automation agents transformed how our accounting team works, consistent, compliant, and fast.&rdquo;
                 </p>
                 <p className="mb-0 fw-semibold text-uppercase" style={{ fontSize: '0.85rem', letterSpacing: '0.08em', color: '#003366' }}>
                   Sarah L.
@@ -797,7 +838,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-5">
-            <Link href="/contact" className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold" style={{ background: '#003366', color: '#fff', border: 'none' }}>
+            <Link href="/contact" className={primaryButtonClass}>
               Partner with Us
             </Link>
           </div>
@@ -909,10 +950,10 @@ export default function Home() {
                   </div>
                 </div>
                 <h2 style={{ color: '#ffffff', textShadow: '0 12px 28px rgba(0, 0, 0, 0.45)', marginBottom: '16px', marginTop: '0' }}>
-                  Let's Build AI Intelligent Solutions Together
+                  Let&apos;s Build AI Intelligent Solutions Together
                 </h2>
                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem', marginBottom: '24px' }}>
-                  Whether you're an accounting firm, marketing agency, or technology integrator, MultipleAI provides the AI capability,
+                  Whether you&apos;re an accounting firm, marketing agency, or technology integrator, MultipleAI provides the AI capability,
                   infrastructure, and ongoing support. You keep the client and the brand.
                 </p>
                 <div
@@ -1010,8 +1051,7 @@ export default function Home() {
                   <div className="col-12 d-flex justify-content-center mt-auto">
                     <button
                       type="submit"
-                      className="btn btn-dark btn-lg px-5 py-3 rounded-pill fw-semibold"
-                      style={{ background: '#003366', border: 'none' }}
+                    className={primaryButtonClass}
                     >
                       Book a Strategy Call
                     </button>
@@ -1083,14 +1123,13 @@ export default function Home() {
           <div className="d-flex justify-content-center gap-3 flex-wrap">
             <Link
               href="/contact"
-              className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ color: '#001326' }}
+              className={primaryButtonClass}
             >
               Partner with Us Today
             </Link>
             <Link
               href="/services"
-              className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fw-semibold"
+              className={outlineButtonClass}
             >
               Explore Capabilities
             </Link>
@@ -1104,6 +1143,44 @@ export default function Home() {
         .contact-form ::placeholder {
           color: #0A2A6A;
           opacity: 0.85;
+        }
+
+        .section-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.35rem 1.4rem;
+          border-radius: 999px;
+          background: rgba(0, 188, 212, 0.15);
+          color: #003f7d;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          font-size: 0.72rem;
+          font-weight: 600;
+        }
+
+        .section-badge--subtle {
+          background: rgba(255, 255, 255, 0.18);
+          color: rgba(255, 255, 255, 0.95);
+        }
+
+        .section-badge--outline {
+          border: 1px solid rgba(0, 63, 125, 0.25);
+          background: rgba(0, 63, 125, 0.08);
+        }
+
+        .trusted-card {
+          padding: 22px;
+          min-height: 110px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .trusted-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 20px 36px rgba(15, 31, 56, 0.12);
         }
         
         @keyframes pulse {

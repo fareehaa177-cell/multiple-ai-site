@@ -81,14 +81,13 @@ export default function DataMining() {
               <div className="d-flex flex-wrap gap-3">
                 <Link
                   href="/contact"
-                  className="btn btn-light btn-lg px-4 py-3 rounded-pill fw-semibold"
-                  style={{ background: '#667eea', color: '#fff', border: 'none' }}
+                  className="btn-pill btn-pill-gradient"
                 >
                   Unlock Your Data
                 </Link>
                 <Link
                   href="/services"
-                  className="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-semibold"
+                  className="btn-pill btn-pill-white"
                 >
                   View All Services
                 </Link>
@@ -308,25 +307,24 @@ export default function DataMining() {
         />
         <div className="container position-relative text-center">
           <h2 className="display-5 fw-bold mb-3" style={{ color: 'white', letterSpacing: '-0.01em' }}>
-            Ready to Unlock Your Data's Potential?
+            Ready to Unlock Your Data&apos;s Potential?
           </h2>
           <p
             className="lead mb-4"
             style={{ color: 'rgba(255,255,255,0.82)', maxWidth: '680px', margin: '0 auto 28px' }}
           >
-            Let's discover the hidden value in your data and turn it into competitive advantages.
+            Let&apos;s discover the hidden value in your data and turn it into competitive advantages.
           </p>
           <div className="d-flex justify-content-center gap-3 flex-wrap">
             <Link
               href="/contact"
-              className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ color: '#001326' }}
+              className="btn-pill btn-pill-white"
             >
               Get Started
             </Link>
             <Link
               href="/services"
-              className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fw-semibold"
+              className="btn-pill btn-pill-white"
             >
               Explore All Services
             </Link>

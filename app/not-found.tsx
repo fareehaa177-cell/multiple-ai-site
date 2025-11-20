@@ -18,19 +18,18 @@ export default function NotFound() {
           404 - Page Not Found
         </h1>
         <p className="fs-5 mb-4" style={{ color: 'rgba(255,255,255,0.85)' }}>
-          The page you're looking for doesn't exist or has been moved.
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
         <div className="d-flex gap-3 justify-content-center flex-wrap">
           <Link
             href="/"
-            className="btn btn-light btn-lg px-4 py-3 rounded-pill fw-semibold"
-            style={{ color: '#003f7d' }}
+            className="btn-pill btn-pill-white"
           >
             Go home
           </Link>
           <Link
             href="/contact"
-            className="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-semibold"
+            className="btn-pill btn-pill-gradient"
           >
             Contact us
           </Link>

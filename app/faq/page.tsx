@@ -408,7 +408,7 @@ export default function FAQ() {
                   Book a session with our partner specialists for solution demos, pricing models, or
                   integration guidance.
                 </p>
-                <Link href="/contact" className="btn btn-primary btn-lg px-4" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                <Link href="/contact" className="btn-pill btn-pill-white" style={{ textDecoration: 'none', display: 'inline-block' }}>
                   Talk to the Team
                 </Link>
               </Card>

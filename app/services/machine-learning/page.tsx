@@ -81,14 +81,13 @@ export default function MachineLearning() {
               <div className="d-flex flex-wrap gap-3">
                 <Link
                   href="/contact"
-                  className="btn btn-light btn-lg px-4 py-3 rounded-pill fw-semibold"
-                  style={{ background: '#667eea', color: '#fff', border: 'none' }}
+                  className="btn-pill btn-pill-gradient"
                 >
                   Explore ML Solutions
                 </Link>
                 <Link
                   href="/services"
-                  className="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-semibold"
+                  className="btn-pill btn-pill-white"
                 >
                   View All Services
                 </Link>
@@ -313,19 +312,18 @@ export default function MachineLearning() {
             className="lead mb-4"
             style={{ color: 'rgba(255,255,255,0.82)', maxWidth: '680px', margin: '0 auto 28px' }}
           >
-            Let's discuss how ML models can transform your data into competitive advantages.
+            Let&apos;s discuss how ML models can transform your data into competitive advantages.
           </p>
           <div className="d-flex justify-content-center gap-3 flex-wrap">
             <Link
               href="/contact"
-              className="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold"
-              style={{ color: '#001326' }}
+              className="btn-pill btn-pill-white"
             >
               Get Started
             </Link>
             <Link
               href="/services"
-              className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fw-semibold"
+              className="btn-pill btn-pill-white"
             >
               Explore All Services
             </Link>
