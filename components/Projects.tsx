@@ -2,6 +2,7 @@
 
 import { Container, Row, Col } from 'react-bootstrap';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Projects() {
   const projects = [
@@ -51,10 +52,12 @@ export default function Projects() {
                 <div className="card-custom">
                   <Row className="align-items-center">
                     <Col md={4}>
-                      <img 
+                      <Image 
                         src={project.image} 
                         alt={project.title}
                         className="img-fluid rounded"
+                        width={400}
+                        height={250}
                         style={{ width: '100%', height: '250px', objectFit: 'cover' }}
                       />
                     </Col>

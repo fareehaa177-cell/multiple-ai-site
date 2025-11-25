@@ -2,6 +2,7 @@
 
 import { Container, Row, Col } from 'react-bootstrap';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -27,11 +28,13 @@ export default function Hero() {
           </Col>
           <Col lg={6} className="mt-5 mt-lg-0">
             <div className="hero-image text-center">
-              <img 
+              <Image 
                 src="/images/heroimage/heroimage7.jpg" 
                 alt="AI Solutions" 
                 className="img-fluid rounded"
-                style={{ maxWidth: '100%' }}
+                width={800}
+                height={600}
+                style={{ maxWidth: '100%', height: 'auto' }}
               />
             </div>
           </Col>

@@ -383,6 +383,39 @@ export default function Contact() {
                         style={{
                           width: '48px',
                           height: '48px',
+                          background: '#667eea',
+                          borderRadius: '14px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: 'white',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <FaMapMarkerAlt size={20} />
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <h6 className="mb-1" style={{ color: '#0f1f38', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>Jeddah Office</h6>
+                        <p className="mb-0" style={{ color: '#0f1f38', fontSize: '0.95rem', lineHeight: 1.6 }}>
+                          <a
+                            href="https://www.google.com/maps?q=Level+26,+King's+Road+Tower,+King+Abdul+Aziz+Road,+Jeddah,+21499"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: '#0f1f38', textDecoration: 'none' }}
+                          >
+                            Level 26, King&apos;s Road Tower,<br />
+                            King Abdul Aziz Road,<br />
+                            Jeddah, 21499
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                      <div
+                        style={{
+                          width: '48px',
+                          height: '48px',
                           background: '#10b981',
                           borderRadius: '14px',
                           display: 'flex',

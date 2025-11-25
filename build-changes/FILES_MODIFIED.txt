@@ -1,0 +1,26 @@
+FILES MODIFIED IN THIS BUILD
+================================
+
+1. app/resources/page.tsx
+   - Added Videos section with 5 Vimeo embeds
+   - Changed resource categories from col-lg-4 to col-lg-3 (4 per row)
+   - Updated Podcast link from #podcast to /podcast
+
+2. app/podcast/page.tsx (NEW FILE)
+   - Complete new page with audio player functionality
+   - 8 podcast episodes with play/download features
+   - Sticky player bar implementation
+
+3. app/contact/page.tsx
+   - Added Jeddah Office address (second address)
+   - Level 26, King's Road Tower, King Abdul Aziz Road, Jeddah, 21499
+   - Google Maps link included
+
+BUILD OUTPUT
+============
+- Location: out/
+- Total pages: 28 pages
+- New route: /podcast
+- All static assets included
+- Build completed successfully
+

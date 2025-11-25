@@ -6,6 +6,7 @@ import { FaBrain, FaRobot, FaChartLine, FaFileAlt, FaShieldAlt, FaUsers, FaPhone
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ScrollAnimation from '../components/ScrollAnimation';
+import ContactPopup from '../components/ContactPopup';
 
 // Animated Counter Component
 function AnimatedCounter({ end, suffix = '', duration = 2000, label }: { end: number; suffix?: string; duration?: number; label: string }) {
@@ -121,7 +122,7 @@ export default function Home() {
         className="hero-section"
         style={{
           backgroundImage:
-            "linear-gradient(130deg, rgba(0, 19, 38, 0.9) 0%, rgba(0, 63, 125, 0.8) 55%, rgba(0, 188, 212, 0.75) 100%), url('/images/heroimage/heroimage2.jpeg')",
+            "linear-gradient(130deg, rgba(0, 19, 38, 0.2) 0%, rgba(0, 63, 125, 0.15) 55%, rgba(0, 188, 212, 0.1) 100%), url('/images/heroimage/home_page_hero.png')",
           backgroundSize: 'cover',
           backgroundPosition: `calc(50% + ${mousePosition.x}px) calc(50% + ${mousePosition.y}px)`,
           backgroundRepeat: 'no-repeat',
@@ -221,12 +222,13 @@ export default function Home() {
                 >
                   Explore Our Agents
                 </Link>
-                <Link
-                  href="/contact"
-                  className={outlineButtonClass}
-                >
-                  Partner with Us
-                </Link>
+                <ContactPopup
+                  trigger={
+                    <button className={outlineButtonClass} type="button">
+                      Partner with Us
+                    </button>
+                  }
+                />
               </div>
 
               {/* Animated Statistics */}
@@ -248,46 +250,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trusted By */}
-      <section
-        className="section"
-        style={{
-          background: 'linear-gradient(135deg, #f4fbfd 0%, #e5f9ff 55%, #ffffff 100%)',
-          padding: '80px 0',
-        }}
-      >
-        <div className="container">
-          <ScrollAnimation>
-            <div className="text-center mb-5">
-              <span className="section-badge">
-                Trusted By Leading Institutions
-              </span>
-              <h3 style={{ marginTop: '8px', color: '#0f1f38', fontWeight: 700, fontSize: '2rem' }}>
-                Universities, Accelerators & Enterprise Partners
-              </h3>
-            </div>
-          </ScrollAnimation>
-          <div className="row g-4 align-items-center justify-content-center">
-            {[
-              { name: 'UWA', logo: '/images/image3.png' },
-              { name: 'Curtin University', logo: '/images/image4.png' },
-              { name: 'Perth Partners', logo: '/images/image5.jpeg' },
-              { name: 'Federal Grants', logo: '/images/image6.png' },
-              { name: 'Innovate WA', logo: '/images/image7.png' },
-              { name: 'Tech Hub', logo: '/images/image8.png' },
-            ].map(({ name, logo }, index) => (
-              <div key={name} className="col-6 col-sm-4 col-lg-2">
-                <ScrollAnimation delay={index * 50}>
-                    <div className="trusted-card glass-card">
-                    <Image src={logo} alt={name} width={120} height={60} style={{ maxWidth: '100%', height: 'auto', objectFit: 'contain' }} />
-                  </div>
-                </ScrollAnimation>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -315,12 +277,13 @@ export default function Home() {
                 Our white-label model lets you deliver AI products instantly. We provide the technology, security, and support; you keep the client relationship.
               </p>
               <div className="mt-4">
-                <Link
-                  href="/contact"
-                  className={primaryButtonClass}
-                >
-                  Book a Live Demo
-                </Link>
+                <ContactPopup
+                  trigger={
+                    <button className={primaryButtonClass} type="button">
+                      Book a Live Demo
+                    </button>
+                  }
+                />
               </div>
             </div>
             <div className="col-lg-7">
@@ -394,9 +357,11 @@ export default function Home() {
                     className="glass-card"
                     style={{
                       position: 'relative',
-                      padding: '40px 32px',
+                      padding: '36px 32px',
                       height: '100%',
                       overflow: 'hidden',
+                      display: 'flex',
+                      flexDirection: 'column',
                     }}
                   >
                     <div
@@ -426,7 +391,7 @@ export default function Home() {
                         color: 'white',
                         fontWeight: 700,
                         fontSize: '1.4rem',
-                        marginBottom: '28px',
+                        marginBottom: '24px',
                         letterSpacing: '0.05em',
                         boxShadow: '0 12px 28px rgba(0, 188, 212, 0.3)',
                       }}
@@ -441,12 +406,13 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-5">
-            <Link
-              href="/contact"
-              className={primaryButtonClass}
-            >
-              Start Your Partner Journey
-            </Link>
+            <ContactPopup
+              trigger={
+                <button className={primaryButtonClass} type="button">
+                  Start Your Partner Journey
+                </button>
+              }
+            />
           </div>
         </div>
       </section>
@@ -544,7 +510,7 @@ export default function Home() {
             ].map(({ title, copy, Icon, accent }, index) => (
               <div className="col-lg-4 col-md-6" key={title}>
                 <ScrollAnimation delay={index * 100}>
-                  <div className="glass-card glass-card--dark" style={{ padding: '32px', height: '100%' }}>
+                  <div className="glass-card glass-card--dark" style={{ padding: '36px 32px', height: '100%', display: 'flex', flexDirection: 'column' }}>
                     <div
                       className="glow-icon glow-icon--inverted"
                       style={{
@@ -568,12 +534,13 @@ export default function Home() {
           </div>
           
           <div className="text-center mt-5">
-            <Link
-              href="/contact"
-              className="btn-pill btn-pill-white"
-            >
-              Request a Demo
-            </Link>
+            <ContactPopup
+              trigger={
+                <button className="btn-pill btn-pill-white" type="button">
+                  Request a Demo
+                </button>
+              }
+            />
           </div>
         </div>
       </section>
@@ -588,6 +555,7 @@ export default function Home() {
           overflow: 'hidden',
         }}
       >
+        {/* Animated Background Effects */}
         <div
           style={{
             position: 'absolute',
@@ -595,25 +563,527 @@ export default function Home() {
             right: '-100px',
             width: '400px',
             height: '400px',
-            background: 'rgba(0, 63, 125, 0.1)',
+            background: 'rgba(0, 63, 125, 0.12)',
             filter: 'blur(120px)',
             zIndex: 0,
+            animation: 'float 20s ease-in-out infinite',
           }}
         />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '-150px',
+            left: '-150px',
+            width: '500px',
+            height: '500px',
+            background: 'rgba(0, 188, 212, 0.1)',
+            filter: 'blur(140px)',
+            zIndex: 0,
+            animation: 'float 25s ease-in-out infinite reverse',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '600px',
+            height: '600px',
+            background: 'radial-gradient(circle, rgba(102, 126, 234, 0.08) 0%, transparent 70%)',
+            filter: 'blur(100px)',
+            zIndex: 0,
+            animation: 'pulse 15s ease-in-out infinite',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: '20%',
+            right: '10%',
+            width: '300px',
+            height: '300px',
+            background: 'rgba(0, 188, 212, 0.06)',
+            borderRadius: '50%',
+            filter: 'blur(80px)',
+            zIndex: 0,
+            animation: 'float 18s ease-in-out infinite',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '10%',
+            right: '20%',
+            width: '250px',
+            height: '250px',
+            background: 'rgba(0, 63, 125, 0.08)',
+            borderRadius: '50%',
+            filter: 'blur(90px)',
+            zIndex: 0,
+            animation: 'float 22s ease-in-out infinite reverse',
+          }}
+        />
+        
+        {/* AI Circuit Pattern Overlay */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: `
+              linear-gradient(rgba(0, 63, 125, 0.04) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 63, 125, 0.04) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+            zIndex: 0,
+            opacity: 0.3,
+          }}
+        />
+        
+        {/* AI Neural Network Nodes - Moving Dots */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 0,
+            pointerEvents: 'none',
+          }}
+        >
+          {[
+            { startTop: '15%', startLeft: '10%', moveX: '30px', moveY: '-20px', delay: '0s', duration: '8s' },
+            { startTop: '25%', startLeft: '25%', moveX: '-25px', moveY: '25px', delay: '0.5s', duration: '10s' },
+            { startTop: '35%', startLeft: '15%', moveX: '40px', moveY: '15px', delay: '1s', duration: '12s' },
+            { startTop: '20%', startLeft: '40%', moveX: '-20px', moveY: '-30px', delay: '1.5s', duration: '9s' },
+            { startTop: '45%', startLeft: '30%', moveX: '35px', moveY: '20px', delay: '2s', duration: '11s' },
+            { startTop: '60%', startLeft: '20%', moveX: '-30px', moveY: '-15px', delay: '2.5s', duration: '13s' },
+            { startTop: '70%', startLeft: '35%', moveX: '25px', moveY: '30px', delay: '3s', duration: '8s' },
+            { startTop: '55%', startLeft: '50%', moveX: '-35px', moveY: '-25px', delay: '3.5s', duration: '10s' },
+            { startTop: '30%', startLeft: '60%', moveX: '20px', moveY: '25px', delay: '4s', duration: '12s' },
+            { startTop: '50%', startLeft: '70%', moveX: '-25px', moveY: '-20px', delay: '4.5s', duration: '9s' },
+            { startTop: '65%', startLeft: '65%', moveX: '30px', moveY: '15px', delay: '5s', duration: '11s' },
+            { startTop: '80%', startLeft: '55%', moveX: '-20px', moveY: '-30px', delay: '5.5s', duration: '13s' },
+            { startTop: '75%', startLeft: '75%', moveX: '25px', moveY: '20px', delay: '6s', duration: '8s' },
+            { startTop: '40%', startLeft: '80%', moveX: '-30px', moveY: '-25px', delay: '6.5s', duration: '10s' },
+            { startTop: '25%', startLeft: '85%', moveX: '35px', moveY: '30px', delay: '7s', duration: '12s' },
+          ].map((node, index) => (
+            <div
+              key={index}
+              style={{
+                position: 'absolute',
+                top: node.startTop,
+                left: node.startLeft,
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: 'rgba(0, 188, 212, 0.6)',
+                boxShadow: '0 0 20px rgba(0, 188, 212, 0.4), 0 0 40px rgba(0, 188, 212, 0.2)',
+                animation: `aiPulse 3s ease-in-out infinite, nodeMove${index} ${node.duration} ease-in-out infinite`,
+                animationDelay: node.delay,
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* AI Connection Lines */}
+        <svg
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 0,
+            pointerEvents: 'none',
+            opacity: 0.2,
+          }}
+        >
+          <defs>
+            <linearGradient id="aiLineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="rgba(0, 63, 125, 0.3)" />
+              <stop offset="50%" stopColor="rgba(0, 188, 212, 0.4)" />
+              <stop offset="100%" stopColor="rgba(0, 63, 125, 0.3)" />
+            </linearGradient>
+          </defs>
+          {/* Neural network connections */}
+          <line
+            x1="10%"
+            y1="15%"
+            x2="25%"
+            y2="25%"
+            stroke="url(#aiLineGradient)"
+            strokeWidth="1"
+            strokeDasharray="5,5"
+            style={{ animation: 'dashMove 8s linear infinite' }}
+          />
+          <line
+            x1="25%"
+            y1="25%"
+            x2="40%"
+            y2="20%"
+            stroke="url(#aiLineGradient)"
+            strokeWidth="1"
+            strokeDasharray="5,5"
+            style={{ animation: 'dashMove 10s linear infinite' }}
+          />
+          <line
+            x1="30%"
+            y1="45%"
+            x2="50%"
+            y2="55%"
+            stroke="url(#aiLineGradient)"
+            strokeWidth="1"
+            strokeDasharray="5,5"
+            style={{ animation: 'dashMove 12s linear infinite' }}
+          />
+          <line
+            x1="50%"
+            y1="55%"
+            x2="65%"
+            y2="65%"
+            stroke="url(#aiLineGradient)"
+            strokeWidth="1"
+            strokeDasharray="5,5"
+            style={{ animation: 'dashMove 9s linear infinite' }}
+          />
+          <line
+            x1="60%"
+            y1="30%"
+            x2="70%"
+            y2="50%"
+            stroke="url(#aiLineGradient)"
+            strokeWidth="1"
+            strokeDasharray="5,5"
+            style={{ animation: 'dashMove 11s linear infinite' }}
+          />
+          <line
+            x1="70%"
+            y1="50%"
+            x2="80%"
+            y2="40%"
+            stroke="url(#aiLineGradient)"
+            strokeWidth="1"
+            strokeDasharray="5,5"
+            style={{ animation: 'dashMove 13s linear infinite' }}
+          />
+        </svg>
+        
+        {/* AI Binary Code Effect */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 0,
+            pointerEvents: 'none',
+            overflow: 'hidden',
+            opacity: 0.15,
+          }}
+        >
+          {['0101', '1010', '1100', '0011', '1001', '0110'].map((binary, index) => (
+            <div
+              key={index}
+              style={{
+                position: 'absolute',
+                top: `${15 + index * 12}%`,
+                left: `${5 + index * 8}%`,
+                fontSize: '0.7rem',
+                fontFamily: 'monospace',
+                color: 'rgba(0, 188, 212, 0.6)',
+                letterSpacing: '0.2em',
+                animation: 'binaryFade 6s ease-in-out infinite',
+                animationDelay: `${index * 0.8}s`,
+              }}
+            >
+              {binary}
+            </div>
+          ))}
+        </div>
+        
+        {/* AI Hexagon Pattern */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '5%',
+            right: '5%',
+            width: '150px',
+            height: '150px',
+            zIndex: 0,
+            opacity: 0.1,
+          }}
+        >
+          <svg width="150" height="150" viewBox="0 0 150 150">
+            <defs>
+              <linearGradient id="hexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="rgba(0, 63, 125, 0.3)" />
+                <stop offset="100%" stopColor="rgba(0, 188, 212, 0.3)" />
+              </linearGradient>
+            </defs>
+            <polygon
+              points="75,10 135,40 135,110 75,140 15,110 15,40"
+              fill="none"
+              stroke="url(#hexGradient)"
+              strokeWidth="1"
+              style={{ animation: 'hexRotate 20s linear infinite' }}
+            />
+          </svg>
+        </div>
+        
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '10%',
+            left: '8%',
+            width: '120px',
+            height: '120px',
+            zIndex: 0,
+            opacity: 0.1,
+          }}
+        >
+          <svg width="120" height="120" viewBox="0 0 120 120">
+            <polygon
+              points="60,5 110,35 110,85 60,115 10,85 10,35"
+              fill="none"
+              stroke="url(#hexGradient)"
+              strokeWidth="1"
+              style={{ animation: 'hexRotate 25s linear infinite reverse' }}
+            />
+          </svg>
+        </div>
+        
+        {/* Animated Gradient Orbs */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '10%',
+            left: '5%',
+            width: '200px',
+            height: '200px',
+            background: 'linear-gradient(135deg, rgba(0, 188, 212, 0.1), rgba(102, 126, 234, 0.08))',
+            borderRadius: '50%',
+            filter: 'blur(60px)',
+            zIndex: 0,
+            animation: 'float 16s ease-in-out infinite',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '15%',
+            left: '15%',
+            width: '180px',
+            height: '180px',
+            background: 'linear-gradient(135deg, rgba(0, 63, 125, 0.1), rgba(0, 188, 212, 0.08))',
+            borderRadius: '50%',
+            filter: 'blur(70px)',
+            zIndex: 0,
+            animation: 'float 19s ease-in-out infinite reverse',
+          }}
+        />
+        
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes float {
+            0%, 100% {
+              transform: translate(0, 0) scale(1);
+            }
+            33% {
+              transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+              transform: translate(-20px, 20px) scale(0.9);
+            }
+          }
+          @keyframes pulse {
+            0%, 100% {
+              opacity: 0.6;
+              transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+              opacity: 1;
+              transform: translate(-50%, -50%) scale(1.2);
+            }
+          }
+          @keyframes aiPulse {
+            0%, 100% {
+              opacity: 0.4;
+              transform: scale(1);
+              box-shadow: 0 0 20px rgba(0, 188, 212, 0.4), 0 0 40px rgba(0, 188, 212, 0.2);
+            }
+            50% {
+              opacity: 1;
+              transform: scale(1.5);
+              box-shadow: 0 0 30px rgba(0, 188, 212, 0.8), 0 0 60px rgba(0, 188, 212, 0.4);
+            }
+          }
+          @keyframes nodeMove0 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -20px); }
+            50% { transform: translate(15px, -10px); }
+            75% { transform: translate(25px, -15px); }
+          }
+          @keyframes nodeMove1 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-25px, 25px); }
+            50% { transform: translate(-15px, 15px); }
+            75% { transform: translate(-20px, 20px); }
+          }
+          @keyframes nodeMove2 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(40px, 15px); }
+            50% { transform: translate(20px, 8px); }
+            75% { transform: translate(30px, 12px); }
+          }
+          @keyframes nodeMove3 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-20px, -30px); }
+            50% { transform: translate(-10px, -15px); }
+            75% { transform: translate(-15px, -22px); }
+          }
+          @keyframes nodeMove4 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(35px, 20px); }
+            50% { transform: translate(18px, 10px); }
+            75% { transform: translate(28px, 15px); }
+          }
+          @keyframes nodeMove5 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-30px, -15px); }
+            50% { transform: translate(-15px, -8px); }
+            75% { transform: translate(-22px, -12px); }
+          }
+          @keyframes nodeMove6 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(25px, 30px); }
+            50% { transform: translate(12px, 15px); }
+            75% { transform: translate(18px, 22px); }
+          }
+          @keyframes nodeMove7 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-35px, -25px); }
+            50% { transform: translate(-18px, -12px); }
+            75% { transform: translate(-28px, -18px); }
+          }
+          @keyframes nodeMove8 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(20px, 25px); }
+            50% { transform: translate(10px, 12px); }
+            75% { transform: translate(15px, 18px); }
+          }
+          @keyframes nodeMove9 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-25px, -20px); }
+            50% { transform: translate(-12px, -10px); }
+            75% { transform: translate(-18px, -15px); }
+          }
+          @keyframes nodeMove10 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(30px, 15px); }
+            50% { transform: translate(15px, 8px); }
+            75% { transform: translate(22px, 12px); }
+          }
+          @keyframes nodeMove11 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-20px, -30px); }
+            50% { transform: translate(-10px, -15px); }
+            75% { transform: translate(-15px, -22px); }
+          }
+          @keyframes nodeMove12 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(25px, 20px); }
+            50% { transform: translate(12px, 10px); }
+            75% { transform: translate(18px, 15px); }
+          }
+          @keyframes nodeMove13 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-30px, -25px); }
+            50% { transform: translate(-15px, -12px); }
+            75% { transform: translate(-22px, -18px); }
+          }
+          @keyframes nodeMove14 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(35px, 30px); }
+            50% { transform: translate(18px, 15px); }
+            75% { transform: translate(28px, 22px); }
+          }
+          @keyframes dashMove {
+            0% {
+              stroke-dashoffset: 0;
+            }
+            100% {
+              stroke-dashoffset: 20;
+            }
+          }
+          @keyframes binaryFade {
+            0%, 100% {
+              opacity: 0.1;
+              transform: translateY(0);
+            }
+            50% {
+              opacity: 0.4;
+              transform: translateY(-10px);
+            }
+          }
+          @keyframes hexRotate {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+        `}} />
         <div className="container position-relative" style={{ zIndex: 1 }}>
           <div className="text-center mb-5">
-            <span className="section-badge">
+            <span
+              className="section-badge"
+              style={{
+                display: 'inline-block',
+                padding: '8px 20px',
+                borderRadius: '999px',
+                background: 'linear-gradient(135deg, rgba(0, 63, 125, 0.12), rgba(0, 188, 212, 0.15))',
+                color: '#003f7d',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                marginBottom: '20px',
+              }}
+            >
               AI Agents Portfolio
             </span>
-            <h2 style={{ fontSize: '2.45rem', fontWeight: 700, color: '#132f4c', marginBottom: '12px' }}>
+            <h2
+              style={{
+                fontSize: '2.6rem',
+                fontWeight: 700,
+                color: '#132f4c',
+                marginBottom: '16px',
+                lineHeight: 1.2,
+                letterSpacing: '-0.02em',
+              }}
+            >
               Powerful AI Agents for Every Business Need
             </h2>
-            <p style={{ color: '#486581', maxWidth: '720px', margin: '0 auto 40px', fontSize: '1.05rem' }}>
+            <p
+              style={{
+                color: '#486581',
+                maxWidth: '720px',
+                margin: '0 auto 50px',
+                fontSize: '1.1rem',
+                lineHeight: 1.7,
+              }}
+            >
               Discover our comprehensive suite of intelligent AI agents designed to automate, enhance, and transform every aspect of your business operations, from reception to security.
             </p>
           </div>
           
-          <div className="row g-4 mb-5">
+          <div className="row g-4 mb-5 justify-content-center">
             {[
               {
                 title: 'AI Receptionist Agent',
@@ -658,39 +1128,194 @@ export default function Home() {
                 accent: 'linear-gradient(135deg, rgba(162,155,254,0.28), rgba(0,188,212,0.24))',
               },
             ].map(({ title, tagline, description, icon: Icon, accent }, index) => (
-              <div className="col-lg-4 col-md-6" key={title}>
+              <div className="col-lg-4 col-md-6" key={title} style={{ display: 'flex' }}>
                 <ScrollAnimation delay={index * 100}>
-                  <div className="glass-card" style={{ padding: '32px', height: '100%' }}>
+                  <div
+                    className="glass-card"
+                    style={{
+                      padding: '40px 32px',
+                      height: '100%',
+                      width: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      borderRadius: '24px',
+                      background: '#ffffff',
+                      border: '1px solid rgba(16, 42, 67, 0.08)',
+                      boxShadow: '0 8px 24px rgba(0, 26, 60, 0.08)',
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      position: 'relative',
+                      overflow: 'hidden',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-8px)';
+                      e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 63, 125, 0.15)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 26, 60, 0.08)';
+                    }}
+                  >
+                    {/* Background gradient accent */}
                     <div
                       style={{
-                        display: 'grid',
-                        gridTemplateColumns: '64px 1fr',
-                        columnGap: '20px',
-                        rowGap: '8px',
-                        alignItems: 'flex-start',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '4px',
+                        background: accent,
+                        borderRadius: '24px 24px 0 0',
+                      }}
+                    />
+                    
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '20px',
+                        flex: 1,
                       }}
                     >
+                      {/* 3D Icon Container */}
                       <div
-                        className="glow-icon"
                         style={{
-                          width: '60px',
-                          height: '60px',
-                          borderRadius: '18px',
-                          background: accent,
-                          color: '#0f1f38',
-                          backgroundSize: '200% 200%',
+                          position: 'relative',
+                          width: '100%',
                           display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gridRow: 'span 2',
+                          justifyContent: 'flex-start',
+                          perspective: '1000px',
                         }}
                       >
-                        <Icon size={26} />
+                        <div
+                          style={{
+                            position: 'relative',
+                            width: '80px',
+                            height: '80px',
+                            transformStyle: 'preserve-3d',
+                            transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'rotateY(-10deg) rotateX(5deg) scale(1.05)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'rotateY(0) rotateX(0) scale(1)';
+                          }}
+                        >
+                          {/* Main 3D Icon Box */}
+                          <div
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              borderRadius: '20px',
+                              background: accent,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              position: 'relative',
+                              transform: 'translateZ(20px)',
+                              boxShadow: '0 12px 32px rgba(0, 63, 125, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
+                              overflow: 'hidden',
+                            }}
+                          >
+                            {/* Shine effect */}
+                            <div
+                              style={{
+                                position: 'absolute',
+                                top: '-50%',
+                                left: '-50%',
+                                width: '200%',
+                                height: '200%',
+                                background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%)',
+                                transform: 'rotate(45deg)',
+                                transition: 'transform 0.6s ease',
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = 'rotate(45deg) translate(50%, 50%)';
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = 'rotate(45deg) translate(-50%, -50%)';
+                              }}
+                            />
+                            <Icon
+                              size={36}
+                              style={{
+                                color: '#0f1f38',
+                                position: 'relative',
+                                zIndex: 1,
+                                filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))',
+                              }}
+                            />
+                          </div>
+                          
+                          {/* 3D Shadow Layer 1 */}
+                          <div
+                            style={{
+                              position: 'absolute',
+                              top: '8px',
+                              left: '8px',
+                              width: '100%',
+                              height: '100%',
+                              borderRadius: '20px',
+                              background: 'rgba(0, 63, 125, 0.15)',
+                              transform: 'translateZ(-10px)',
+                              zIndex: -1,
+                              filter: 'blur(8px)',
+                            }}
+                          />
+                          
+                          {/* 3D Shadow Layer 2 */}
+                          <div
+                            style={{
+                              position: 'absolute',
+                              top: '4px',
+                              left: '4px',
+                              width: '100%',
+                              height: '100%',
+                              borderRadius: '20px',
+                              background: 'rgba(0, 188, 212, 0.1)',
+                              transform: 'translateZ(-20px)',
+                              zIndex: -2,
+                              filter: 'blur(12px)',
+                            }}
+                          />
+                        </div>
                       </div>
-                      <h4 style={{ fontSize: '1.35rem', color: 'var(--text-dark)', marginBottom: '4px', fontWeight: 700 }}>{title}</h4>
-                      <p style={{ color: '#003f7d', fontSize: '0.95rem', fontWeight: 600, marginBottom: 0 }}>{tagline}</p>
-                      <div style={{ gridColumn: '2 / -1', gridRow: 'span 1' }}>
-                        <p style={{ color: 'var(--text-muted)', marginBottom: 0, fontSize: '0.98rem', lineHeight: 1.7 }}>{description}</p>
+
+                      {/* Content */}
+                      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        <h4
+                          style={{
+                            fontSize: '1.4rem',
+                            color: 'var(--text-dark)',
+                            marginBottom: 0,
+                            fontWeight: 700,
+                            lineHeight: 1.3,
+                          }}
+                        >
+                          {title}
+                        </h4>
+                        <p
+                          style={{
+                            color: '#003f7d',
+                            fontSize: '1rem',
+                            fontWeight: 600,
+                            marginBottom: 0,
+                            lineHeight: 1.4,
+                          }}
+                        >
+                          {tagline}
+                        </p>
+                        <p
+                          style={{
+                            color: 'var(--text-muted)',
+                            marginBottom: 0,
+                            fontSize: '0.95rem',
+                            lineHeight: 1.7,
+                            flex: 1,
+                          }}
+                        >
+                          {description}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -759,20 +1384,20 @@ export default function Home() {
 
           <div className="row g-4">
             <div className="col-lg-4">
-              <div className="glass-card glass-card--flush glass-card--tight h-100 p-4">
+              <div className="glass-card glass-card--flush glass-card--tight h-100" style={{ padding: '36px 32px', display: 'flex', flexDirection: 'column' }}>
                   <div
                     className="glow-icon"
                     style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '14px',
+                      width: '60px',
+                      height: '60px',
+                      borderRadius: '18px',
                       background: 'linear-gradient(135deg, #005599 0%, #00bcd4 100%)',
                       color: 'white',
-                      marginBottom: '20px',
+                      marginBottom: '22px',
                       backgroundSize: '200% 200%',
                     }}
                   >
-                    <FaQuoteLeft size={20} />
+                    <FaQuoteLeft size={26} />
                   </div>
                 <p className="mb-4" style={{ fontStyle: 'italic', color: '#1f2d3d', fontSize: '1.05rem' }}>
                   &ldquo;MultipleAI&apos;s team helped us launch an AI service line in under a month, seamlessly under our own brand.&rdquo;
@@ -785,20 +1410,20 @@ export default function Home() {
             </div>
 
             <div className="col-lg-4">
-              <div className="glass-card glass-card--flush glass-card--tight h-100 p-4">
+              <div className="glass-card glass-card--flush glass-card--tight h-100" style={{ padding: '36px 32px', display: 'flex', flexDirection: 'column' }}>
                 <div
                   className="glow-icon"
                   style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '14px',
+                    width: '60px',
+                    height: '60px',
+                    borderRadius: '18px',
                     background: 'linear-gradient(135deg, #1d4ed8 0%, #22d3ee 100%)',
                     color: 'white',
-                    marginBottom: '20px',
+                    marginBottom: '22px',
                     backgroundSize: '200% 200%',
                   }}
                 >
-                  <FaQuoteLeft size={20} />
+                  <FaQuoteLeft size={26} />
                 </div>
                 <p className="mb-4" style={{ fontStyle: 'italic', color: '#1f2d3d', fontSize: '1.05rem' }}>
                   &ldquo;Their automation agents transformed how our accounting team works, consistent, compliant, and fast.&rdquo;
@@ -811,20 +1436,20 @@ export default function Home() {
             </div>
 
             <div className="col-lg-4">
-              <div className="glass-card glass-card--flush glass-card--tight h-100 p-4">
+              <div className="glass-card glass-card--flush glass-card--tight h-100" style={{ padding: '36px 32px', display: 'flex', flexDirection: 'column' }}>
                 <div
                   className="glow-icon"
                   style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '14px',
+                    width: '60px',
+                    height: '60px',
+                    borderRadius: '18px',
                     background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                     color: 'white',
-                    marginBottom: '20px',
+                    marginBottom: '22px',
                     backgroundSize: '200% 200%',
                   }}
                 >
-                  <FaQuoteLeft size={20} />
+                  <FaQuoteLeft size={26} />
                 </div>
                 <p className="mb-4" style={{ fontStyle: 'italic', color: '#1f2d3d', fontSize: '1.05rem' }}>
                   “A reliable AI back-office partner we trust with our clients.”
@@ -838,9 +1463,54 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-5">
-            <Link href="/contact" className={primaryButtonClass}>
-              Partner with Us
-            </Link>
+            <ContactPopup
+              trigger={
+                <button className={primaryButtonClass} type="button">
+                  Partner with Us
+                </button>
+              }
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted By - Moved after testimonials */}
+      <section
+        className="section"
+        style={{
+          background: 'linear-gradient(135deg, #f4fbfd 0%, #e5f9ff 55%, #ffffff 100%)',
+          padding: '80px 0',
+        }}
+      >
+        <div className="container">
+          <ScrollAnimation>
+            <div className="text-center mb-5">
+              <span className="section-badge">
+                Trusted By Leading Institutions
+              </span>
+              <h3 style={{ marginTop: '8px', color: '#0f1f38', fontWeight: 700, fontSize: '2rem' }}>
+                Universities, Accelerators & Enterprise Partners
+              </h3>
+            </div>
+          </ScrollAnimation>
+          <div className="row g-4 align-items-center justify-content-center">
+            {[
+              { name: 'UWA', logo: '/images/image3.png' },
+              { name: 'Curtin University', logo: '/images/image4.png' },
+              { name: 'AYR', logo: '/images/image5.jpeg' },
+              { name: 'Perth Partners', logo: '/images/image5.jpeg' },
+              { name: 'Federal Grants', logo: '/images/image6.png' },
+              { name: 'Innovate WA', logo: '/images/image7.png' },
+              { name: 'Tech Hub', logo: '/images/image8.png' },
+            ].map(({ name, logo }, index) => (
+              <div key={name} className="col-6 col-sm-4 col-lg-2">
+                <ScrollAnimation delay={index * 50}>
+                    <div className="trusted-card glass-card">
+                    <Image src={logo} alt={name} width={120} height={60} style={{ maxWidth: '100%', height: 'auto', objectFit: 'contain' }} />
+                  </div>
+                </ScrollAnimation>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1121,12 +1791,13 @@ export default function Home() {
             We’ll scope, launch, and maintain your AI service line while you focus on client growth. Your brand stays front and centre.
           </p>
           <div className="d-flex justify-content-center gap-3 flex-wrap">
-            <Link
-              href="/contact"
-              className={primaryButtonClass}
-            >
-              Partner with Us Today
-            </Link>
+            <ContactPopup
+              trigger={
+                <button className={primaryButtonClass} type="button">
+                  Partner with Us Today
+                </button>
+              }
+            />
             <Link
               href="/services"
               className={outlineButtonClass}

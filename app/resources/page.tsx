@@ -1,9 +1,308 @@
 'use client';
-import { FaBookOpen, FaVideo, FaFileDownload, FaLightbulb, FaChartLine, FaCog } from 'react-icons/fa';
+import { FaBookOpen, FaMicrophone, FaFileDownload, FaLightbulb, FaChartLine, FaCog, FaVideo } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import { ebooks } from './ebooks-data';
+
+// Video Card Component
+function VideoCard({ video }: { video: { id: string; title: string; vimeoId: string } }) {
+  return (
+    <div className="col-lg-4 col-md-6">
+      <div
+        className="glass-card"
+        style={{
+          padding: '26px',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          borderRadius: '16px',
+          background: '#ffffff',
+          border: '1px solid rgba(16, 42, 67, 0.08)',
+          boxShadow: '0 8px 24px rgba(0, 26, 60, 0.08)',
+          transition: 'all 0.3s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-8px)';
+          e.currentTarget.style.boxShadow = '0 16px 32px rgba(0, 26, 60, 0.15)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 26, 60, 0.08)';
+        }}
+      >
+        {/* Video Embed */}
+        <div
+          style={{
+            width: '100%',
+            paddingBottom: '56.25%', // 16:9 aspect ratio
+            position: 'relative',
+            marginBottom: '20px',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            background: '#000',
+          }}
+        >
+          <iframe
+            src={`https://player.vimeo.com/video/${video.vimeoId}?title=0&byline=0&portrait=0`}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              border: 'none',
+            }}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            title={video.title}
+          />
+        </div>
+
+        {/* Video Title */}
+        <h4
+          style={{
+            fontSize: '1.3rem',
+            color: 'var(--text-dark)',
+            marginBottom: '12px',
+            fontWeight: 600,
+            lineHeight: '1.4',
+          }}
+        >
+          {video.title}
+        </h4>
+      </div>
+    </div>
+  );
+}
+
+// E-Book Card Component
+function EBookCard({ ebook }: { ebook: typeof ebooks[0] }) {
+  return (
+    <div className="col-lg-4 col-md-6">
+      <div
+        className="glass-card"
+        style={{
+          padding: '26px',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          borderRadius: '16px',
+          background: '#ffffff',
+          border: '1px solid rgba(16, 42, 67, 0.08)',
+          boxShadow: '0 8px 24px rgba(0, 26, 60, 0.08)',
+          transition: 'all 0.3s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-8px)';
+          e.currentTarget.style.boxShadow = '0 16px 32px rgba(0, 26, 60, 0.15)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 26, 60, 0.08)';
+        }}
+      >
+        {/* E-Book Cover */}
+        <div
+          style={{
+            width: '100%',
+            height: '280px',
+            marginBottom: '20px',
+            borderRadius: '12px',
+            overflow: 'visible',
+            background: 'linear-gradient(135deg, rgba(0, 63, 125, 0.08) 0%, rgba(0, 188, 212, 0.08) 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative',
+            cursor: 'pointer',
+          }}
+          onClick={() => window.open(ebook.pdfPath, '_blank')}
+        >
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '16px',
+              perspective: '1000px',
+            }}
+          >
+            {/* 3D PDF Icon */}
+            <div
+              style={{
+                width: '140px',
+                height: '180px',
+                position: 'relative',
+                transform: 'rotateY(-15deg) rotateX(5deg)',
+                transformStyle: 'preserve-3d',
+                transition: 'transform 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'rotateY(-10deg) rotateX(2deg) scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'rotateY(-15deg) rotateX(5deg) scale(1)';
+              }}
+            >
+              {/* Main Document */}
+              <div
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  background: '#ffffff',
+                  borderRadius: '4px',
+                  position: 'relative',
+                  boxShadow: '0 20px 40px rgba(0, 63, 125, 0.3), 0 0 0 1px rgba(0, 63, 125, 0.1)',
+                  transform: 'translateZ(20px)',
+                }}
+              >
+                {/* Blue Header with Website Gradient */}
+                <div
+                  style={{
+                    width: '100%',
+                    height: '35%',
+                    background: 'linear-gradient(135deg, #003f7d 0%, #00bcd4 100%)',
+                    borderRadius: '4px 4px 0 0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'relative',
+                    boxShadow: 'inset 0 -2px 4px rgba(0, 0, 0, 0.2)',
+                  }}
+                >
+                  <FaFileDownload size={32} style={{ color: 'white', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }} />
+                </div>
+                {/* White Body */}
+                <div
+                  style={{
+                    width: '100%',
+                    height: '65%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '16px',
+                    gap: '8px',
+                    background: 'linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%)',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: '2.2rem',
+                      fontWeight: 900,
+                      background: 'linear-gradient(135deg, #003f7d 0%, #00bcd4 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      lineHeight: '1',
+                      textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                      letterSpacing: '2px',
+                    }}
+                  >
+                    PDF
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '0.75rem',
+                      color: '#5b6b84',
+                      textAlign: 'center',
+                      fontWeight: 500,
+                    }}
+                  >
+                    Document
+                  </div>
+                </div>
+              </div>
+              {/* 3D Shadow Effect - Back Page */}
+              <div
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  background: 'linear-gradient(135deg, rgba(0, 63, 125, 0.3) 0%, rgba(0, 188, 212, 0.2) 100%)',
+                  borderRadius: '4px',
+                  position: 'absolute',
+                  top: '8px',
+                  left: '8px',
+                  zIndex: -1,
+                  transform: 'translateZ(-10px)',
+                  boxShadow: '0 10px 30px rgba(0, 63, 125, 0.2)',
+                }}
+              />
+              {/* 3D Shadow Effect - Second Layer */}
+              <div
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  background: 'linear-gradient(135deg, rgba(0, 63, 125, 0.15) 0%, rgba(0, 188, 212, 0.1) 100%)',
+                  borderRadius: '4px',
+                  position: 'absolute',
+                  top: '4px',
+                  left: '4px',
+                  zIndex: -2,
+                  transform: 'translateZ(-20px)',
+                  boxShadow: '0 5px 15px rgba(0, 63, 125, 0.15)',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* E-Book Title */}
+        <h4
+          style={{
+            fontSize: '1.3rem',
+            color: 'var(--text-dark)',
+            marginBottom: '12px',
+            fontWeight: 600,
+            lineHeight: '1.4',
+          }}
+        >
+          {ebook.title}
+        </h4>
+
+        {/* Short Description */}
+        <p
+          style={{
+            color: 'var(--text-muted)',
+            marginBottom: '20px',
+            fontSize: '0.95rem',
+            lineHeight: '1.6',
+            flexGrow: 1,
+          }}
+        >
+          {ebook.shortDescription}
+        </p>
+
+        {/* Download Here Button */}
+        <Link
+          href={`/resources/${ebook.id}`}
+          className="btn-pill btn-pill-gradient"
+          style={{
+            display: 'inline-block',
+            textAlign: 'center',
+            padding: '12px 24px',
+            borderRadius: '999px',
+            background: 'linear-gradient(135deg, #003f7d 0%, #00bcd4 100%)',
+            color: 'white',
+            textDecoration: 'none',
+            fontWeight: 600,
+            fontSize: '0.95rem',
+            transition: 'all 0.3s ease',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+        >
+          Download Here
+        </Link>
+      </div>
+    </div>
+  );
+}
 
 export default function Resources() {
   return (
@@ -92,8 +391,15 @@ export default function Resources() {
               {
                 title: 'Videos',
                 icon: <FaVideo />,
-                description: 'Short explainers on voice AI, predictive analytics, and partner success stories.',
+                description: 'Expert insights on AI startups, funding strategies, and business growth.',
                 cta: 'Watch Videos',
+                accent: 'linear-gradient(135deg, rgba(0,188,212,0.24), rgba(102,126,234,0.32))',
+              },
+              {
+                title: 'Podcast',
+                icon: <FaMicrophone />,
+                description: 'Short explainers on voice AI, predictive analytics, and partner success stories.',
+                cta: 'Listen to Podcasts',
                 accent: 'linear-gradient(135deg, rgba(0,188,212,0.24), rgba(102,126,234,0.32))',
               },
               {
@@ -104,7 +410,7 @@ export default function Resources() {
                 accent: 'linear-gradient(135deg, rgba(102,126,234,0.26), rgba(162,155,254,0.3))',
               },
             ].map(({ title, icon, description, cta, accent }) => (
-              <div key={title} className="col-lg-4">
+              <div key={title} className="col-lg-3 col-md-6">
                 <div
                   style={{
                     borderRadius: '26px',
@@ -159,12 +465,134 @@ export default function Resources() {
                   <h3 style={{ fontSize: '1.5rem', color: 'var(--text-dark)', marginBottom: '12px', position: 'relative' }}>{title}</h3>
                   <p style={{ color: 'var(--text-muted)', marginBottom: '22px', position: 'relative' }}>{description}</p>
                   <Link
-                    href={title === 'Articles' ? '#articles' : '#ebooks'}
+                    href={title === 'Articles' ? '#articles' : title === 'Videos' ? '#videos' : title === 'Podcast' ? '/podcast' : '#ebooks'}
                     className="btn-pill btn-pill-gradient"
                     style={{ position: 'relative' }}
                   >
                     {cta}
                   </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Videos Section */}
+      <section id="videos" className="section" style={{ background: 'linear-gradient(135deg, #f8fbff 0%, #ffffff 100%)' }}>
+        <div className="container">
+          <div className="text-center mb-5">
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                borderRadius: '999px',
+                background: 'rgba(0, 188, 212, 0.12)',
+                color: '#003f7d',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                fontSize: '0.75rem',
+                fontWeight: 600,
+              }}
+            >
+              Videos
+            </span>
+            <h2 style={{ fontSize: '2.35rem', color: 'var(--text-dark)', marginTop: '16px', fontWeight: 700 }}>Expert Insights & Tutorials</h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '720px', margin: '12px auto 0', fontSize: '1.05rem' }}>
+              Learn from industry experts about AI startups, funding strategies, and business growth.
+            </p>
+          </div>
+          <div className="row g-4">
+            {[
+              {
+                title: 'Got A Startup Idea. Here\'s How AI Can Make It Real',
+                videoId: '1139757900',
+                url: 'https://vimeo.com/1139757900?fl=tl&fe=ec',
+              },
+              {
+                title: 'Stop Waiting, Start Innovating - Funding Your AI Project with Grants',
+                videoId: '1139758119',
+                url: 'https://vimeo.com/1139758119?fl=tl&fe=ec',
+              },
+              {
+                title: 'Funding Your Startup: The Stages Every Founder Must Master',
+                videoId: '1139758336',
+                url: 'https://vimeo.com/1139758336?fl=tl&fe=ec',
+              },
+              {
+                title: 'Pitch Perfect: The Art of Pitching Investors',
+                videoId: '1139758521',
+                url: 'https://vimeo.com/1139758521?fl=tl&fe=ec',
+              },
+              {
+                title: 'Stop Chasing Leads: Let AI Bring Them to You',
+                videoId: '1139758619',
+                url: 'https://vimeo.com/1139758619?fl=tl&fe=ec',
+              },
+            ].map((video, index) => (
+              <div key={video.videoId} className="col-lg-6 col-md-6">
+                <div
+                  className="glass-card"
+                  style={{
+                    padding: '0',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    borderRadius: '20px',
+                    background: '#ffffff',
+                    border: '1px solid rgba(16, 42, 67, 0.08)',
+                    boxShadow: '0 8px 24px rgba(0, 26, 60, 0.08)',
+                    overflow: 'hidden',
+                    transition: 'all 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-8px)';
+                    e.currentTarget.style.boxShadow = '0 16px 32px rgba(0, 26, 60, 0.15)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 26, 60, 0.08)';
+                  }}
+                >
+                  {/* Video Embed */}
+                  <div
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      paddingBottom: '56.25%', // 16:9 aspect ratio
+                      background: '#000',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    <iframe
+                      src={`https://player.vimeo.com/video/${video.videoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        border: 'none',
+                      }}
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      title={video.title}
+                    />
+                  </div>
+                  {/* Video Title */}
+                  <div style={{ padding: '24px' }}>
+                    <h4
+                      style={{
+                        fontSize: '1.2rem',
+                        color: 'var(--text-dark)',
+                        marginBottom: 0,
+                        fontWeight: 600,
+                        lineHeight: '1.4',
+                      }}
+                    >
+                      {video.title}
+                    </h4>
+                  </div>
                 </div>
               </div>
             ))}
@@ -196,95 +624,14 @@ export default function Resources() {
             </p>
           </div>
           <div className="row g-4">
-            {[
-              {
-                title: 'AI Spark Challenge',
-                summary:
-                  'Join the ultimate AI innovation challenge. Compete for over $18,500 in prizes and bring your AI ideas to life with expert mentorship and resources.',
-                features: ['Over $18,500 in prizes', 'Expert mentorship program', 'AI tools & resources', 'Network with innovators'],
-              },
-              {
-                title: 'Fund Your AI Project',
-                summary:
-                  'Discover funding opportunities, grant programs, and investment strategies to bring your AI project from concept to reality.',
-                features: ['Funding strategies', 'Grant opportunities', 'Investor connections', 'Pitch deck templates'],
-              },
-              {
-                title: 'Got A Startup Idea?',
-                summary:
-                  'Turn your startup vision into reality. Get step-by-step guidance on validating, building, and launching your AI-powered business.',
-                features: ['Idea validation framework', 'Business plan templates', 'Market research tools', 'Launch roadmap'],
-              },
-              {
-                title: 'AI Lead Generation',
-                summary:
-                  'Stop chasing leads, let AI bring them to you. Learn how to build automated lead generation systems that work 24/7 for your business.',
-                features: ['24/7 automated systems', 'AI agent implementation', 'Conversion optimisation', 'Complete framework'],
-              },
-            ].map(({ title, summary, features }, idx) => (
-              <div key={title} className="col-lg-4 col-md-6">
-                <div
-                  className="glass-card"
-                  style={{
-                    padding: '26px',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div>
-                    <div
-                      style={{
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '16px',
-                        background: 'rgba(0, 63, 125, 0.08)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '16px',
-                        color: '#003f7d',
-                        fontSize: '1.2rem',
-                        fontWeight: 700,
-                      }}
-                    >
-                      {String(idx + 1).padStart(2, '0')}
-                    </div>
-                    <h4 style={{ fontSize: '1.2rem', color: 'var(--text-dark)', marginBottom: '10px' }}>{title}</h4>
-                    <p style={{ color: 'var(--text-muted)' }}>{summary}</p>
-                    {features && (
-                      <ul style={{ paddingLeft: '18px', margin: '12px 0', color: 'var(--text-dark)' }}>
-                        {features.map((feature) => (
-                          <li key={feature} style={{ fontSize: '0.95rem', marginBottom: '6px' }}>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      padding: '6px 14px',
-                      borderRadius: '999px',
-                      background: 'rgba(0, 188, 212, 0.12)',
-                      color: '#0b7285',
-                      fontWeight: 600,
-                      fontSize: '0.8rem',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    Explore it
-                  </span>
-                </div>
-              </div>
+            {ebooks.map((ebook) => (
+              <EBookCard key={ebook.id} ebook={ebook} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Articles Section */}
+      {/* Featured Articles Section - Coming Soon */}
       <section id="articles" className="section" style={{ background: '#ffffff' }}>
         <div className="container">
           <div className="text-center mb-5">
@@ -305,106 +652,9 @@ export default function Resources() {
             <h2 style={{ fontSize: '2.35rem', color: 'var(--text-dark)', marginTop: '16px' }}>
               Latest Insights on AI Automation
             </h2>
-          </div>
-
-          <div className="row g-4">
-            {[
-              {
-                title: 'AI-Powered Customer Support: Reducing Response Times by 70%',
-                category: 'Case Study',
-                excerpt: 'Discover how businesses are using AI voice agents to handle customer inquiries 24/7, dramatically improving satisfaction scores.',
-                icon: <FaLightbulb />,
-                gradient: 'linear-gradient(135deg, #003366 0%, #005599 100%)',
-              },
-              {
-                title: 'Automating Administrative Tasks: A Complete Guide',
-                category: 'Guide',
-                excerpt: 'Learn how AI agents can manage scheduling, document processing, and routine communications, freeing your team for strategic work.',
-                icon: <FaCog />,
-                gradient: 'linear-gradient(135deg, #00bcd4 0%, #26c6da 100%)',
-              },
-              {
-                title: 'Predictive Analytics for Small Business Growth',
-                category: 'Tutorial',
-                excerpt: 'Harness the power of AI-driven data analytics to forecast trends, optimise inventory, and make informed business decisions.',
-                icon: <FaChartLine />,
-                gradient: 'linear-gradient(135deg, #00bcd4 0%, #26c6da 100%)',
-              },
-            ].map((article, idx) => (
-              <div key={idx} className="col-lg-4">
-                <div
-                  style={{
-                    borderRadius: '20px',
-                    background: '#ffffff',
-                    border: '1px solid rgba(16, 42, 67, 0.08)',
-                    boxShadow: '0 15px 30px rgba(0, 26, 60, 0.06)',
-                    overflow: 'hidden',
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-5px)';
-                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 26, 60, 0.12)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 15px 30px rgba(0, 26, 60, 0.06)';
-                  }}
-                >
-                  <div
-                    style={{
-                      height: '200px',
-                      background: article.gradient,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                      fontSize: '3rem',
-                    }}
-                  >
-                    {article.icon}
-                  </div>
-                  <div style={{ padding: '24px' }}>
-                    <span
-                      style={{
-                        display: 'inline-block',
-                        padding: '4px 12px',
-                        borderRadius: '999px',
-                        background: 'rgba(0, 63, 125, 0.08)',
-                        color: '#003f7d',
-                        fontSize: '0.75rem',
-                        fontWeight: '600',
-                        letterSpacing: '0.05em',
-                        textTransform: 'uppercase',
-                        marginBottom: '12px',
-                      }}
-                    >
-                      {article.category}
-                    </span>
-                    <h4 style={{ fontSize: '1.25rem', color: 'var(--text-dark)', marginBottom: '12px' }}>
-                      {article.title}
-                    </h4>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                      {article.excerpt}
-                    </p>
-                    <Link
-                      href="#"
-                      style={{
-                        color: '#003f7d',
-                        fontWeight: '600',
-                        textDecoration: 'none',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        marginTop: '12px',
-                      }}
-                    >
-                      Read More →
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <p style={{ color: 'var(--text-muted)', maxWidth: '720px', margin: '12px auto 0' }}>
+              Articles coming soon. Check back for the latest insights and case studies.
+            </p>
           </div>
         </div>
       </section>

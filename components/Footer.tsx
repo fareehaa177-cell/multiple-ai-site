@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import ScrollAnimation from './ScrollAnimation';
 
 const aboutLinks = [
@@ -25,9 +25,8 @@ const legalLinks = [
 
 const socialLinks = [
   { href: 'https://www.facebook.com/profile.php?id=61573805013855', icon: FaFacebook, label: 'Facebook' },
-  { href: '#', icon: FaTwitter, label: 'Twitter' },
   { href: 'https://www.linkedin.com/company/multiple-ai-solutions/', icon: FaLinkedin, label: 'LinkedIn' },
-  { href: '#', icon: FaInstagram, label: 'Instagram' },
+  { href: 'https://www.instagram.com/multipleaisolutions/', icon: FaInstagram, label: 'Instagram' },
 ];
 
 export default function Footer() {
@@ -110,8 +109,9 @@ export default function Footer() {
                     src="/images/image.png"
                     alt="MultipleAI Logo"
                     fill
-                    style={{ objectFit: 'contain' }}
+                    style={{ objectFit: 'contain', opacity: 0.9 }}
                   />
+                  {/* TODO: Replace with lighter logo version when available */}
                 </div>
                 <div>
                   <h3 style={{ color: '#008ac2', margin: 0, fontWeight: 700, fontSize: '1.85rem', letterSpacing: '-0.01em' }}>

@@ -1,6 +1,8 @@
 'use client';
+import { useState } from 'react';
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
@@ -25,62 +27,65 @@ const teamMembers = [
     role: 'CTO (AI)',
     photo: '/images/about us page/Jan Jemi Gerwayne Tiu.png',
   },
-];
-
-type LeadershipBio = {
-  name: string;
-  role: string;
-  photo: string;
-  bio: string;
-  note?: string;
-  accent: string;
-};
-
-const leadershipTeam = [
-  { name: 'Ali Shahroz', role: 'Founder / CEO', photo: '/images/about us page/Ali Shahroz.png' },
-  { name: 'Jarrod Freer', role: 'Co-Founder', photo: '/images/about us page/Jarrod Freer.png' },
-  { name: 'Ron Forlee', role: 'Chairman', photo: '/images/about us page/ron.png' },
-  { name: 'Terry Smith', role: 'CFO', photo: '/images/about us page/Terry Smith (CFO).png' },
-  { name: 'Sundas Shuja', role: 'Chief AI Manager', photo: '/images/about us page/Sundas Shuja.png' },
-];
-
-const leadershipBios: LeadershipBio[] = [
   {
-    name: 'Ron Forlee',
-    role: 'Chairman & Co-Founder',
-    photo: '/images/about us page/ron.png',
-    bio: `Ron Forlee is a seasoned entrepreneur, architect, and property developer with over 45 years of experience delivering major projects and guiding innovative ventures across Australia and internationally. As Chairman and Co-Founder of MultipleAI Solutions, Ron provides strategic leadership, commercial insight, and a strong vision for ethical, practical AI adoption. His background in development management, education, and business innovation helps steer MultipleAI’s national growth while nurturing the next generation of AI and automation talent.`,
-    accent: '#00bcd4',
-  },
-  {
-    name: 'Terry Smith',
-    role: 'Chief Financial Officer',
-    photo: '/images/about us page/Terry Smith (CFO).png',
-    bio: `Terry Smith is a Chartered Accountant with over 25 years of experience, including roles at Deloitte and running his own accounting practice. He has managed the financial administration of more than 20 property developments across Western Australia. As CFO of MultipleAI Solutions, Terry oversees financial strategy, forecasting, and partner economics, ensuring strong governance and supporting the company’s national growth.`,
-    accent: '#5e5ce6',
-  },
-  {
-    name: 'Ali Shahroz',
-    role: 'Founder & CEO',
-    photo: '/images/about us page/Ali Shahroz.png',
-    bio: `Ali Shahroz founded MultipleAI Solutions after leading automation, analytics, and innovation programs for professional service firms across Australia. He blends product vision with hands-on delivery, partnering with accounting, marketing, and consulting leaders to stand up white-label AI services that scale. Ali guides the company’s solution roadmap, culture, and national expansion while remaining actively involved in key client transformations.`,
-    accent: '#f97316',
-  },
-  {
-    name: 'Jarrod Freer',
-    role: 'Co-Founder & COO',
-    photo: '/images/about us page/Jarrod Freer.png',
-    bio: `Jarrod Freer brings two decades of operational leadership across technology, finance, and growth-stage ventures. At MultipleAI Solutions he owns delivery operations, compliance, and partner onboarding, ensuring every engagement launches with clear processes, measurable outcomes, and premium service. Jarrod collaborates closely with partners to translate strategy into executable AI programs.`,
-    accent: '#9333ea',
-  },
-  {
-    name: 'Sundas Shuja',
-    role: 'Chief AI Manager',
-    photo: '/images/about us page/Sundas Shuja.png',
-    bio: `Sundas Shuja leads MultipleAI’s AI delivery teams, combining a background in enterprise automation with deep experience in conversational design and agent training. She oversees solution quality, ethics, and optimisation frameworks, helping partners deploy AI agents that feel human yet remain secure and compliant. Sundas also mentors the company’s Graduate Talent Hub to grow emerging AI specialists.`,
-    accent: '#00c49a',
+    name: 'Fareeha Fakhar',
+    role: 'Web Developer',
+    photo: '/images/about us page/Fareeha Fakhar.png',
   },
 ];
+
+// type LeadershipBio = {
+//   name: string;
+//   role: string;
+//   photo: string;
+//   bio: string;
+//   note?: string;
+//   accent: string;
+// };
+
+// Executive Team ordered by seniority: Chairman, CEO, COO, CFO, CTO, etc.
+// const executiveTeam: (LeadershipBio & { order: number })[] = [
+//   {
+//     name: 'Ron Forlee',
+//     role: 'Chairman & Co-Founder',
+//     photo: '/images/about us page/ron.png',
+//     bio: `Ron Forlee is a seasoned entrepreneur, architect, and property developer with over 45 years of experience delivering major projects and guiding innovative ventures across Australia and internationally. As Chairman and Co-Founder of MultipleAI Solutions, Ron provides strategic leadership, commercial insight, and a strong vision for ethical, practical AI adoption. His background in development management, education, and business innovation helps steer MultipleAI's national growth while nurturing the next generation of AI and automation talent.`,
+//     accent: '#00bcd4',
+//     order: 1, // Chairman
+//   },
+//   {
+//     name: 'Ali Shahroz',
+//     role: 'Founder & CEO',
+//     photo: '/images/about us page/Ali Shahroz.png',
+//     bio: `Ali Shahroz founded MultipleAI Solutions after leading automation, analytics, and innovation programs for professional service firms across Australia. He blends product vision with hands-on delivery, partnering with accounting, marketing, and consulting leaders to stand up white-label AI services that scale. Ali guides the company's solution roadmap, culture, and national expansion while remaining actively involved in key client transformations.`,
+//     accent: '#f97316',
+//     order: 2, // CEO
+//   },
+//   {
+//     name: 'Jarrod Freer',
+//     role: 'Co-Founder & COO',
+//     photo: '/images/about us page/Jarrod Freer.png',
+//     bio: `Jarrod Freer brings two decades of operational leadership across technology, finance, and growth-stage ventures. At MultipleAI Solutions he owns delivery operations, compliance, and partner onboarding, ensuring every engagement launches with clear processes, measurable outcomes, and premium service. Jarrod collaborates closely with partners to translate strategy into executable AI programs.`,
+//     accent: '#9333ea',
+//     order: 3, // COO
+//   },
+//   {
+//     name: 'Terry Smith',
+//     role: 'Chief Financial Officer',
+//     photo: '/images/about us page/terry.png',
+//     bio: `Terry Smith is a Chartered Accountant with over 25 years of experience, including roles at Deloitte and running his own accounting practice. He has managed the financial administration of more than 20 property developments across Western Australia. As CFO of MultipleAI Solutions, Terry oversees financial strategy, forecasting, and partner economics, ensuring strong governance and supporting the company's national growth.`,
+//     accent: '#5e5ce6',
+//     order: 4, // CFO
+//   },
+//   {
+//     name: 'Sundas Shuja',
+//     role: 'Chief AI Manager',
+//     photo: '/images/about us page/Sundas Shuja.png',
+//     bio: `Sundas Shuja leads MultipleAI's AI delivery teams, combining a background in enterprise automation with deep experience in conversational design and agent training. She oversees solution quality, ethics, and optimisation frameworks, helping partners deploy AI agents that feel human yet remain secure and compliant. Sundas also mentors the company's Graduate Talent Hub to grow emerging AI specialists.`,
+//     accent: '#00c49a',
+//     order: 5, // Chief AI Manager
+//   },
+// ];
 
 const leadParagraphStyle: CSSProperties = {
   fontSize: '1.15rem',
@@ -93,6 +98,232 @@ const bodyParagraphStyle: CSSProperties = {
   color: 'var(--text-muted)',
   lineHeight: 1.7,
 };
+
+// Executive Team Component with Read More functionality - Commented out for future use
+/*
+function ExecutiveTeamSection() {
+  const [expandedBios, setExpandedBios] = useState<Record<string, boolean>>({});
+  const bioPreviewLength = 150; // Characters to show before "Read More"
+
+  const toggleBio = (name: string) => {
+    setExpandedBios(prev => ({ ...prev, [name]: !prev[name] }));
+  };
+
+  const getBioPreview = (bio: string) => {
+    if (bio.length <= bioPreviewLength) return bio;
+    return bio.substring(0, bioPreviewLength) + '...';
+  };
+
+  return (
+    <section
+      className="section"
+      style={{
+        background: 'linear-gradient(135deg, #ffffff 0%, #f3fbff 45%, #ffffff 100%)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          top: '-140px',
+          right: '-120px',
+          width: '320px',
+          height: '320px',
+          background: 'rgba(0, 188, 212, 0.18)',
+          filter: 'blur(120px)',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-160px',
+          left: '-100px',
+          width: '280px',
+          height: '280px',
+          background: 'rgba(102, 126, 234, 0.16)',
+          filter: 'blur(110px)',
+        }}
+      />
+      <div className="container position-relative">
+        <div className="text-center mb-5">
+          <span
+            style={{
+              display: 'inline-block',
+              padding: '6px 16px',
+              borderRadius: '999px',
+              background: 'rgba(0, 63, 125, 0.08)',
+              color: '#003f7d',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              fontSize: '0.75rem',
+            }}
+          >
+            Executive Team
+          </span>
+          <h2 style={{ fontSize: '2.3rem', color: 'var(--text-dark)', marginTop: '16px' }}>Our Leadership</h2>
+          <p style={{ color: 'var(--text-muted)', maxWidth: '720px', margin: '12px auto 0' }}>
+            Experienced operators guiding MultipleAI's vision, delivery quality, and partner-first culture.
+          </p>
+        </div>
+        <div className="row g-4 justify-content-center">
+          {executiveTeam.sort((a, b) => a.order - b.order).map(({ name, role, photo, bio, accent }) => {
+            const isExpanded = expandedBios[name];
+            const showPreview = bio.length > bioPreviewLength;
+            const displayBio = isExpanded || !showPreview ? bio : getBioPreview(bio);
+
+            return (
+              <div className="col-lg-6" key={name}>
+                <div
+                  className="glass-card"
+                  style={{
+                    position: 'relative',
+                    padding: '32px',
+                    borderRadius: '30px',
+                    height: '100%',
+                    display: 'grid',
+                    gridTemplateColumns: 'minmax(140px, 160px) 1fr',
+                    gap: '24px',
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.98), rgba(232, 247, 255, 0.95))',
+                    border: `1px solid ${accent}1f`,
+                    boxShadow: '0 25px 50px rgba(15, 31, 56, 0.12)',
+                  }}
+                >
+                  <div style={{ position: 'absolute', inset: '12px', borderRadius: '26px', background: `${accent}12`, filter: 'blur(60px)' }} />
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div
+                      style={{
+                        width: '140px',
+                        height: '140px',
+                        borderRadius: '30px',
+                        padding: '6px',
+                        background: `linear-gradient(135deg, ${accent}, rgba(255,255,255,0.85))`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '0 18px 30px rgba(15, 31, 56, 0.18)',
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: '24px',
+                          overflow: 'hidden',
+                          background: '#ffffff',
+                        }}
+                      >
+                        {photo ? (
+                          <Image 
+                            src={photo} 
+                            alt={name} 
+                            width={180} 
+                            height={180} 
+                            style={{ 
+                              width: '100%', 
+                              height: '100%', 
+                              objectFit: name === 'Terry Smith' ? 'contain' : 'cover',
+                              objectPosition: 'center'
+                            }} 
+                          />
+                        ) : (
+                          <div
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              color: '#0f1f38',
+                              fontWeight: 700,
+                              padding: '10px',
+                              textAlign: 'center',
+                            }}
+                          >
+                            Image coming soon
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <span
+                      style={{
+                        display: 'inline-block',
+                        padding: '6px 14px',
+                        borderRadius: '999px',
+                        background: `${accent}1f`,
+                        color: '#0b7285',
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        fontSize: '0.7rem',
+                        marginBottom: '10px',
+                      }}
+                    >
+                      Leadership
+                    </span>
+                    <h3 style={{ marginBottom: '4px', color: '#0f1f38', fontSize: '1.4rem' }}>{name}</h3>
+                    <p style={{ marginBottom: '14px', color: '#0b7285', fontWeight: 600 }}>{role}</p>
+                    <p style={{ ...bodyParagraphStyle, marginBottom: showPreview ? '8px' : '0' }}>{displayBio}</p>
+                    {showPreview && (
+                      <button
+                        onClick={() => toggleBio(name)}
+                        style={{
+                          background: 'transparent',
+                          border: 'none',
+                          color: accent,
+                          cursor: 'pointer',
+                          fontWeight: 600,
+                          fontSize: '0.95rem',
+                          padding: 0,
+                          marginTop: '8px',
+                          textDecoration: 'underline',
+                        }}
+                      >
+                        {isExpanded ? 'Read Less' : 'Read More'}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="text-center mt-5">
+          <Link
+            href="/about/leadership"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '12px 28px',
+              borderRadius: '999px',
+              background: 'linear-gradient(135deg, #003f7d, #00bcd4)',
+              color: 'white',
+              textDecoration: 'none',
+              fontWeight: 600,
+              fontSize: '0.95rem',
+              letterSpacing: '0.02em',
+              boxShadow: '0 18px 32px rgba(0, 63, 125, 0.25)',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 22px 40px rgba(0, 63, 125, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 18px 32px rgba(0, 63, 125, 0.25)';
+            }}
+          >
+            View All Leadership Bios →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+*/
 
 export default function About() {
   return (
@@ -288,15 +519,12 @@ export default function About() {
               >
                 Vision
               </span>
-              <h2 style={{ fontSize: '2.4rem', color: '#0f1f38' }}>Our Vision</h2>
+              <h2 style={{ fontSize: '2.4rem', color: '#0f1f38' }}>AI That Empowers — Quietly, Powerfully, Reliably</h2>
               <p style={{ ...leadParagraphStyle, marginBottom: '18px' }}>
-                Every professional services firm deserves enterprise-grade automation, insight, and creativity without sacrificing human trust.
-              </p>
-              <p style={{ ...bodyParagraphStyle, marginBottom: '16px' }}>
-                From CFO dashboards to marketing copilots, we design solutions that elevate decision-making and free teams to focus on strategic work.
+                We see a future where AI is a trusted partner for businesses across Australia, offering smart, accessible tools without the confusion or complexity.
               </p>
               <p style={{ ...bodyParagraphStyle, marginBottom: 0 }}>
-                Result: faster innovation, stronger customer outcomes, and new value streams for partners and clients.
+                Our vision is to be the go-to choice for those who want powerful technology that works quietly behind the scenes, helping them move forward with confidence and peace of mind.
               </p>
             </div>
             <div className="col-lg-6">
@@ -428,11 +656,11 @@ export default function About() {
         </div>
       </section>
 
-      {/* Leadership Bios */}
+      {/* Founders & Board */}
       <section
         className="section"
         style={{
-          background: 'linear-gradient(135deg, #ffffff 0%, #f3fbff 45%, #ffffff 100%)',
+          background: 'linear-gradient(135deg, #f8fbff 0%, #eef4ff 45%, #ffffff 100%)',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -466,197 +694,180 @@ export default function About() {
                 display: 'inline-block',
                 padding: '6px 16px',
                 borderRadius: '999px',
-                background: 'rgba(0, 63, 125, 0.08)',
+                background: 'rgba(0, 63, 125, 0.12)',
                 color: '#003f7d',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
                 fontSize: '0.75rem',
-              }}
-            >
-              Leadership Bios
-            </span>
-            <h2 style={{ fontSize: '2.3rem', color: 'var(--text-dark)', marginTop: '16px' }}>Experience That Powers Our Vision</h2>
-          </div>
-          <div className="row g-4 justify-content-center">
-            {leadershipBios.map(({ name, role, photo, bio, note, accent }) => (
-              <div className="col-lg-6" key={name}>
-                <div
-                  className="glass-card"
-                  style={{
-                    position: 'relative',
-                    padding: '32px',
-                    borderRadius: '30px',
-                    height: '100%',
-                    display: 'grid',
-                    gridTemplateColumns: 'minmax(140px, 160px) 1fr',
-                    gap: '24px',
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.98), rgba(232, 247, 255, 0.95))',
-                    border: `1px solid ${accent}1f`,
-                    boxShadow: '0 25px 50px rgba(15, 31, 56, 0.12)',
-                  }}
-                >
-                  <div style={{ position: 'absolute', inset: '12px', borderRadius: '26px', background: `${accent}12`, filter: 'blur(60px)' }} />
-                  <div style={{ position: 'relative', zIndex: 1 }}>
-                    <div
-                      style={{
-                        width: '140px',
-                        height: '140px',
-                        borderRadius: '30px',
-                        padding: '6px',
-                        background: `linear-gradient(135deg, ${accent}, rgba(255,255,255,0.85))`,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        boxShadow: '0 18px 30px rgba(15, 31, 56, 0.18)',
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          borderRadius: '24px',
-                          overflow: 'hidden',
-                          background: '#ffffff',
-                        }}
-                      >
-                        {photo ? (
-                          <Image src={photo} alt={name} width={180} height={180} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                        ) : (
-                          <div
-                            style={{
-                              width: '100%',
-                              height: '100%',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              color: '#0f1f38',
-                              fontWeight: 700,
-                              padding: '10px',
-                              textAlign: 'center',
-                            }}
-                          >
-                            {note ?? 'Image coming soon'}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <div style={{ position: 'relative', zIndex: 1 }}>
-                    <span
-                      style={{
-                        display: 'inline-block',
-                        padding: '6px 14px',
-                        borderRadius: '999px',
-                        background: `${accent}1f`,
-                        color: '#0b7285',
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        fontSize: '0.7rem',
-                        marginBottom: '10px',
-                      }}
-                    >
-                      Leadership
-                    </span>
-                    <h3 style={{ marginBottom: '4px', color: '#0f1f38', fontSize: '1.4rem' }}>{name}</h3>
-                    <p style={{ marginBottom: '14px', color: '#0b7285', fontWeight: 600 }}>{role}</p>
-                    <p style={{ ...bodyParagraphStyle, marginBottom: '8px' }}>{bio}</p>
-                    {note && (
-                      <small style={{ color: 'var(--text-muted)' }}>
-                        {note}
-                      </small>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Leadership section hidden at client request */}
-      {/*
-      <section
-        className="section"
-        style={{
-          background: 'linear-gradient(135deg, #f8fbff 0%, #eef4ff 45%, #ffffff 100%)',
-          position: 'relative',
-        }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            top: '-120px',
-            left: '-100px',
-            width: '300px',
-            height: '300px',
-            background: 'rgba(0, 63, 125, 0.08)',
-            filter: 'blur(110px)',
-          }}
-        />
-        <div className="container position-relative">
-          <div className="text-center mb-5">
-            <span
-              style={{
-                display: 'inline-block',
-                padding: '6px 16px',
-                borderRadius: '999px',
-                background: 'rgba(0, 63, 125, 0.1)',
-                color: '#003f7d',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                fontSize: '0.75rem',
+                fontWeight: 600,
               }}
             >
               Leadership
             </span>
-            <h2 style={{ fontSize: '2.35rem', color: 'var(--text-dark)', marginTop: '16px' }}>Founders & Board</h2>
-            <p style={{ color: 'var(--text-muted)', maxWidth: '720px', margin: '12px auto 0' }}>
-              Experienced operators guiding MultipleAI’s vision, delivery quality, and partner-first culture.
+            <h2 style={{ fontSize: '2.3rem', color: 'var(--text-dark)', marginTop: '16px', marginBottom: '12px' }}>
+              Founders & Board
+            </h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '720px', margin: '0 auto' }}>
+              Experienced operators guiding MultipleAI&apos;s vision, delivery quality, and partner-first culture.
             </p>
           </div>
-          <div className="row g-4 justify-content-center">
-            {leadershipTeam.map(({ name, role, photo }) => (
-              <div key={name} className="col-md-4">
+          <div className="row g-4">
+            {/* All 5 members with same styling (ordered by seniority: Chairman, CEO, COO, CFO, CTO) */}
+            {[
+              {
+                name: 'Ron Forlee',
+                role: 'Chairman',
+                photo: '/images/about us page/ron.png',
+                accent: '#00bcd4',
+              },
+              {
+                name: 'Ali Shahroz',
+                role: 'Founder / CEO',
+                photo: '/images/about us page/Ali Shahroz.png',
+                accent: '#f97316',
+              },
+              {
+                name: 'Jarrod Freer',
+                role: 'Co-Founder / COO',
+                photo: '/images/about us page/Jarrod Freer.png',
+                accent: '#9333ea',
+              },
+              {
+                name: 'Terry Smith',
+                role: 'CFO',
+                photo: '/images/about us page/terry.png',
+                accent: '#5e5ce6',
+              },
+              {
+                name: 'Sundas Shuja',
+                role: 'Chief AI Manager',
+                photo: '/images/about us page/Sundas Shuja.png',
+                accent: '#00c49a',
+              },
+            ].map(({ name, role, photo, accent }, index) => (
+              <div
+                key={name}
+                className={`col-lg-4 col-md-6 ${index === 3 ? 'offset-lg-2' : ''}`}
+              >
                 <div
                   style={{
+                    background: 'white',
                     borderRadius: '28px',
-                    background: '#ffffff',
-                    border: '1px solid rgba(16, 42, 67, 0.08)',
-                    boxShadow: '0 24px 48px rgba(15, 31, 56, 0.08)',
-                    padding: '32px',
+                    padding: '32px 24px',
                     textAlign: 'center',
                     height: '100%',
+                    boxShadow: '0 20px 40px rgba(15, 31, 56, 0.12)',
+                    border: '1px solid rgba(16, 42, 67, 0.08)',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 24px 48px rgba(15, 31, 56, 0.16)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(15, 31, 56, 0.12)';
                   }}
                 >
                   <div
                     style={{
-                      width: '140px',
-                      height: '140px',
-                      margin: '0 auto 20px',
+                      width: '220px',
+                      height: '220px',
+                      margin: '0 auto 24px',
                       borderRadius: '50%',
-                      overflow: 'hidden',
-                      position: 'relative',
-                      border: '2px solid rgba(0, 63, 125, 0.1)',
-                      boxShadow: '0 12px 24px rgba(15, 31, 56, 0.12)',
+                      padding: '6px',
+                      background: `linear-gradient(135deg, ${accent}, rgba(255,255,255,0.85))`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 18px 30px rgba(15, 31, 56, 0.18)',
                     }}
                   >
-                    <Image
-                      src={photo}
-                      alt={name}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      sizes="(max-width: 768px) 160px, 140px"
-                    />
+                    <div
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        background: '#ffffff',
+                        position: 'relative',
+                      }}
+                    >
+                      {photo ? (
+                        <Image
+                          src={photo}
+                          alt={name}
+                          width={220}
+                          height={220}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: name === 'Terry Smith' ? 'contain' : 'cover',
+                            objectPosition: 'center',
+                          }}
+                        />
+                      ) : (
+                        <div
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#0f1f38',
+                            fontWeight: 700,
+                            padding: '10px',
+                            textAlign: 'center',
+                          }}
+                        >
+                          Image coming soon
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <h3 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '8px' }}>{name}</h3>
-                  <p style={{ color: 'var(--text-muted)', marginBottom: 0 }}>{role}</p>
+                  <h3 style={{ marginBottom: '8px', color: '#0f1f38', fontSize: '1.3rem', fontWeight: 700 }}>
+                    {name}
+                  </h3>
+                  <p style={{ color: 'var(--text-muted)', marginBottom: 0, fontSize: '1rem' }}>{role}</p>
                 </div>
               </div>
             ))}
           </div>
+          <div className="text-center mt-5">
+            <Link
+              href="/about/leadership"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '12px 28px',
+                borderRadius: '999px',
+                background: 'linear-gradient(135deg, #003f7d, #00bcd4)',
+                color: 'white',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '0.95rem',
+                letterSpacing: '0.02em',
+                boxShadow: '0 18px 32px rgba(0, 63, 125, 0.25)',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 22px 40px rgba(0, 63, 125, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 18px 32px rgba(0, 63, 125, 0.25)';
+              }}
+            >
+              View All Leadership Bios →
+            </Link>
+          </div>
         </div>
       </section>
-      */}
+
+      {/* Executive Team - Commented out for future use */}
+      {/* <ExecutiveTeamSection /> */}
 
       {/* Team */}
       <section
@@ -668,6 +879,14 @@ export default function About() {
           overflow: 'hidden',
         }}
       >
+        <style dangerouslySetInnerHTML={{ __html: `
+          @media (min-width: 992px) {
+            .team-member-col {
+              flex: 0 0 20% !important;
+              max-width: 20% !important;
+            }
+          }
+        `}} />
         <div
           style={{
             position: 'absolute',
@@ -704,7 +923,7 @@ export default function About() {
 
           <div className="row g-4">
             {teamMembers.map(({ name, role, photo }) => (
-              <div key={name} className="col-lg-3 col-md-6">
+              <div key={name} className="col-lg col-md-6 col-sm-6 team-member-col">
                 <div
                   className="glass-card glass-card--dark"
                   style={{ textAlign: 'center', padding: '28px 20px', height: '100%', borderRadius: '28px' }}
