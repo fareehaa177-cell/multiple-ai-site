@@ -510,7 +510,7 @@ export default function Resources() {
                 url: 'https://vimeo.com/1139757900?fl=tl&fe=ec',
               },
               {
-                title: 'Stop Waiting, Start Innovating - Funding Your AI Project with Grants',
+                title: 'Stop Waiting, Start Innovating Funding Your AI Project with Grants',
                 videoId: '1139758119',
                 url: 'https://vimeo.com/1139758119?fl=tl&fe=ec',
               },

@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
@@ -30,6 +31,25 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const [formData, setFormData] = useState({
+    email: '',
+    message: '',
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Form submission logic would go here
+    alert('Thank you for your message! We will get back to you soon.');
+    setFormData({ email: '', message: '' });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <footer
       style={{
@@ -123,7 +143,7 @@ export default function Footer() {
                 </div>
               </Link>
               <p style={{ color: 'rgba(15,31,56,0.8)', lineHeight: 1.8, marginBottom: '28px', fontSize: '0.98rem' }}>
-                Empowering professional service firms with white-label AI solutions. We build the automation, analytics, and creative services—you keep the client relationship.
+                Empowering professional service firms with white-label AI solutions. We build the automation, analytics, and creative services you keep the client relationship.
               </p>
               
               {/* Social Icons */}
@@ -259,7 +279,7 @@ export default function Footer() {
             </ScrollAnimation>
           </div>
 
-          {/* Contact Column */}
+          {/* Contact Form Column */}
           <div className="col-lg-3 col-md-6">
             <ScrollAnimation delay={300}>
               <h5
@@ -272,35 +292,101 @@ export default function Footer() {
                   fontWeight: 700,
                 }}
               >
-                Contact
+                Get in Touch
               </h5>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {legalLinks.map(({ href, label }) => (
-                  <li key={href} style={{ marginBottom: '14px' }}>
-                    <Link
-                      href={href}
-                      style={{
-                        color: 'rgba(15,31,56,0.85)',
-                        textDecoration: 'none',
-                        fontSize: '0.95rem',
-                        transition: 'all 0.3s ease',
-                        display: 'inline-block',
-                        position: 'relative',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = '#008ac2';
-                        e.currentTarget.style.transform = 'translateX(6px)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = 'rgba(15,31,56,0.85)';
-                        e.currentTarget.style.transform = 'translateX(0)';
-                      }}
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <form onSubmit={handleSubmit}>
+                <div style={{ marginBottom: '16px' }}>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Your email"
+                    style={{
+                      width: '100%',
+                      padding: '12px 16px',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(0, 138, 194, 0.2)',
+                      background: 'rgba(255, 255, 255, 0.9)',
+                      color: '#0f1f38',
+                      fontSize: '0.95rem',
+                      outline: 'none',
+                      transition: 'all 0.3s ease',
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = '#008ac2';
+                      e.currentTarget.style.boxShadow = '0 0 0 3px rgba(0, 138, 194, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(0, 138, 194, 0.2)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+                <div style={{ marginBottom: '16px' }}>
+                  <textarea
+                    name="message"
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Your message"
+                    rows={3}
+                    style={{
+                      width: '100%',
+                      padding: '12px 16px',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(0, 138, 194, 0.2)',
+                      background: 'rgba(255, 255, 255, 0.9)',
+                      color: '#0f1f38',
+                      fontSize: '0.95rem',
+                      outline: 'none',
+                      resize: 'vertical',
+                      fontFamily: 'inherit',
+                      transition: 'all 0.3s ease',
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = '#008ac2';
+                      e.currentTarget.style.boxShadow = '0 0 0 3px rgba(0, 138, 194, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(0, 138, 194, 0.2)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+                <button
+                  type="submit"
+                  style={{
+                    width: '100%',
+                    padding: '12px 24px',
+                    borderRadius: '12px',
+                    border: 'none',
+                    background: 'linear-gradient(135deg, #008ac2 0%, #00bcd4 50%, #008ac2 100%)',
+                    backgroundSize: '200% 200%',
+                    color: 'white',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 4px 12px rgba(0, 138, 194, 0.3)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 138, 194, 0.4)';
+                    e.currentTarget.style.backgroundPosition = '100% 0';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 138, 194, 0.3)';
+                    e.currentTarget.style.backgroundPosition = '0% 0';
+                  }}
+                >
+                  Send Message
+                </button>
+              </form>
             </ScrollAnimation>
           </div>
         </div>
@@ -314,18 +400,40 @@ export default function Footer() {
           }}
         />
 
-        {/* Copyright */}
+        {/* Legal Links & Copyright */}
         <div
           style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '16px',
+            gap: '24px',
             justifyContent: 'space-between',
             alignItems: 'center',
             color: '#00315a',
             fontSize: '0.9rem',
           }}
         >
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'center' }}>
+            {legalLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                style={{
+                  color: 'rgba(15, 31, 56, 0.7)',
+                  textDecoration: 'none',
+                  fontSize: '0.9rem',
+                  transition: 'color 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#008ac2';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'rgba(15, 31, 56, 0.7)';
+                }}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
           <p style={{ margin: 0, color: '#00315a' }}>
             &copy; {new Date().getFullYear()} MultipleAI Solutions. All rights reserved.
           </p>

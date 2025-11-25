@@ -519,7 +519,7 @@ export default function About() {
               >
                 Vision
               </span>
-              <h2 style={{ fontSize: '2.4rem', color: '#0f1f38' }}>AI That Empowers — Quietly, Powerfully, Reliably</h2>
+              <h2 style={{ fontSize: '2.4rem', color: '#0f1f38' }}>AI That Empowers Quietly, Powerfully, Reliably</h2>
               <p style={{ ...leadParagraphStyle, marginBottom: '18px' }}>
                 We see a future where AI is a trusted partner for businesses across Australia, offering smart, accessible tools without the confusion or complexity.
               </p>

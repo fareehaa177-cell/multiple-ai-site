@@ -7,7 +7,7 @@ import Image from 'next/image';
 export default function Projects() {
   const projects = [
     {
-      title: 'Voice Reception Agent - Xcelit',
+      title: 'Voice Reception Agent Xcelit',
       partner: 'IT & Support Services',
       scope: 'Inbound call handling and smart routing',
       outcome: 'Reduced missed-call rate by 70% and improved lead capture.',
@@ -17,12 +17,12 @@ export default function Projects() {
 
   const testimonials = [
     {
-      text: "MultipleAI's team helped us launch an AI service line in under a month - seamlessly under our own brand.",
+      text: "MultipleAI's team helped us launch an AI service line in under a month seamlessly under our own brand.",
       author: "Daniel K.",
       position: "Director, Marketing Agency Perth"
     },
     {
-      text: "Their automation agents transformed how our accounting team works - consistent, compliant, and fast.",
+      text: "Their automation agents transformed how our accounting team works consistent, compliant, and fast.",
       author: "Sarah L.",
       position: "Principal CPA Firm Sydney"
     },

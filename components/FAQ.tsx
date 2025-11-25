@@ -10,7 +10,7 @@ export default function FAQ() {
   const faqs = [
     {
       question: 'Who is MultipleAI Solutions for?',
-      answer: 'Professional intermediaries - accountants, marketers, consultants, and IT providers - who want to offer AI services without in-house developers.'
+      answer: 'Professional intermediaries, accountants, marketers, consultants, and IT providers, who want to offer AI services without in-house developers.'
     },
     {
       question: 'How does the white-label model work?',

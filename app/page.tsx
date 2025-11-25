@@ -70,6 +70,237 @@ function AnimatedCounter({ end, suffix = '', duration = 2000, label }: { end: nu
   );
 }
 
+// Trusted By Section Component with Horizontal Scrollable Logo Slider
+function TrustedBySection() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollContentRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const animationFrameRef = useRef<number | null>(null);
+
+  // All logos from public/logo-company folder
+  const logos = [
+    { name: 'Xcelit', path: '/logo-company/cropped-xcelit-logo-main-1.png' },
+    { name: 'FP Logo', path: '/logo-company/FP-Logo-2023.png' },
+    { name: 'MyHRPro', path: '/logo-company/MyHRPRo-LOGO.png' },
+    { name: 'Spurling Legal', path: '/logo-company/SpurlingLegal-Reversed-Logo (1).svg' },
+    { name: 'Company 6', path: '/logo-company/WhatsApp-Image-2025-08-22-at-5.14.59-PM.jpeg' },
+    { name: 'Emerald Property Estate', path: '/logo-company/Screenshot 2025-11-25 222823.png' },
+  ];
+
+  // Duplicate logos for seamless infinite scroll (3 sets for smoother loop)
+  const duplicatedLogos = [...logos, ...logos, ...logos];
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    const content = scrollContentRef.current;
+    if (!container || !content) return;
+
+    let scrollPosition = 0;
+    const scrollSpeed = 0.3; // pixels per frame
+    const singleSetWidth = content.scrollWidth / 3; // Width of one set of logos
+
+    const animate = () => {
+      if (isPaused) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      
+      scrollPosition += scrollSpeed;
+      
+      // Reset scroll position when reaching the end of first set
+      if (scrollPosition >= singleSetWidth) {
+        scrollPosition = 0;
+      }
+      
+      container.scrollLeft = scrollPosition;
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(animate);
+
+    // Handle manual scroll/interaction - pause auto-scroll
+    const handleInteraction = () => {
+      setIsPaused(true);
+      setTimeout(() => setIsPaused(false), 3000); // Resume after 3 seconds
+    };
+
+    container.addEventListener('wheel', handleInteraction, { passive: true });
+    container.addEventListener('touchstart', handleInteraction, { passive: true });
+    container.addEventListener('mousedown', handleInteraction);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      container.removeEventListener('wheel', handleInteraction);
+      container.removeEventListener('touchstart', handleInteraction);
+      container.removeEventListener('mousedown', handleInteraction);
+    };
+  }, [isPaused]);
+
+  return (
+    <section
+      className="section"
+      style={{
+        background: 'linear-gradient(135deg, #f4fbfd 0%, #e5f9ff 55%, #ffffff 100%)',
+        padding: 'clamp(60px, 8vw, 100px) 0',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Background Effects */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '-150px',
+          right: '-150px',
+          width: '400px',
+          height: '400px',
+          background: 'rgba(0, 138, 194, 0.12)',
+          borderRadius: '50%',
+          filter: 'blur(120px)',
+          zIndex: 0,
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-100px',
+          left: '-100px',
+          width: '350px',
+          height: '350px',
+          background: 'rgba(0, 173, 223, 0.15)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          zIndex: 0,
+        }}
+      />
+
+      <div className="container position-relative" style={{ zIndex: 1 }}>
+        <ScrollAnimation>
+          <div className="text-center mb-5">
+            <h3
+              style={{
+                color: '#0f1f38',
+                fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
+                fontWeight: 700,
+                lineHeight: 1.3,
+                marginBottom: '16px',
+              }}
+            >
+              Trusted by Leading Companies
+            </h3>
+            <p
+              style={{
+                color: 'rgba(15, 31, 56, 0.75)',
+                fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+                lineHeight: 1.6,
+                maxWidth: '800px',
+                margin: '0 auto',
+                padding: '0 20px',
+              }}
+            >
+              Empowering organisations with reliable, scalable, and high-performance AI solutions.
+            </p>
+          </div>
+        </ScrollAnimation>
+
+        {/* Horizontal Scrollable Logo Slider */}
+        <div
+          ref={scrollContainerRef}
+          style={{
+            overflowX: 'auto',
+            overflowY: 'hidden',
+            WebkitOverflowScrolling: 'touch',
+            padding: '40px 0',
+            marginTop: '40px',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            position: 'relative',
+          }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setTimeout(() => setIsPaused(false), 500)}
+        >
+          <style jsx>{`
+            div::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
+          
+          <div
+            ref={scrollContentRef}
+            style={{
+              display: 'flex',
+              gap: 'clamp(24px, 4vw, 32px)',
+              alignItems: 'center',
+              width: 'max-content',
+              padding: '0 clamp(10px, 2vw, 20px)',
+            }}
+          >
+            {duplicatedLogos.map((logo, index) => (
+              <div
+                key={`${logo.name}-${index}`}
+                style={{
+                  flexShrink: 0,
+                  width: 'clamp(160px, 20vw, 200px)',
+                  height: 'clamp(100px, 12vw, 120px)',
+                  background: '#ffffff',
+                  borderRadius: '16px',
+                  padding: 'clamp(16px, 2vw, 20px)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 8px 24px rgba(15, 31, 56, 0.08)',
+                  border: '1px solid rgba(0, 138, 194, 0.08)',
+                  transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease',
+                  cursor: 'pointer',
+                  position: 'relative',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-6px) scale(1.03)';
+                  e.currentTarget.style.boxShadow = '0 12px 32px rgba(0, 138, 194, 0.18)';
+                  e.currentTarget.style.borderColor = 'rgba(0, 138, 194, 0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(15, 31, 56, 0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(0, 138, 194, 0.08)';
+                }}
+              >
+                <div
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'relative',
+                  }}
+                >
+                  <Image
+                    src={logo.path}
+                    alt={logo.name}
+                    width={160}
+                    height={80}
+                    style={{
+                      width: 'auto',
+                      height: 'auto',
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      objectFit: 'contain',
+                      filter: 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08))',
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
@@ -1475,45 +1706,7 @@ export default function Home() {
       </section>
 
       {/* Trusted By - Moved after testimonials */}
-      <section
-        className="section"
-        style={{
-          background: 'linear-gradient(135deg, #f4fbfd 0%, #e5f9ff 55%, #ffffff 100%)',
-          padding: '80px 0',
-        }}
-      >
-        <div className="container">
-          <ScrollAnimation>
-            <div className="text-center mb-5">
-              <span className="section-badge">
-                Trusted By Leading Institutions
-              </span>
-              <h3 style={{ marginTop: '8px', color: '#0f1f38', fontWeight: 700, fontSize: '2rem' }}>
-                Universities, Accelerators & Enterprise Partners
-              </h3>
-            </div>
-          </ScrollAnimation>
-          <div className="row g-4 align-items-center justify-content-center">
-            {[
-              { name: 'UWA', logo: '/images/image3.png' },
-              { name: 'Curtin University', logo: '/images/image4.png' },
-              { name: 'AYR', logo: '/images/image5.jpeg' },
-              { name: 'Perth Partners', logo: '/images/image5.jpeg' },
-              { name: 'Federal Grants', logo: '/images/image6.png' },
-              { name: 'Innovate WA', logo: '/images/image7.png' },
-              { name: 'Tech Hub', logo: '/images/image8.png' },
-            ].map(({ name, logo }, index) => (
-              <div key={name} className="col-6 col-sm-4 col-lg-2">
-                <ScrollAnimation delay={index * 50}>
-                    <div className="trusted-card glass-card">
-                    <Image src={logo} alt={name} width={120} height={60} style={{ maxWidth: '100%', height: 'auto', objectFit: 'contain' }} />
-                  </div>
-                </ScrollAnimation>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TrustedBySection />
 
       {/* Contact / Partner Form */}
       <section

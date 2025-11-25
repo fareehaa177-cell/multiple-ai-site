@@ -56,7 +56,7 @@ export default function AIAgents() {
           <h2>Intelligent Agents for Real-World Businesses</h2>
           <p>
             Every business task can be automated or enhanced by the right AI Agent. 
-            Below is our suite of pre-configured agents - all customisable and deployable under your brand.
+            Below is our suite of pre-configured agents all customisable and deployable under your brand.
           </p>
         </div>
         

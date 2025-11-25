@@ -61,7 +61,7 @@ const serviceItems = [
     id: '05',
     title: 'Web App Development',
     slug: 'web-app-development',
-    copy: 'We build custom web apps that simplify workflows, boost speed, and elevate customer experiences—ready to scale with your operations.',
+    copy: 'We build custom web apps that simplify workflows, boost speed, and elevate customer experiences ready to scale with your operations.',
     features: [
       'UX research & design system implementation',
       'Secure, high-performance engineering',

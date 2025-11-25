@@ -25,19 +25,19 @@ const FAQ_CONTENT: FAQItem[] = [
   {
     question: 'What does Multiple AI Solutions do?',
     answer:
-      'We develop custom AI software and automation tools to help businesses save time, reduce admin, and grow faster—with no technical knowledge required.',
+      'We develop custom AI software and automation tools to help businesses save time, reduce admin, and grow faster with no technical knowledge required.',
     category: 'Products',
   },
   {
     question: 'Do I need technical skills to use your AI products?',
     answer:
-      'No. Our solutions are user-friendly and fully supported. We handle setup, training, and updates—so you can focus on running your business.',
+      'No. Our solutions are user-friendly and fully supported. We handle setup, training, and updates so you can focus on running your business.',
     category: 'Products',
   },
   {
     question: 'How can an AI receptionist help my business?',
     answer:
-      'Our AI receptionist answers calls 24/7, books appointments, sends reminders, and follows up with clients—saving you hours every week.',
+      'Our AI receptionist answers calls 24/7, books appointments, sends reminders, and follows up with clients saving you hours every week.',
     category: 'Products',
   },
   {
@@ -109,7 +109,7 @@ const FAQ_CONTENT: FAQItem[] = [
   {
     question: "What's coming next from Multiple AI Solutions?",
     answer:
-      "We're constantly innovating. Stay tuned—new AI-powered products and features are launching soon to make your business even smarter.",
+      "We're constantly innovating. Stay tuned new AI-powered products and features are launching soon to make your business even smarter.",
     category: 'Products',
   },
   {
